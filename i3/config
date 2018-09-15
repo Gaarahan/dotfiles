@@ -1,0 +1,217 @@
+# set Mod
+set $mod Mod4
+
+# => 电源管理（Pause Break键呼出)
+set $mode_system 系统:锁屏(L) 注销(O) 关机(S) 重启(R) 取消(Esc)
+bindsym Pause mode "$mode_system"
+mode "$mode_system" {
+    bindsym l exec i3lock -c '#333333', exec sleep .1 && exec xset dpms force off, mode "default"
+    bindsym o exec i3-msg exit
+    bindsym s exec systemctl poweroff
+    bindsym r exec systemctl reboot
+    bindsym Escape mode "default"
+}
+
+#  for screen lock
+bindsym $mod+l exec i3lock-fancy
+
+# for sound control  
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% 
+bindsym $mod+Shift+plus exec pactl set-sink-volume 0 +5% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym $mod+Shift+minus exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec amixer set Master toggle 
+
+# Screen brightness controls use light
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+
+# Font for window titles. Will also be used by the bar unless a different font
+font pango:ttf-liberation-mono 14 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# run rofi
+bindsym $mod+d exec rofi -show drun -theme gaara-theme
+bindsym $mod+q exec rofi -show run  -theme gaara-theme
+
+# start a terminal
+bindsym $mod+Return exec terminology
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+j move up
+bindsym $mod+Shift+l move right
+
+# exec cmatrix
+bindsym $mod+Shift+x exec terminology -e cmatrix 
+
+# control cloud-music
+bindsym $mod+Ctrl+m exec netease-cloud-music
+#bindsym $mod+Ctrl+m exec i3-sensible-terminal -e ncmpcpp
+bindsym $mod+Ctrl+p exec mpc play
+bindsym $mod+Ctrl+o exec mpc pause
+bindsym $mod+Ctrl+l exec mpc next
+bindsym $mod+Ctrl+k exec mpc prev
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# hide | show window
+bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle 
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# navigate workspaces next /previous
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3: "
+set $ws4 "4: ﱘ"
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7"
+set $ws8 8
+set $ws9 9
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# Automatically putting clients on specific workspaces
+assign [class="netease-cloud-music"] $ws4
+assign [class="electronic-wechat"] $ws3
+assign [class="chrome"] $ws2
+
+# window set
+for_window[class=^.*] border pixel 0
+for_window[window_role="pop-up"] floating enable
+for_window[window_role="task_dialog"] floating enbale
+for_window[class="netease-cloud-music"] floating enable
+for_window[class="VirtualBox Manager"] floating enable
+for_window[class="electronic-wechat"] floating enable
+for_window[class="vokoscreen"] floating enable
+for_window[class="vlc"] floating enable
+
+# disable follows_mouse
+focus_follows_mouse no
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# i3-gaps config inner/outer gap
+gaps outer 5
+gaps inner 5
+
+# ---------------------- apps config --------------------------
+# run ranger 
+bindsym $mod+o exec terminology -e ranger
+
+# quick run wifi-menu
+bindsym $mod+shift+w exec terminology -e "sudo wifi-menu"
+
+# run nautilus
+bindsym $mod+shift+o exec nautilus
+
+# run system monitor
+bindsym $mod+shift+m exec terminology -e "htop"
+
+
+# ------------- screen  shortcut config -----------------------
+# cut all the screen 
+bindsym  --release Print exec "sh ~/.config/i3/screencut/cut_all.sh"
+# cut current window
+bindsym --release $mod+Print exec "sh ~/.config/i3/screencut/cut_cur.sh"
+# cut selection 
+bindsym --release $mod+Shift+Print exec "sh ~/.config/i3/screencut/cut_sel.sh"
+
+
+
+# -----------------  always running app -----------------
+#run mpd
+# exec_always --no-startup-id mpd
+# run polybar 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# set default wallpaper
+exec_always feh --bg-fill ~/Picture/green-wlop.jpg
+# auto lock
+exec_always xautolock -time 5 -locker "i3lock-fancy"
+# get the transparent feature
+exec compton -b &
