@@ -26,3 +26,5 @@ my personal configuration for i3-gaps+polybar
 
 >8. ranger
 >- term tool to watch local file
+
+[![screen shortcut](https://s1.ax1x.com/2018/10/10/iYxZkR.md.png)](https://imgchr.com/i/iYxZkR)
