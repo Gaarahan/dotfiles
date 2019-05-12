@@ -39,8 +39,8 @@ font-2 = "Symbols Nerd Font:style=Solid:pixelsize=8;1"
 font-3 = "material icons:pixelsize=13;3"
 
 modules-left = i3 xwindow
-modules-center = date mermory cpu 
-modules-right = backlight-acpi alsa wlan eth battery
+modules-center = date 
+modules-right = backlight-acpi alsa wlan eth cpu battery
 
 tray-position = right
 tray-padding = 2
@@ -128,14 +128,6 @@ interval = 2
 format-prefix = ""
 format-underline = #f90000
 label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "▦"
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -250,4 +242,4 @@ screenchange-reload = true
 
 [global/wm]
 margin-top = 5
-margin-bottom = 5
+mcpu argin-bottom = 5
