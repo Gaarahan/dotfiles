@@ -1,19 +1,18 @@
 [colors]
 background = ${xrdb:color0:#222}
-; background = #BF000000
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+main-underline = #5badf3
 
 [bar/example]
-; monitor = ${env:MONITOR:eDP-1}
+;指定默认的显示位置,显示器eDP
+monitor = eDP 
 width = 100%
 height = 25
-;offset-x = 1%
-;offset-y = 1%
 radius = 2.0
 fixed-center = true
 
@@ -40,56 +39,8 @@ font-2 = "Symbols Nerd Font:style=Solid:pixelsize=8;1"
 font-3 = "material icons:pixelsize=13;3"
 
 modules-left = i3 xwindow
-modules-center = date
-
-modules-right = backlight-acpi alsa wlan eth mermory cpu battery
-
-tray-position = right
-tray-padding = 2
-tray-background = ${colors.background}
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-;****************   bottom-bar *****************
-[bar/bottom]
-;monitor = ${env:MONITOR}
-;monitor-strict = true
-
-dpi = 72
-bottom = true
-width = 100%
-height = 30
-offset-x = 0 
-offset-y = 0
-radius = 2.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-top-size = 2
-border-left-size = 2
-border-right-size = 2
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = monaco:fixed:pixelsize=12;1
-font-1 = "source han sans cn:pixelsize=12;1"
-font-2 = "Symbols Nerd Font:style=Solid:pixelsize=12;1"
-font-3 = "material icons:pixelsize=16;3"
-
-modules-left = mpd
-
-modules-right = date
+modules-center = date mermory cpu 
+modules-right = backlight-acpi alsa wlan eth battery
 
 tray-position = right
 tray-padding = 2
@@ -98,29 +49,7 @@ tray-background = ${colors.background}
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-;*******************  music player *****************
-[module/mpd]
-type = internal/mpd
-format-online =  <icon-prev>  <icon-stop>  <toggle>  <icon-next>  <icon-repeat>  <label-song>
-
-label-offline = mpd is offline
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-repeat = 
-icon-repeatone = 
-icon-random = 
-
-toggle-on-foreground = #ff
-toggle-off-foreground = #55
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-;************       windows manger      **************
+;************       windows title manger      **************
 [module/xwindow]
 type = internal/xwindow
 label = %title%
@@ -170,6 +99,7 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding} |
 
+;**************** backlight status bar ************************
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -177,12 +107,12 @@ format = <label> <bar>
 label = BL
 
 bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
+bar-indicator =  
+bar-indicator-foreground = #faa755
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = #f58220
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -195,8 +125,7 @@ card = amdgpu_bl1
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-;format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = ""
 format-underline = #f90000
 label = %percentage:2%%
 
@@ -214,11 +143,9 @@ interface = wlp1s0
 interval = 3.0
 
 format-connected = <ramp-signal>
-format-connected-underline = #9f78e1
-label-connected = "%essid%"
+label-connected = %essid% %upspeed% %downspeed%
 
 format-disconnected = 
-;format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = #999999
@@ -239,14 +166,12 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %local_ip%  %upspeed%  %downspeed%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = "no-wired-net"
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -259,8 +184,7 @@ time = "%H:%M"
 time-alt = %H:%M:%S
 
 format-prefix = ""
-;format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.main-underline}
 
 label = %date% %time%
 
@@ -285,8 +209,9 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #6975a6
 bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
@@ -306,14 +231,12 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-;format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
-;ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -322,29 +245,9 @@ animation-charging-3 = 
 ;animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-[module/powermenu]
-type = custom/menu
-expand-right = true
-format-underline = #f90000
-
-format-spacing = 1
-
-label-open = "  "
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = reboot
-menu-0-1 = poweroff
-menu-0-1-exec = poweroff
-
 [settings]
 screenchange-reload = true
 
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
