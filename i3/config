@@ -46,6 +46,7 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
+
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+j move up
@@ -70,7 +71,6 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
-
 # split in vertical orientation
 bindsym $mod+v split v
 
@@ -133,7 +133,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # Automatically putting clients on specific workspaces
 assign [class="netease-cloud-music"] $ws4
-assign [class="electronic-wechat"] $ws5
+assign [class="wewechat"] $ws5
 assign [class="chrome"] $ws2
 
 # window set
@@ -142,7 +142,7 @@ for_window[window_role="pop-up"] floating enable
 for_window[window_role="task_dialog"] floating enbale
 for_window[class="netease-cloud-music"] floating enable
 for_window[class="VirtualBox Manager"] floating enable
-for_window[class="electronic-wechat"] floating enable
+for_window[class="wewechat"] floating enable
 for_window[class="vokoscreen"] floating enable
 for_window[class="vlc"] floating enable
 
@@ -174,7 +174,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # i3-gaps config inner/outer gap
-gaps outer 5
+gaps outer 1
 gaps inner 5
 
 # ---------------------- apps config --------------------------
@@ -211,9 +211,12 @@ bindsym --release $mod+Shift+Print exec "sh ~/.config/i3/screencut/cut_sel.sh"
 # run polybar 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # set default wallpaper
-exec_always feh --bg-fill ~/Picture/green-wlop.jpg
+#exec_always feh --bg-fill ~/Picture/Wallpapers/green-wlop.jpg
+exec_always feh --bg-fill ~/Picture/Wallpapers/Mekakucity-Actors-Kagerou-Project-Ayano-Tateyama-Imgur1.png
 #exec_always feh --bg-fill ~/Downloads/WLOP_wallpaper.jpg
+#exec_always feh --bg-fill ~/Picture/Wallpapers/WLOP_wallpaper_2.jpg
+exec_always electron-ssr
 # auto lock
-exec_always xautolock -time 5 -locker "i3lock-fancy"
+#exec_always xautolock -time 10 -locker "i3lock-fancy"
 # get the transparent feature
 exec compton -b &

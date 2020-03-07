@@ -12,7 +12,7 @@ main-underline = #5badf3
 ;指定默认的显示位置,显示器eDP
 monitor = eDP 
 width = 100%
-height = 25
+height = 20
 radius = 2.0
 fixed-center = true
 
@@ -33,14 +33,14 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = monaco:fixed:pixelsize=8;1
-font-1 = "source han sans cn:pixelsize=8;1"
-font-2 = "Symbols Nerd Font:style=Solid:pixelsize=8;1"
+font-0 = monaco:fixed:pixelsize=7;1
+font-1 = "source han sans cn:pixelsize=7;1"
+font-2 = "Symbols Nerd Font:style=Solid:pixelsize=7;1"
 font-3 = "material icons:pixelsize=13;3"
 
 modules-left = i3 xwindow
-modules-center = date 
-modules-right = backlight-acpi alsa wlan eth cpu battery
+modules-center = date
+modules-right = backlight-acpi alsa wireless-network wired-network cpu battery
 
 tray-position = right
 tray-padding = 2
@@ -53,8 +53,8 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title%
-width = 30
-label-maxlen = 30
+width = 70
+label-maxlen = 70
 
 ;************      workspace manger     **************
 [module/bspwm]
@@ -129,7 +129,8 @@ format-prefix = ""
 format-underline = #f90000
 label = %percentage:2%%
 
-[module/wlan]
+;************      wlan manger     **************
+[module/wireless-network]
 type = internal/network
 interface = wlp1s0
 interval = 3.0
@@ -149,16 +150,16 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 animation-packetloss-0 = ⚠
 animation-packetloss-0-foreground = #ffa64c
-;ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
+[module/wired-network]
 type = internal/network
 interface = enp2s0
 interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-label-connected = %local_ip%  %upspeed%  %downspeed%
+label-connected = %local_ip%  %upspeed%  %downspeed%
 
 format-disconnected = "no-wired-net"
 format-disconnected-underline = ${self.format-connected-underline}
@@ -182,7 +183,7 @@ label = %date% %time%
 
 
 [module/alsa]
-type = internal/volume
+type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
