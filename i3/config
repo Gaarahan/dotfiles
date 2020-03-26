@@ -99,13 +99,13 @@ bindsym $mod+a focus parent
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-set $ws1 "1:  "
+set $ws1 "1: "
 set $ws2 "2:  "
 set $ws3 "3: "
 set $ws4 "4: ﱘ"
 set $ws5 "5: "
 set $ws6 "6:  "
-set $ws7 "7"
+set $ws7 "7: "
 set $ws8 8
 set $ws9 9
 
@@ -209,7 +209,7 @@ bindsym --release $mod+Shift+Print exec "sh ~/.config/i3/screencut/cut_sel.sh"
 #run mpd
 # exec_always --no-startup-id mpd
 # run polybar 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/i3/launch-polybar.sh
 # set default wallpaper
 #exec_always feh --bg-fill ~/Picture/Wallpapers/green-wlop.jpg
 exec_always feh --bg-fill ~/Picture/Wallpapers/Mekakucity-Actors-Kagerou-Project-Ayano-Tateyama-Imgur1.png
