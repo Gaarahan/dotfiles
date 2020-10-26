@@ -1,0 +1,25 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'glepnir/oceanic-material'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+
+call plug#end()
+
+"autocmd vimenter * colorscheme gruvbox
+"Plug 'morhetz/gruvbox'
+
+set background=dark
+colorscheme oceanic_material
+
+
+" enable ruler
+set ruler
+set laststatus=2
+
+set nu
+set fdm=indent " set default fold model as indent
+set clipboard=unnamedplus "use system clipboard
+syntax enable                           " use syntax highlighting
+
