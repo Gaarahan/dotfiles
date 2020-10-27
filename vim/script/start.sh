@@ -1,0 +1,3 @@
+doInstall() {
+	echo "install ~"
+}
