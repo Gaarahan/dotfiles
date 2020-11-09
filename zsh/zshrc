@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 alias t=todo.sh
+alias vim=nvim
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
 
@@ -109,7 +110,6 @@ then
 fi
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export TERM=xterm-256color
 
 function zle_eval {
     echo -en "\e[2K\r"
