@@ -123,3 +123,4 @@ function openlazygit {
 
 zle -N openlazygit;
 bindkey "^G" openlazygit
+stty eof undef  # prevent C-d to close panel

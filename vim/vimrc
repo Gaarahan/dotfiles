@@ -1,9 +1,14 @@
-call plug#begin('~/.vim/plugged')
 
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
+call plug#begin('~/.vim/plugged')
+Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
 Plug 'glepnir/oceanic-material'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'easymotion/vim-easymotion'
 
 if has('nvim')
 	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -20,7 +25,6 @@ call plug#end()
 
 set background=dark
 colorscheme oceanic_material
-
 
 " enable ruler
 set ruler

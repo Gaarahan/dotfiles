@@ -1,7 +1,11 @@
-# i3-dotfiles
+# DOTFILES
+
+## vim 
+
+## i3-dotfiles
 my personal configuration for i3-gaps+polybar
 
-# current plugin apps
+### current plugin apps
 
 >1. polybar
 >- a third party status bar to replace i3-wm default status bar
