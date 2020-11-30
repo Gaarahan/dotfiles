@@ -5,11 +5,11 @@ let mapleader=" "
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
+Plug 'andymass/vim-matchup'
 Plug 'glepnir/oceanic-material'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'easymotion/vim-easymotion'
-Plug 'luochen1990/rainbow'
 
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -27,8 +27,8 @@ call plug#end()
 set background=dark
 colorscheme oceanic_material
 
-" enable rainbow
-let g:rainbow_active = 1
+" enable vim matchup
+let g:loaded_matchit = 1
 
 " enable ruler
 set ruler
