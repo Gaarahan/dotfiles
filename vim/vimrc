@@ -11,6 +11,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'easymotion/vim-easymotion'
 
+" plug for html
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
+
+" Defx
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -21,14 +26,14 @@ endif
 
 call plug#end()
 
-"autocmd vimenter * colorscheme gruvbox
-"Plug 'morhetz/gruvbox'
-
 set background=dark
 colorscheme oceanic_material
 
 " enable vim matchup
 let g:loaded_matchit = 1
+
+" remap default leader for emmet-vim
+let g:user_emmet_leader_key='<C-Z>'
 
 " enable ruler
 set ruler
@@ -36,7 +41,7 @@ set laststatus=2
 
 set nu
 "set fdm=indent " set default fold model as indent
-set clipboard=unnamed,unnamedplus "use system clipboard
+set clipboard=unnamed,unnamedplus       "use system clipboard
 set cursorline
 syntax enable                           " use syntax highlighting
 
@@ -54,7 +59,39 @@ set smartindent                         " Makes indenting smart
 set smartcase                           " Makes search use smart case
 set ignorecase
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"{ hightline-bufferline: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = { 
+      \   'colorscheme': 'one',
+      \   'active': {
+      \     'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \   },
+      \   'tabline': {
+      \     'left': [ ['buffers'] ],
+      \     'right': [ ['close'] ]
+      \   },
+      \   'component_expand': {
+      \     'buffers': 'lightline#bufferline#buffers'
+      \   },
+      \   'component_type': {
+      \     'buffers': 'tabsel'
+      \   }
+      \ }
+
+set showtabline=2 " force show tabline
+
+" map leader+<num> to switch buffer
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+"{ Defx: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <silent> <F3> :Defx <CR>
 
 call defx#custom#option('_', {
