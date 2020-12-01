@@ -7,8 +7,12 @@ Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 Plug 'glepnir/oceanic-material'
+
+" plug for status bar
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'itchyny/vim-gitbranch'
+
 Plug 'easymotion/vim-easymotion'
 
 " plug for html
@@ -78,7 +82,8 @@ let g:lightline = {
       \     'right': [ ['close'] ]
       \   },
       \   'component_expand': {
-      \     'buffers': 'lightline#bufferline#buffers'
+      \     'buffers': 'lightline#bufferline#buffers',
+      \     'gitbranch': 'gitbranch#name'
       \   },
       \   'component_type': {
       \     'buffers': 'tabsel'
