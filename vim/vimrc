@@ -15,7 +15,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
-" Defx
+" plug for vue
+Plug 'posva/vim-vue'
+
+" plug for dir_tree
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -26,6 +29,8 @@ endif
 
 call plug#end()
 
+"{ Theme: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set background=dark
 colorscheme oceanic_material
 
@@ -34,6 +39,9 @@ let g:loaded_matchit = 1
 
 " remap default leader for emmet-vim
 let g:user_emmet_leader_key='<C-Z>'
+
+
+"{ Base: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " enable ruler
 set ruler
@@ -59,7 +67,7 @@ set smartindent                         " Makes indenting smart
 set smartcase                           " Makes search use smart case
 set ignorecase
 
-"{ hightline-bufferline: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"{ Hightline: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = { 
       \   'colorscheme': 'one',
       \   'active': {
@@ -76,6 +84,7 @@ let g:lightline = {
       \     'buffers': 'tabsel'
       \   }
       \ }
+let g:lightline#bufferline#enable_nerdfont = 1
 
 set showtabline=2 " force show tabline
 
@@ -103,6 +112,7 @@ call defx#custom#option('_', {
       \ 'toggle': 1,
       \ 'resume': 1
       \ })
+call defx#do_action('open_tree')
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
