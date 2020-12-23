@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
 Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'andymass/vim-matchup'
 Plug 'glepnir/oceanic-material'
 
@@ -38,3 +39,4 @@ let g:user_emmet_leader_key='<C-Z>'
 
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')
+
