@@ -22,8 +22,10 @@ Plug 'posva/vim-vue'
 
 Plug 'ThePrimeagen/vim-be-good'
 
+" plug for markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_fenced_languages = ['css', 'java', 'javascript', 'js=javascript', 'sass', 'xml', 'typescrtpt', 'ts=typescrtpt']
 
 " plug for dir_tree
 if has('nvim')
