@@ -5,6 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'andymass/vim-matchup'
 Plug 'glepnir/oceanic-material'
+Plug 'voldikss/vim-translator'
 
 " plug for status bar
 Plug 'itchyny/lightline.vim'
