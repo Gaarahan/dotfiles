@@ -1,11 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'  "auto pair bracket when input
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  "auto complete
 Plug 'andymass/vim-matchup'
 Plug 'glepnir/oceanic-material'
 Plug 'voldikss/vim-translator'
+
+" plug for base input
+Plug 'junegunn/vim-easy-align'
 
 " plug for status bar
 Plug 'itchyny/lightline.vim'
