@@ -3,7 +3,7 @@
 #Fork form https://github.com/glepnir/dotfiles
 
 # include my library helpers for colorized echo and require_brew, etc
-source ./bin/utils.sh
+source ./utils.sh
 
 UserLocation=0
 read -r -p "Are you a Chinese user? [y|N] " response
@@ -23,7 +23,7 @@ if ! xcode-select --print-path &> /dev/null; then
     # Prompt user to install the XCode Command Line Tools
     xcode-select --install &> /dev/null
 
-     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Wait until the XCode Command Line Tools are installed
     until xcode-select --print-path &> /dev/null; do

@@ -91,4 +91,3 @@ function require_npm() {
     fi
     ok
 }
-n
