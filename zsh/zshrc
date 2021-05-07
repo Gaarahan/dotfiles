@@ -1,26 +1,26 @@
 export HOMEBREW_NO_AUTO_UPDATE=true
-alias t=todo.sh
 alias vim=nvim
 
 if [ -z "$TMUX" ]
 then
     tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
-function zle_eval {
-    echo -en "\e[2K\r"
-    eval "$@"
-    zle redisplay
-}
+# export PATH="/usr/local/opt/icu4c/bin:$PATH"
+# export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+# 
+# function zle_eval {
+#     echo -en "\e[2K\r"
+#     eval "$@"
+#     zle redisplay
+# }
+# 
+# function openlazygit {
+#     zle_eval lazygit
+# }
+# 
+# zle -N openlazygit;
+# bindkey "^G" openlazygit
+# stty eof undef  # prevent C-d to close panel
 
-function openlazygit {
-    zle_eval lazygit
-}
-
-zle -N openlazygit;
-bindkey "^G" openlazygit
-stty eof undef  # prevent C-d to close panel
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
