@@ -38,10 +38,6 @@ echo "2) Only link the config file"
 read -r
 if [ "$REPLY" == '1' ]; then
 
-  #  nvim, py2, py3
-  # neovim module : pip2/pip3 install neovim
-  # node
-  # vim-plug
 
   error "Sorry, totally config is under development"
 elif [ "$REPLY" == '2' ]; then
@@ -57,8 +53,8 @@ elif [ "$REPLY" == '2' ]; then
     mv "$VIMRC" "$VIMRC.bak"
   fi
 
-  ln "$(getPath "../vim/vimrc")" "$VIMRC"
-  ln "$(getPath "../vim/init.vim")" "$NVIMRC"
+  ln -s "$(getPath "../vim/vimrc")" "$VIMRC"
+  ln -s "$(getPath "../vim/init.vim")" "$NVIMRC"
 
   if [[ -d "$VIM_HOME" ]]; then
     mv "$VIM_HOME" "${VIM_HOME}_back"
@@ -77,7 +73,8 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config tmux"
 
   if [ -e "$TMUX_CONF" ]; then
+    rm "$TMUX_CONF.bak" >/dev/null
     mv "$TMUX_CONF" "$TMUX_CONF.bak"
   fi
-  ln ../tmux/tmux.conf "$TMUX_CONF"
+  ln -s "$(getPath "../tmux/tmux.conf")" "$TMUX_CONF"
 fi

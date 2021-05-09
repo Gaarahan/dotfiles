@@ -8,19 +8,21 @@ fi
 
 # export PATH="/usr/local/opt/icu4c/bin:$PATH"
 # export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-# 
+#
 # function zle_eval {
 #     echo -en "\e[2K\r"
 #     eval "$@"
 #     zle redisplay
 # }
-# 
+#
 # function openlazygit {
 #     zle_eval lazygit
 # }
-# 
+#
 # zle -N openlazygit;
 # bindkey "^G" openlazygit
 # stty eof undef  # prevent C-d to close panel
 
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+source /usr/share/nvm/init-nvm.sh

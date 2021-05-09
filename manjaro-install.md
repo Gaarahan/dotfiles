@@ -36,9 +36,20 @@ XMODIFIERS    DEFAULT=\@im=fcitx
 
 - config the `2*2 virtual-desktop`
 
+### git
+- ssh:  ssh-keygen -t ed25519 -C "gaarahan@foxmail.com"
+- proxy:
+```bash
+    git config --global http.proxy 'socks5://127.0.0.1:7891'
+```
+
+### vim
+- nvim, py2, py3
+- neovim module : pip2/pip3 install neovim
+- nvm, npm, node
+- vim-plug
 
 ### Tools
-- git-ssh:  ssh-keygen -t ed25519 -C "gaarahan@foxmail.com"
 - telegram-desktop
 - google-chrome
 	遇到报错: Error: ==> ERROR: Cannot find the fakeroot binary.
