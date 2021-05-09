@@ -38,10 +38,12 @@ XMODIFIERS    DEFAULT=\@im=fcitx
 
 
 ### Tools
+- git-ssh:  ssh-keygen -t ed25519 -C "gaarahan@foxmail.com"
 - telegram-desktop
 - google-chrome
 	遇到报错: Error: ==> ERROR: Cannot find the fakeroot binary.
 	yay -S base-devel
 - vscode
-- webstorm
+- java
+- webstorm webstorm-jre
 - flameshot
