@@ -2,6 +2,8 @@
 
 ## vim 
 `use neovim, config write as vimrc`
+![image](https://user-images.githubusercontent.com/34125917/117580734-01b13480-b12c-11eb-9077-66e9c3bde13c.png)
+
 
 ## i3
 `my personal configuration for i3-gaps+polybar`
