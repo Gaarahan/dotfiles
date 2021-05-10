@@ -1,23 +1,24 @@
 #!/bin/bash
 
-###
-# judge function
-###
+# check if platform supported {{
 
-isLinux() {
-	if [ "$(uname)" == 'Linux' ]; then
-		echo true
-		return
-	fi
-	echo false
+isSupported() {
+  supportPlatform=("Linux" "Darwin")
+  supportFlag=false
+
+  for item in "${supportPlatform[@]}"; do
+    if [ "$(uname)" == "$item" ]; then
+      supportFlag=true
+    fi
+  done
+
+  echo $supportFlag
 }
 
+# }}
 
-###
-# format print
-###
+# print utils {{
 
-# Colors
 ESC_SEQ="\x1b["
 COL_RESET=$ESC_SEQ"39;49;00m"
 COL_RED=$ESC_SEQ"31;01m"
@@ -28,19 +29,19 @@ COL_RESET=$ESC_SEQ"39;49;00m"
 COL_RED=$ESC_SEQ"31;01m"
 
 ok() {
-    printf  "\t${COL_GREEN}[ok]${COL_RESET} %s\n" "$1"
+  printf "\t${COL_GREEN}[ok]${COL_RESET} %b\n" "$1"
 }
 
 bot() {
-    printf  "${COL_GREEN}\[._.]/${COL_RESET} - %s\n" "$1"
+  printf "${COL_GREEN}\[._.]/${COL_RESET} - %b" "$1"
 }
 
 info() {
-    printf "\t${COL_BLUE}[➭]${COL_RESET} %s\n" "$1"
+  printf "\t${COL_BLUE}[➭]${COL_RESET} %b\n" "$1"
 }
 
 error() {
-    printf "\t${COL_RED}[error]${COL_RESET} %s\n" "$1"
+  printf "\t${COL_RED}[error]${COL_RESET} %b\n" "$1"
 }
 
-
+# }}

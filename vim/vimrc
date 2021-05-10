@@ -44,7 +44,6 @@ call plug#end()
 
 " enable vim matchup
 let g:loaded_matchit = 1
-
 " remap default leader for emmet-vim
 let g:user_emmet_leader_key='<C-Z>'
 

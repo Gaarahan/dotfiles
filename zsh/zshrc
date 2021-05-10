@@ -6,6 +6,8 @@ then
     tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
 
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # for macos use realpath command
+
 # export PATH="/usr/local/opt/icu4c/bin:$PATH"
 # export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 #

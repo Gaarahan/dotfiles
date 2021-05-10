@@ -1,9 +1,23 @@
 #!/usr/bin/env bash
 
+
+# debug mode {{
+getopts "d" isDebugMode;
+
+if [ "${isDebugMode}" == 'd' ]; then
+  set -x
+  set -v
+fi
+# }}
+
+# get absolute path from relative path {{
 SHELL_POSITION=$(dirname "$(readlink -f "$0")")
 getPath() {
+  # need install realpath in macos
+  # brew install coreutils
   realpath "$SHELL_POSITION/$1"
 }
+# }}
 
 UTILS_PATH=$(getPath "./utils.sh")
 # shellcheck disable=SC1090
@@ -11,8 +25,8 @@ source "$UTILS_PATH"
 
 ZSHRC="$HOME/.zshrc"
 
-if [ "$(isLinux)" != true ]; then
-  error 'Sorry, the current script only works on linux'
+if [ "$(isSupported)" != true ]; then
+  error 'Sorry, the current script only works on linux and macos'
   exit 1
 fi
 
@@ -28,17 +42,16 @@ fi
 
 VIMRC="$HOME/.vimrc"
 VIM_HOME="$HOME/.vim"
-NVIMRC="$HOME/.config/nvim/init.vim"
+NVIM_HOME="$HOME/.config/nvim"
+NVIMRC="$NVIM_HOME/init.vim"
 
-bot "Which configuration do you want? "
-
-echo "1) Start from scratch"
-echo "2) Only link the config file"
+bot "Which configuration do you want?
+1) Start from scratch
+2) Only link the config file
+"
 
 read -r
 if [ "$REPLY" == '1' ]; then
-
-
   error "Sorry, totally config is under development"
 elif [ "$REPLY" == '2' ]; then
   info "Start config nvim"
@@ -54,6 +67,9 @@ elif [ "$REPLY" == '2' ]; then
   fi
 
   ln -s "$(getPath "../vim/vimrc")" "$VIMRC"
+  if [[ ! -d "$NVIM_HOME" ]]; then
+    mkdir "$NVIM_HOME"
+  fi
   ln -s "$(getPath "../vim/init.vim")" "$NVIMRC"
 
   if [[ -d "$VIM_HOME" ]]; then
