@@ -1,29 +1,26 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'mhinz/vim-startify'
-Plug 'jiangmiao/auto-pairs'  "auto pair bracket when input
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  "auto complete
-Plug 'andymass/vim-matchup'
-Plug 'glepnir/oceanic-material'
-Plug 'voldikss/vim-translator'
-
-" plug for base input
-Plug 'junegunn/vim-easy-align'
-
-" plug for status bar
-Plug 'itchyny/lightline.vim'
+" Appearance customize
+Plug 'mhinz/vim-startify'                       " customize the startup page
+Plug 'glepnir/oceanic-material'                 " theme
+Plug 'itchyny/lightline.vim'                    " dwaohdowi
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'itchyny/vim-gitbranch'
 
-Plug 'easymotion/vim-easymotion'
+" Plug for base input
+Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " auto complete
+Plug 'andymass/vim-matchup'                     " make '%' support more feature
+Plug 'voldikss/vim-translator'                  " select block and enter Translate*
+Plug 'junegunn/vim-easy-align'                  " select block and enter 'ga[align-char]' to align by special char
+Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function 
 
-" plug for html
+" Plug for html
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
 " plug for vue
 Plug 'posva/vim-vue'
-
 Plug 'ThePrimeagen/vim-be-good'
 
 " plug for markdown
