@@ -4,8 +4,8 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " edit and source vimrc
-" nnoremap <leader>ev :vsp $MYVIMRC<cr>
-" nnoremap <leader>sv :source $MYVIMRC<cr>
+"nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " enable ruler
 set ruler
