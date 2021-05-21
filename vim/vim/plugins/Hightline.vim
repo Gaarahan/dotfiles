@@ -3,7 +3,7 @@
 let g:lightline = { 
       \   'colorscheme': 'one',
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \     'left': [ [ 'mode', 'paste' ], [ 'gitbranch',  'gitstatus', 'readonly', 'filename', 'modified' ] ]
       \   },
       \   'tabline': {
       \     'left': [ ['buffers'] ],
@@ -11,7 +11,7 @@ let g:lightline = {
       \   },
       \   'component_expand': {
       \     'buffers': 'lightline#bufferline#buffers',
-      \     'gitbranch': 'gitbranch#name'
+      \     'gitbranch': 'fugitive#statusline'
       \   },
       \   'component_type': {
       \     'buffers': 'tabsel'

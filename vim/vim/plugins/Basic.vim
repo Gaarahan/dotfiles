@@ -31,3 +31,4 @@ set smartindent                   " Makes indenting smart
 set smartcase                     " Makes search use smart case
 set ignorecase
 
+set updatetime=100                " Change vim update delay to update git change sign when edit

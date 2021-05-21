@@ -3,9 +3,8 @@ call plug#begin('~/.vim/plugged')
 " Appearance customize
 Plug 'mhinz/vim-startify'                       " customize the startup page
 Plug 'glepnir/oceanic-material'                 " theme
-Plug 'itchyny/lightline.vim'                    " dwaohdowi
+Plug 'itchyny/lightline.vim'                    " define the status-bar
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'itchyny/vim-gitbranch'
 
 " Plug for base input
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
@@ -30,12 +29,15 @@ let g:vim_markdown_fenced_languages = ['css', 'java', 'javascript', 'js=javascri
 
 " plug for dir_tree
 if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " use F3 to toggle dir_tree, hjkl to move, n(new), d(delete)
 else
   Plug 'Shougo/defx.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+" Plug for git
+Plug 'airblade/vim-gitgutter' " show git changes in line-number bar, [c or ]c(jump to privious or next change), <leader>hp(prview change),  <leader>hu(undo change)
 
 call plug#end()
 

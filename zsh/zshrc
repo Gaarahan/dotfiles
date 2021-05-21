@@ -1,19 +1,25 @@
+export ZSH="/Users/zhaofeng.han/.oh-my-zsh"
+ZSH_THEME="af-magic"
+plugins=(
+  git
+  vi-mode
+)
+
+source $ZSH/oh-my-zsh.sh
+
 export HOMEBREW_NO_AUTO_UPDATE=true
+alias t=todo.sh
 alias vim=nvim
 
 if [ -z "$TMUX" ]
 then
-    tmux attach -t Gaarahan || tmux new -s Gaarahan
+  tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
-# export PATH="/usr/local/opt/icu4c/bin:$PATH"
-# export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # for macos use realpath command
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
 bindkey -v # use vim mode
-plugins=(
-  vi-mode
-)
 
 # Remove mode switching delay.
 KEYTIMEOUT=5
@@ -22,13 +28,13 @@ KEYTIMEOUT=5
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
     [[ $1 = 'block' ]]; then
-          echo -ne '\e[1 q'
+      echo -ne '\e[1 q'
 
-        elif [[ ${KEYMAP} == main ]] ||
-          [[ ${KEYMAP} == viins ]] ||
-          [[ ${KEYMAP} = '' ]] ||
-          [[ $1 = 'beam' ]]; then
-                      echo -ne '\e[5 q'
+    elif [[ ${KEYMAP} == main ]] ||
+      [[ ${KEYMAP} == viins ]] ||
+      [[ ${KEYMAP} = '' ]] ||
+      [[ $1 = 'beam' ]]; then
+          echo -ne '\e[5 q'
   fi
 }
 zle -N zle-keymap-select
@@ -42,10 +48,14 @@ _fix_cursor() {
 }
 precmd_functions+=(_fix_cursor)
 
-bindkey -s "^G" "lazygit\n"
+# enable history ignore
+export HISTCONTROL=ignorespace
+bindkey -s "^G" " lazygit\n"
 
 stty eof undef  # prevent C-d to close panel
 
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
