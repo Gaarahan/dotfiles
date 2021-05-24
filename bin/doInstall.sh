@@ -30,12 +30,17 @@ if [ "$(isSupported)" != true ]; then
   exit 1
 fi
 
-bot "Append './zsh/zshrc' to '~/.zshrc? (y/N)"
+bot "Link './zsh/zshrc' to '~/.zshrc, this will backup the old file? (y/N)"
 read -r
 
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config zsh"
-  cat ../zsh/zshrc >>"$ZSHRC"
+    if [ -e "$ZSHRC" ]; then
+    rm "$ZSHRC.bak" >/dev/null
+    mv "$ZSHRC" "$ZSHRC.bak"
+  fi
+  ln -s "$(getPath "../zsh/zshrc")" "$ZSHRC"
+
 else
   info "Skip config zsh"
 fi

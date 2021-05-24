@@ -17,6 +17,12 @@ let g:lightline = {
       \     'buffers': 'tabsel'
       \   }
       \ }
+let g:lightline#bufferline#show_number     = 2  " Show file number
+" let g:lightline#bufferline#composed_number_map = {
+"       \ 1: 'Ⅰ', 2: 'Ⅱ', 3: 'Ⅲ', 4: 'Ⅳ', 5 : 'Ⅴ',
+"       \ 6: 'Ⅵ', 7: 'Ⅶ ', 8: 'Ⅷ ', 9: 'Ⅸ', 10: 'Ⅹ'
+"       \ }
+
 let g:lightline#bufferline#enable_nerdfont = 1
 
 set showtabline=2 " force show tabline
