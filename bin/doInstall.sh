@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # debug mode {{
 getopts "d" isDebugMode;
 
@@ -11,10 +10,9 @@ fi
 # }}
 
 # get absolute path from relative path {{
-SHELL_POSITION=$(dirname "$(readlink -f "$0")")
+SHELL_POSITION=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 getPath() {
-  # need install realpath in macos
-  # brew install coreutils
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   realpath "$SHELL_POSITION/$1"
 }
 # }}
