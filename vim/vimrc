@@ -25,6 +25,7 @@ Plug 'ThePrimeagen/vim-be-good'
 " plug for markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 let g:vim_markdown_fenced_languages = ['css', 'java', 'javascript', 'js=javascript', 'sass', 'xml', 'typescrtpt', 'ts=typescrtpt']
 
 " plug for dir_tree
@@ -37,14 +38,14 @@ else
 endif
 
 " Plug for git
+Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
+nnoremap <silent> <leader>lg :LazyGit<CR>
 Plug 'airblade/vim-gitgutter' " show git changes in line-number bar, [c or ]c(jump to privious or next change), <leader>hp(prview change),  <leader>hu(undo change)
 
 call plug#end()
 
 " enable vim matchup
 let g:loaded_matchit = 1
-" remap default leader for emmet-vim
-let g:user_emmet_leader_key='<C-Z>'
 
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')

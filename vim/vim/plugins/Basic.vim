@@ -14,7 +14,7 @@ set nu
 set clipboard=unnamed,unnamedplus " use system clipboard
 set cursorline
 syntax enable                     " use syntax highlighting
-
+set fdm=indent
 set encoding=utf-8                " configure the encoding
 set fileencoding=utf-8
 set mouse=a                       " enable mouse

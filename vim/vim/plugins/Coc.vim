@@ -1,7 +1,5 @@
 " Use the follow command too install language server for coc :
-"    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd
-
-
+"    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
