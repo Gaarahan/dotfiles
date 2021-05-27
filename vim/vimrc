@@ -13,6 +13,7 @@ Plug 'andymass/vim-matchup'                     " make '%' support more feature
 Plug 'voldikss/vim-translator'                  " select block and enter Translate*
 Plug 'junegunn/vim-easy-align'                  " select block and enter 'ga[align-char]' to align by special char
 Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function 
+Plug 'kevinoid/vim-jsonc'
 
 " Plug for html
 Plug 'mattn/emmet-vim'

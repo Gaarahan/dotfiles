@@ -12,7 +12,7 @@
 
 - iterm2
 - brew
-- brew install zsh nvim tmux lazygit 
+- brew install zsh nvim tmux lazygit
 - oh-my-zsh
 
 - brew install coreutils (for command realpath)

@@ -38,6 +38,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     mv "$ZSHRC" "$ZSHRC.bak"
   fi
   ln -s "$(getPath "../zsh/zshrc")" "$ZSHRC"
+  ok "Config success"
 
 else
   info "Skip config zsh"
@@ -80,7 +81,9 @@ elif [ "$REPLY" == '2' ]; then
     ok "BackUp $VIM_HOME to ${VIM_HOME}_back"
   fi
   ln -s "$(getPath "../vim/vim")" "$HOME/.vim"
-  ok "Config vim success, you can now open it and run 'PlugInstall'"
+  ok "Config vim success, you can now open it and run 'PlugInstall'.
+    After install plugin, you could install your perfer language support, like:
+    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint"
 fi
 
 TMUX_CONF="$HOME/.tmux.conf"
@@ -96,4 +99,5 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     mv "$TMUX_CONF" "$TMUX_CONF.bak"
   fi
   ln -s "$(getPath "../tmux/tmux.conf")" "$TMUX_CONF"
+  ok "Config success"
 fi
