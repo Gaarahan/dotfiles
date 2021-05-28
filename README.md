@@ -28,7 +28,7 @@
 <tr height="21"><td class="cell2">mhinz/vim-startify</td><td class="cell2">Provide the startup page</td><td class="cell2">Open the startup page</td><td class="cell2">:Startify</td></tr>
 <tr height="21"><td class="cell2">itchyny/lightline.vim
 mengelbrecht/lightline-bufferline</td><td class="cell2">Show info of vim or other plugins</td><td class="cell2">Go to buffer</td><td class="cell2">&lt;leader&gt;[number]</td></tr>
-<tr height="21"><td rowspan="18" class="cell2">neoclide/coc.nvim</td><td rowspan="18" class="cell2">Smart code completion, powered by LSP</td><td class="cell2">Open code action window</td><td class="cell2">&lt;leader&gt;ac</td></tr>
+<tr height="21"><td rowspan="18" class="cell2">neoclide/coc.nvim</td><td rowspan="18" class="cell2">Smart code completion, powered by <a href="https://microsoft.github.io/language-server-protocol/">LSP</a></td><td class="cell2">Open code action window</td><td class="cell2">&lt;leader&gt;ac</td></tr>
 <tr height="21"><td class="cell2">Quick fix in current line</td><td class="cell2">&lt;leader&gt;qf</td></tr>
 <tr height="21"><td class="cell2">Organize import</td><td class="cell2">:OR</td></tr>
 <tr height="21"><td class="cell2">Go to next/previous problem</td><td class="cell2">[g / ]g</td></tr>
