@@ -17,13 +17,6 @@
 
 #### My Vim Cheet Sheet (Synchronize with my vim configuration)
 
-<style>
-.cell1 { background-color: #ffffff; color: #333333; font-family: Comic Sans MS; font-size: 12pt; font-style: normal; font-weight: bold; text-align: center; vertical-align: middle; }
-.cell2 { background-color: #ffffff; color: #333333; font-family: Comic Sans MS; font-size: 12pt; font-style: normal; font-weight: normal; text-align: left; vertical-align: middle; }
-.cell3 { background-color: #ffffff; color: #333333; font-family: "Comic Sans MS"; font-size: 12pt; font-style: normal; font-weight: normal; text-align: left; vertical-align: bottom; }
-.cell4 { background-color: #ffffff; color: #000000; font-family: Comic Sans MS; font-size: 10pt; font-style: normal; font-weight: normal; text-align: left; vertical-align: bottom; }
-</style>
-
 <table style="border-collapse: collapse;">
 <colgroup>
   <col width="238" />
