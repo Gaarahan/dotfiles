@@ -24,7 +24,7 @@
   <col width="366" />
   <col width="164" />
 </colgroup>
-<tr height="21"><td class="cell1">Plugins</td><td class="cell1">Desc of plugin</td><td class="cell1">Func</td><td class="cell1">Key/Command</td></tr>
+<tr height="21"><th class="cell1">Plugins</th><th class="cell1">Desc of plugin</th><th class="cell1">Func</th><th class="cell1">Key/Command</th></tr>
 <tr height="21"><td class="cell2">mhinz/vim-startify</td><td class="cell2">Provide the startup page</td><td class="cell2">Open the startup page</td><td class="cell2">:Startify</td></tr>
 <tr height="21"><td class="cell2">itchyny/lightline.vim
 mengelbrecht/lightline-bufferline</td><td class="cell2">Show info of vim or other plugins</td><td class="cell2">Go to buffer</td><td class="cell2">&lt;leader&gt;[number]</td></tr>
