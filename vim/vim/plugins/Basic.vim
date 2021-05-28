@@ -14,7 +14,7 @@ set nu
 set clipboard=unnamed,unnamedplus " use system clipboard
 set cursorline
 syntax enable                     " use syntax highlighting
-set fdm=indent
+set fdm=syntax
 set encoding=utf-8                " configure the encoding
 set fileencoding=utf-8
 set mouse=a                       " enable mouse
@@ -33,7 +33,7 @@ set updatetime=100                " Change vim update delay to update git change
 
 set hidden                        " Can change to other buffer when have unsaved change
 
-" ---- From coc.vim
+" ---- For coc.vim
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
