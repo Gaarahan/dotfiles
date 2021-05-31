@@ -5,6 +5,8 @@ Plug 'mhinz/vim-startify'                       " customize the startup page
 Plug 'glepnir/oceanic-material'                 " theme
 Plug 'itchyny/lightline.vim'                    " define the status-bar
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kristijanhusak/defx-icons'
 
 " Plug for base input
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input

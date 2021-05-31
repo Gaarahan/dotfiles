@@ -6,10 +6,11 @@ call defx#custom#option('_', {
       \ 'winwidth': 40,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
-      \ 'show_ignored_files': 0,
+      \ 'show_ignored_files': 1,
       \ 'buffer_name': '',
       \ 'toggle': 1,
-      \ 'resume': 1
+      \ 'resume': 1,
+      \ 'columns': 'indent:icons:filename:type'
       \ })
 call defx#do_action('open_tree')
 

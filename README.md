@@ -4,10 +4,10 @@
 ## My dotfile config for terminal and desktop
 
 - Desktop preview ( i3, wallpaper, polybar ) :
-[![screen shortcut](https://s1.ax1x.com/2018/10/10/iYxZkR.md.png)](https://imgchr.com/i/iYxZkR)
+    [![screen shortcut](https://s1.ax1x.com/2018/10/10/iYxZkR.md.png)](https://imgchr.com/i/iYxZkR)
 
 - Terminal Preview ( nvim tmux zsh ) :
-[Click here](https://drive.google.com/file/d/1M6_sfxfztqIchVFZFh9LQTVj-Qond7QA/view?usp=sharing) to view how this work.
+    [Click here](https://drive.google.com/file/d/1M6_sfxfztqIchVFZFh9LQTVj-Qond7QA/view?usp=sharing) to view how this work.
 
 ### vim
 
@@ -19,10 +19,10 @@
 
 <table style="border-collapse: collapse;">
 <colgroup>
-  <col width="238" />
-  <col width="351" />
-  <col width="366" />
-  <col width="164" />
+<col width="238" />
+<col width="351" />
+<col width="366" />
+<col width="164" />
 </colgroup>
 <tr height="21"><th class="cell1">Plugins</th><th class="cell1">Desc of plugin</th><th class="cell1">Func</th><th class="cell1">Key/Command</th></tr>
 <tr height="21"><td class="cell2">mhinz/vim-startify</td><td class="cell2">Provide the startup page</td><td class="cell2">Open the startup page</td><td class="cell2">:Startify</td></tr>
