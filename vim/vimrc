@@ -17,6 +17,8 @@ Plug 'junegunn/vim-easy-align'                  " select block and enter 'ga[ali
 Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function 
 Plug 'kevinoid/vim-jsonc'
 Plug 'terrortylor/nvim-comment'
+Plug 'ybian/smartim'
+let g:smartim_default = 'com.apple.keylayout.ABC'
 
 " Plug for html
 Plug 'mattn/emmet-vim'
