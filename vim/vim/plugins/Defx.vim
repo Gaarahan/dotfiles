@@ -15,6 +15,7 @@ call defx#custom#option('_', {
 call defx#do_action('open_tree')
 
 autocmd FileType defx call s:defx_my_settings()
+
 function! s:defx_my_settings() abort
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>

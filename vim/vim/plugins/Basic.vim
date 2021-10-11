@@ -33,6 +33,8 @@ set updatetime=100                " Change vim update delay to update git change
 
 set hidden                        " Can change to other buffer when have unsaved change
 
+autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw
+
 " ---- For coc.vim
 
 " Always show the signcolumn, otherwise it would shift the text each time
