@@ -14,14 +14,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " auto complete
 Plug 'andymass/vim-matchup'                     " make '%' support more feature
 Plug 'voldikss/vim-translator'                  " select block and enter Translate*
 Plug 'junegunn/vim-easy-align'                  " select block and enter 'ga[align-char]' to align by special char
-Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function 
-Plug 'kevinoid/vim-jsonc'
-Plug 'terrortylor/nvim-comment'
-Plug 'ybian/smartim'
+Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function
+Plug 'kevinoid/vim-jsonc'                       " support JSON with Comments
+Plug 'terrortylor/nvim-comment'                 " use :CommentToggle to toggle comment
+Plug 'ybian/smartim'                            " quick switch to ENGLISH input when enter normal mode
 let g:smartim_default = 'com.apple.keylayout.ABC'
 
-" Plug for html
-Plug 'mattn/emmet-vim'
+Plug 'github/copilot.vim'
+Plug 'sbdchd/neoformat'
+Plug 'yuttie/comfortable-motion.vim'            " move smooth when use like <C-f>
+
+Plug 'mattn/emmet-vim'                          " Plug for html
 Plug 'alvan/vim-closetag'
 
 " plug for vue
