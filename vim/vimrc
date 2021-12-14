@@ -12,6 +12,9 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " auto complete
 Plug 'andymass/vim-matchup'                     " make '%' support more feature
+" enable vim matchup
+let g:loaded_matchit = 1
+
 Plug 'voldikss/vim-translator'                  " select block and enter Translate*
 Plug 'junegunn/vim-easy-align'                  " select block and enter 'ga[align-char]' to align by special char
 Plug 'easymotion/vim-easymotion'                " use <leader><leader> to active plugin, use w/f to use more powerful function
@@ -50,19 +53,17 @@ endif
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 nnoremap <silent> <leader>lg :LazyGit<CR>
 Plug 'airblade/vim-gitgutter' " show git changes in line-number bar, [c or ]c(jump to privious or next change), <leader>hp(prview change),  <leader>hu(undo change)
+Plug 'tpope/vim-fugitive'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+let g:current_line_blame = 1
 
 call plug#end()
-
-" enable vim matchup
-let g:loaded_matchit = 1
 
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')
 
-" always use register 0 as the default paste register
-noremap p "0p
-noremap P "0P
-for s:i in ['"','*','+','-','.',':','%','/','=','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    execute 'noremap "'.s:i.'p "'.s:i.'p'
-    execute 'noremap "'.s:i.'P "'.s:i.'P'
-endfor
+" always use register 0 when use 0p to paste
+noremap 0p "0p
+noremap 0P "0P
+
