@@ -59,3 +59,10 @@ let g:loaded_matchit = 1
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')
 
+" always use register 0 as the default paste register
+noremap p "0p
+noremap P "0P
+for s:i in ['"','*','+','-','.',':','%','/','=','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    execute 'noremap "'.s:i.'p "'.s:i.'p'
+    execute 'noremap "'.s:i.'P "'.s:i.'P'
+endfor
