@@ -30,10 +30,18 @@ set smartcase                     " Makes search use smart case
 set ignorecase
 
 set updatetime=100                " Change vim update delay to update git change sign when edit
-
 set hidden                        " Can change to other buffer when have unsaved change
 
 autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw
+
+vnoremap p "_s<C-r>"<esc>
+
+" save undo trees in files
+set undofile
+set undodir=~/.vim/undo
+
+" number of undo saved
+set undolevels=10000
 
 " ---- For coc.vim
 

@@ -66,13 +66,3 @@ call plug#end()
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')
 
-vnoremap p "_s<C-r>"<esc>
-
-" save undo trees in files
-set undofile
-set undodir=~/.vim/undo
-
-" number of undo saved
-set undolevels=10000
-
-
