@@ -1,0 +1,1 @@
+source $(getPath './installRequiredSoftwareForMacOS.sh')

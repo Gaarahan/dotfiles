@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# check if platform supported {{
+
+isSupported() {
+  supportPlatform=("Linux" "Darwin")
+  supportFlag=false
+
+  for item in "${supportPlatform[@]}"; do
+    if [ "$(uname)" == "$item" ]; then
+      supportFlag=true
+    fi
+  done
+
+  echo $supportFlag
+}
+
+isMacOS() {
+  if [ "$(uname)" == "Darwin" ]; then
+    echo true
+  else
+    echo false
+  fi
+}
+
+# }}
+
+# print utils {{
+
+# Colors
+ESC_SEQ="\x1b["
+COL_RESET=$ESC_SEQ"39;49;00m"
+COL_RED=$ESC_SEQ"31;01m"
+COL_GREEN=$ESC_SEQ"32;01m"
+COL_YELLOW=$ESC_SEQ"33;01m"
+COL_BLUE=$ESC_SEQ"34;01m"
+COL_MAGENTA=$ESC_SEQ"35;01m"
+COL_CYAN=$ESC_SEQ"36;01m"
+
+ok() {
+  printf "${COL_GREEN}[ok]${COL_RESET} %b\n" "$1"
+}
+
+bot() {
+  printf "\n${COL_GREEN}\[._.]/${COL_RESET} - %b" "$1"
+}
+
+running() {
+  printf "\n${COL_GREEN} ⇒ ${COL_RESET} %b: " "$1"
+}
+
+info() {
+  printf "\n${COL_BLUE}[➭]${COL_RESET} %b" "$1"
+}
+
+error() {
+  printf "\n${COL_RED}[error]${COL_RESET} %b" "$1"
+}
+
+action() {
+  printf "\n$COL_YELLOW[action]:$COL_RESET\n ⇒ %b...\n" "$1"
+}
+
+warn() {
+  printf "\n$COL_YELLOW[warning]$COL_RESET %b" "$1"
+}
+
+
+# }}
+
+brewCheckOrInstall() {
+    running "brew $1 $2"
+    brew list $1 > /dev/null 2>&1 | true
+    if [[ ${PIPESTATUS[0]} != 0 ]]; then
+        action "brew install $1 $2"
+        brew install $1 $2
+        if [[ $? != 0 ]]; then
+            error "failed to install $1! aborting..."
+            # exit -1
+        fi
+    fi
+    ok
+}
+
