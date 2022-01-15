@@ -70,3 +70,4 @@ brewCheckOrInstall neovim
 brewCheckOrInstall fzf
 brewCheckOrInstall bat
 brewCheckOrInstall ag
+
