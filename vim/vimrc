@@ -12,6 +12,9 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " auto complete
 Plug 'andymass/vim-matchup'                     " make '%' support more feature
+Plug 'kamykn/popup-menu.nvim'
+Plug 'kamykn/spelunker.vim'
+
 " enable vim matchup
 let g:loaded_matchit = 1
 

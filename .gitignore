@@ -1,6 +1,9 @@
 vim/vim/plugged
 vim/vim/.vim
 vim/vim/undo
+vim/vim/spell
+
+.DS_store
 
 ### Example user template template
 ### Example user template

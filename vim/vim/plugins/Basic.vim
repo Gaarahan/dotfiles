@@ -11,6 +11,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 set ruler
 set laststatus=2
 set nu
+" set nuw=3 " change the width of the line number column
 set clipboard=unnamed,unnamedplus " use system clipboard
 set cursorline
 syntax enable                     " use syntax highlighting

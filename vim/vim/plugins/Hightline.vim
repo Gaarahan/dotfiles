@@ -25,7 +25,7 @@ let g:lightline#bufferline#show_number     = 2  " Show file number
 
 let g:lightline#bufferline#enable_nerdfont = 1
 
-set showtabline=2 " force show tabline
+set showtabline=2 " always show vim tabline
 
 " map leader+<num> to switch buffer
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -38,6 +38,9 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+nmap <Leader>h <Plug>lightline#bufferline#go(10)
+nmap <Leader>l <Plug>lightline#bufferline#go(10)
 
 nnoremap <Leader><Leader>d :bd<CR>
 

@@ -1,4 +1,7 @@
+set scl=yes
+
 let g:gitgutter_set_sign_backgrounds = 1 " Self define diff color
+let g:gitgutter_highlight_linenrs = 1
 
 highlight GitGutterAdd    ctermbg=Green
 highlight GitGutterChange ctermbg=Blue
