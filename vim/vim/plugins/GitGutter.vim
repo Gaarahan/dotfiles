@@ -1,4 +1,4 @@
-set scl=yes
+set scl=auto
 
 let g:gitgutter_set_sign_backgrounds = 1 " Self define diff color
 let g:gitgutter_highlight_linenrs = 1
