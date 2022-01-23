@@ -3,10 +3,20 @@ call plug#begin('~/.vim/plugged')
 " Appearance customize
 Plug 'mhinz/vim-startify'                       " customize the startup page
 Plug 'glepnir/oceanic-material'                 " theme
-Plug 'itchyny/lightline.vim'                    " define the status-bar
-Plug 'mengelbrecht/lightline-bufferline'
-Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
+Plug 'nvim-lualine/lualine.nvim'               " buffer line and status line
+Plug 'romgrk/barbar.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+" plug for dir_tree
 Plug 'kristijanhusak/defx-icons'
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " use F3 to toggle dir_tree, hjkl to move, n(new), d(delete)
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Plug for base input
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
@@ -45,15 +55,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 let g:vim_markdown_fenced_languages = ['css', 'java', 'javascript', 'js=javascript', 'sass', 'xml', 'typescrtpt', 'ts=typescrtpt']
 
-" plug for dir_tree
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " use F3 to toggle dir_tree, hjkl to move, n(new), d(delete)
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 " Plug for git
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 nnoremap <silent> <leader>lg :LazyGit<CR>
@@ -65,6 +66,10 @@ let g:current_line_blame = 1
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Plug for debug lua config
+Plug 'jbyuki/one-small-step-for-vimkind'
+Plug 'mfussenegger/nvim-dap'
 
 call plug#end()
 
