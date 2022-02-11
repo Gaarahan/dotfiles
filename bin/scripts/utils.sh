@@ -57,3 +57,9 @@ brewCheckOrInstall() {
     ok
 }
 
+check_rm() {
+  if [ -e $1 ]; then
+    rm -rf $1
+  fi
+}
+

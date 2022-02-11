@@ -76,5 +76,3 @@ getPath() {
 }
 # }}
 
-
-ZSHRC="$HOME/.zshrc"

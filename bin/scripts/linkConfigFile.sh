@@ -1,10 +1,11 @@
+ZSHRC="$HOME/.zshrc"
 bot "Link './zsh/zshrc' to '~/.zshrc, this will backup the old file? (y/N)"
 read -r
 
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config zsh"
   if [ -e "$ZSHRC" ]; then
-    rm "$ZSHRC.bak" > /dev/null 2>&1
+    check_rm "$ZSHRC.bak" >
     mv "$ZSHRC" "$ZSHRC.bak"
   fi
   ln -s "$(getPath "../../zsh/zshrc")" "$ZSHRC"
@@ -22,12 +23,12 @@ NVIMRC="$NVIM_HOME/init.vim"
 info "Start config nvim"
 
 if [ -e "$NVIMRC" ]; then
-  rm "$NVIMRC.bak" >/dev/null 2>&1
+  check_rm "$NVIMRC.bak"
   mv "$NVIMRC" "$NVIMRC.bak"
 fi
 
 if [ -e "$VIMRC" ]; then
-  rm "$VIMRC.bak" >/dev/null 2>&1
+  check_rm "$VIMRC.bak"
   mv "$VIMRC" "$VIMRC.bak"
 fi
 
@@ -55,7 +56,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config tmux"
 
   if [ -e "$TMUX_CONF" ]; then
-    rm "$TMUX_CONF.bak" >/dev/null 2>&1
+    check_rm "$TMUX_CONF.bak"
     mv "$TMUX_CONF" "$TMUX_CONF.bak"
   fi
   ln -s "$(getPath "../../tmux/tmux.conf")" "$TMUX_CONF"
