@@ -1,30 +1,5 @@
 #!/bin/bash
 
-# check if platform supported {{
-
-isSupported() {
-  supportPlatform=("Linux" "Darwin")
-  supportFlag=false
-
-  for item in "${supportPlatform[@]}"; do
-    if [ "$(uname)" == "$item" ]; then
-      supportFlag=true
-    fi
-  done
-
-  echo $supportFlag
-}
-
-isMacOS() {
-  if [ "$(uname)" == "Darwin" ]; then
-    echo true
-  else
-    echo false
-  fi
-}
-
-# }}
-
 # print utils {{
 
 # Colors
