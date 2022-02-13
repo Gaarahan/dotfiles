@@ -5,7 +5,7 @@ read -r
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config zsh"
   if [ -e "$ZSHRC" ]; then
-    check_rm "$ZSHRC.bak" >
+    check_rm "$ZSHRC.bak"
     mv "$ZSHRC" "$ZSHRC.bak"
   fi
   ln -s "$(getPath "../../zsh/zshrc")" "$ZSHRC"
