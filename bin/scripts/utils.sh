@@ -13,7 +13,11 @@ COL_MAGENTA=$ESC_SEQ"35;01m"
 COL_CYAN=$ESC_SEQ"36;01m"
 
 ok() {
-  printf "${COL_GREEN}[ok]${COL_RESET} %b" "$1"
+  if [ $# -eq 0 ]; then
+    printf "${COL_GREEN}[ok]${COL_RESET}"
+  else
+    printf "${COL_GREEN}[ok]${COL_RESET} %b" "$1"
+  fi
 }
 
 bot() {
@@ -25,7 +29,7 @@ running() {
 }
 
 info() {
-  printf "\n${COL_BLUE}[➭]${COL_RESET} %b" "$1"
+  printf "${COL_BLUE}[➭]${COL_RESET} %b" "$1"
 }
 
 error() {

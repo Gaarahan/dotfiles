@@ -132,20 +132,3 @@ if [ ! -f "ZSHRC" ]; then
     ok "skipped"
   fi
 fi
-
-# ###########################################################
-bot " Install Develop Tools"
-# ###########################################################
-
-running "Configruation nvim"
-git clone https://github.com/glepnir/nvim ~/.config/nvim
-ok
-running "Install vim plugins"
-cd ~/.config/nvim
-make install
-cd -
-
-
-brew update && brew upgrade && brew cleanup
-
-bot "All done"

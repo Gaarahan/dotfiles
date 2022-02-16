@@ -13,7 +13,7 @@ source ./bin/scripts/prepareBeforeStart.sh
 
 bot "Which configuration do you want?
 1) Start from scratch
-2) Only link the config file
+2) Link the config file and install plugins
 3) Config your MacOS preferences
 "
 
@@ -22,7 +22,6 @@ if [ "$REPLY" == '1' ]; then
   bot "Let's start from scratch:"
   source $(getPath './startFromScratch.sh')
 elif [ "$REPLY" == '2' ]; then
-  bot "Let's link the config file:"
   source $(getPath './linkConfigFile.sh')
 elif [ "$REPLY" == '3' ]; then
   bot "Let's config your MacOS preferences:"

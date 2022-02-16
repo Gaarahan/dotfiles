@@ -36,3 +36,7 @@ ok
 running "gem install neovim"
 gem install neovim
 ok
+
+brew update && brew upgrade && brew cleanup
+
+bot "All done"
