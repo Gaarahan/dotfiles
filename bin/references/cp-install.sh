@@ -134,74 +134,9 @@ if [ ! -f "ZSHRC" ]; then
 fi
 
 # ###########################################################
-bot "Install fonts"
-# ###########################################################
-read -r -p "Install fonts? [y|N] " response
-if [[ $response =~ (y|yes|Y) ]];then
-  bot "installing fonts"
-  # need fontconfig to install/build fonts
-  require_brew fontconfig
-  sh ./fonts/install.sh
-  brew tap homebrew/cask-fonts
-  require_cask font-aurulent-sans-mono-nerd-font
-  require_cask font-hack-nerd-font
-  ok
-fi
-
-# ###########################################################
 bot " Install Develop Tools"
 # ###########################################################
-require_brew curl
-require_brew wget
-require_brew make
-require_brew tmux
-brew install jesseduffield/lazygit/lazygit
 
-## llvm with cland
-require_brew llvm
-
-action "link tmux conf"
-ln -s  $HOME/.dotfiles/tmux/.tmux.conf $HOME/.tmux.conf
-ok
-
-require_brew node
-require_brew yarn
-
-action "Install create-react-app"
-npm install -g create-react-app
-ok
-
-action "Install yabai and skhd"
-brew install koekeishiya/formulae/yabai
-brew install koekeishiya/formulae/skhd
-sudo yabai --install-sa
-ln -s "${HOME}/.dotfiles/yabai/yabairc" "${HOME}/.yabairc"
-ln -s "${HOME}/.dotfiles/yabai/skhdrc" "${HOME}/.skhdrc"
-brew services start skhd
-brew services start koekeishiya/formulae/yabai
-
-if [[ $UserLocation =~ 1 ]];then
-  running "Config npm use taobao"
-  npm config set registry https://registry.npm.taobao.org
-fi
-
-require_brew golang
-mkdir -p ~/.go
-# for chinese user use proxy to get golang package which on google server
-export GO111MODULE="on"
-export GOPATH="$HOME/.go"
-if [[ $UserLocation =~ 1 ]];then
-  export GOPROXY=https://goproxy.io
-fi
-go get golang.org/x/tools/gopls@latest
-go get -u github.com/go-delve/delve/cmd/dlv
-
-require_brew rust
-
-bot "Install neovim"
-npm i -g bash-language-server
-require_brew  luajit --HEAD
-require_brew neovim --HEAD
 running "Configruation nvim"
 git clone https://github.com/glepnir/nvim ~/.config/nvim
 ok
