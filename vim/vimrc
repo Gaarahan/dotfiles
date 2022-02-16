@@ -17,6 +17,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'simrat39/symbols-outline.nvim'
 
 " Plug for base input
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input

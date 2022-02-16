@@ -13,7 +13,7 @@ COL_MAGENTA=$ESC_SEQ"35;01m"
 COL_CYAN=$ESC_SEQ"36;01m"
 
 ok() {
-  printf "${COL_GREEN}[ok]${COL_RESET} %b\n" "$1"
+  printf "${COL_GREEN}[ok]${COL_RESET} %b" "$1"
 }
 
 bot() {
