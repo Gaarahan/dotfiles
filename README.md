@@ -11,9 +11,9 @@
 
 ### vim
 
-`use neovim, config write as vimrc`
+`use neovim, config write with lua`
 
-![image](https://user-images.githubusercontent.com/34125917/117580734-01b13480-b12c-11eb-9077-66e9c3bde13c.png)
+![image](https://user-images.githubusercontent.com/34125917/156583231-99b29f5d-4e8e-47ae-aa6b-694214554b0d.png)
 
 #### My Vim Cheet Sheet (Synchronize with my vim configuration)
 
