@@ -6,7 +6,7 @@
 - Desktop preview ( i3, wallpaper, polybar ) :
     [![screen shortcut](https://s1.ax1x.com/2018/10/10/iYxZkR.md.png)](https://imgchr.com/i/iYxZkR)
 
-- Terminal Preview ( nvim tmux zsh ) :
+- Terminal Preview ( nvim tmux zsh lazygit) :
     [Click here](https://drive.google.com/file/d/1M6_sfxfztqIchVFZFh9LQTVj-Qond7QA/view?usp=sharing) to view how this work.
 
 ### vim
