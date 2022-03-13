@@ -24,6 +24,9 @@ brewCheckOrInstall ag
 # TODO: change terminal font?
 brewCheckOrInstall font-hack-nerd-font
 
+defaults write com.googlecode.iterm2 "Normal Font" -string "SourceCodePro-Regular"
+defaults write com.googlecode.iterm2 "Non Ascii Font" -string "SourceCodePro-Regular"
+
 bot "Install packages for neovim:"
 running "Install neovim on python3"
 pip3 install --upgrade neovim

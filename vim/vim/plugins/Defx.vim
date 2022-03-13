@@ -1,6 +1,7 @@
 "{ Defx: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 noremap <silent> <F3> :Defx <CR>
+nnoremap <silent> <F4> :<C-u>Defx -resume -search=`expand('%:p')` `getcwd()`<CR>
 
 call defx#custom#option('_', {
       \ 'winwidth': 40,
