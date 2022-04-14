@@ -25,6 +25,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " auto complete
 Plug 'andymass/vim-matchup'                     " make '%' support more feature
 Plug 'kamykn/popup-menu.nvim'
 Plug 'kamykn/spelunker.vim'
+Plug 'tpope/vim-surround'
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
 
 " enable vim matchup
 let g:loaded_matchit = 1
@@ -53,17 +58,14 @@ Plug 'ThePrimeagen/vim-be-good'
 " plug for markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug']}
 let g:vim_markdown_fenced_languages = ['css', 'java', 'javascript', 'js=javascript', 'sass', 'xml', 'typescrtpt', 'ts=typescrtpt']
 
 " Plug for git
-Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
-nnoremap <silent> <leader>lg :LazyGit<CR>
-Plug 'airblade/vim-gitgutter' " show git changes in line-number bar, [c or ]c(jump to privious or next change), <leader>hp(prview change),  <leader>hu(undo change)
-Plug 'tpope/vim-fugitive'
-Plug 'nvim-lua/plenary.nvim'
+Plug 'kdheepak/lazygit.nvim'
+
+Plug 'nvim-lua/plenary.nvim' "required by gitsigns
 Plug 'lewis6991/gitsigns.nvim'
-let g:current_line_blame = 1
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

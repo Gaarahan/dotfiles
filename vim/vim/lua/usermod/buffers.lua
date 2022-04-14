@@ -3,24 +3,12 @@ local set_option = utils.set_option
 local map_cmd = utils.map_cmd
 
 -- Move to previous/next
-map_cmd('n|<Leader>h', 'BufferPrevious')
-map_cmd('n|<Leader>l', 'BufferNext')
+map_cmd('n|<Leader>]', 'BufferPrevious')
+map_cmd('n|<Leader>[', 'BufferNext')
 
 -- Re-order to previous/next
 map_cmd('n|<Leader><', 'BufferMovePrevious')
 map_cmd('n|<Leader>>', 'BufferMoveNext', opts)
-
--- Goto buffer in position...
-map_cmd('n|<Leader>1', 'BufferGoto 1')
-map_cmd('n|<Leader>2', 'BufferGoto 2')
-map_cmd('n|<Leader>3', 'BufferGoto 3')
-map_cmd('n|<Leader>4', 'BufferGoto 4')
-map_cmd('n|<Leader>5', 'BufferGoto 5')
-map_cmd('n|<Leader>6', 'BufferGoto 6')
-map_cmd('n|<Leader>7', 'BufferGoto 7')
-map_cmd('n|<Leader>8', 'BufferGoto 8')
-map_cmd('n|<Leader>9', 'BufferGoto 9')
-map_cmd('n|<Leader>0', 'BufferLast')
 
 -- Close buffer
 map_cmd('n|<Leader>dd', 'BufferClose')

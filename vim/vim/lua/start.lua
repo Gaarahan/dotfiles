@@ -31,7 +31,8 @@ local conf_modules = {
   'basic',
   'appearance',
   'buffers',
-  'coc'
+  'coc',
+  'gitsigns'
 }
 
 for i = 1, #conf_modules do
