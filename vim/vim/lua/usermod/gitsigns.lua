@@ -2,9 +2,7 @@ local utils = require('usermod.utils')
 local map = utils.map
 local map_cmd = utils.map_cmd
 
-
 map_cmd('n|<leader>lg', 'LazyGit')
-
 
 require('gitsigns').setup{
   -- { Line_blame : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

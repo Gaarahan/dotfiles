@@ -9,6 +9,9 @@ vim.g.mapleader = ' '
 map('v|p', '"_s<C-r>"<esc>')
 map_cmd('n|<Leader>sv', 'source $MYVIMRC') -- edit and source vimrc
 
+map_cmd('n|<Leader>ag', 'Ag')
+map_cmd('n|<Leader>gf', 'GF')
+
 -- set options
 
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')

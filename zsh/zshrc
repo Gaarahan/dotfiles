@@ -8,6 +8,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
+export GIT_EDITOR="vim --clean"
 alias t=todo.sh
 alias vim=nvim
 
@@ -18,6 +19,7 @@ fi
 
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 bindkey -v # use vim mode
 
@@ -61,6 +63,8 @@ unset_proxy() {
 # enable history ignore
 export HISTCONTROL=ignorespace
 bindkey -s "^G" " lazygit\n"
+bindkey -r "^S"
+bindkey -s "^P" "pet exec\n"
 
 stty eof undef  # prevent C-d to close panel
 
