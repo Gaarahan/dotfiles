@@ -29,6 +29,7 @@ end
 
 local conf_modules = {
   'basic',
+  'keymap',
   'appearance',
   'buffers',
   'coc',
