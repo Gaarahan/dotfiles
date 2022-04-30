@@ -51,8 +51,8 @@ _fix_cursor() {
 precmd_functions+=(_fix_cursor)
 
 set_proxy() {
-  export http_proxy=127.0.0.1:7890
-  export https_proxy=127.0.0.1:7890
+  export http_proxy=http://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7890
 }
 unset_proxy() {
   unset http_proxy
