@@ -1,16 +1,5 @@
 local utils = require('usermod.utils')
-local map = utils.map
-local map_cmd = utils.map_cmd
 local set_option = utils.set_option
-
--- map keystroke
-map('n|<SPACE>', '<Nop>')
-vim.g.mapleader = ' '
-map('v|p', '"_s<C-r>"<esc>')
-map_cmd('n|<Leader>sv', 'source $MYVIMRC') -- edit and source vimrc
-
-map_cmd('n|<Leader>ag', 'Ag')
-map_cmd('n|<Leader>gf', 'GF')
 
 -- set options
 

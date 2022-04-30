@@ -5,7 +5,7 @@ brewCheckOrInstall curl
 brewCheckOrInstall wget
 brewCheckOrInstall git
 
-brewCheckOrInstall node
+brewCheckOrInstall nvm
 brewCheckOrInstall yarn
 brewCheckOrInstall python3
 brewCheckOrInstall ruby
@@ -20,8 +20,9 @@ brewCheckOrInstall neovim
 brewCheckOrInstall fzf
 brewCheckOrInstall bat
 brewCheckOrInstall ag
+brewCheckOrInstall pet
 
-# TODO: change terminal font?
+#  change terminal font
 brewCheckOrInstall font-hack-nerd-font
 
 defaults write com.googlecode.iterm2 "Normal Font" -string "SourceCodePro-Regular"
@@ -33,6 +34,7 @@ pip3 install --upgrade neovim
 ok
 
 running "Install neovim on nodejs"
+nvm install node
 npm install -g neovim
 ok
 

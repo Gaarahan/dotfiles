@@ -2,8 +2,6 @@ local utils = require('usermod.utils')
 local map = utils.map
 local map_cmd = utils.map_cmd
 
-map_cmd('n|<leader>lg', 'LazyGit')
-
 require('gitsigns').setup{
   -- { Line_blame : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
