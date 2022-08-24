@@ -1,0 +1,5 @@
+-glob
+!userCase
+
+--glob
+!__test*__
