@@ -20,13 +20,14 @@ brewCheckOrInstall neovim
 brewCheckOrInstall fzf
 brewCheckOrInstall bat
 brewCheckOrInstall ag
+brewCheckOrInstall ripgrep
 brewCheckOrInstall pet
 
 #  change terminal font
-brewCheckOrInstall font-hack-nerd-font
+brewCheckOrInstall homebrew/cask-fonts/font-hack-nerd-font
 
-defaults write com.googlecode.iterm2 "Normal Font" -string "SourceCodePro-Regular"
-defaults write com.googlecode.iterm2 "Non Ascii Font" -string "SourceCodePro-Regular"
+defaults write com.googlecode.iterm2 "Normal Font" -string "Monaco"
+defaults write com.googlecode.iterm2 "Non Ascii Font" -string "Hack Nerd Font Mono"
 
 bot "Install packages for neovim:"
 running "Install neovim on python3"
