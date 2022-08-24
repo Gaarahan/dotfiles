@@ -49,12 +49,19 @@ VIMRC="$HOME/.vimrc"
 VIM_HOME="$HOME/.vim"
 NVIM_HOME="$HOME/.config/nvim"
 NVIMRC="$NVIM_HOME/init.vim"
+RG_CONF="$HOME/.ripgreprc"
 
 bot "Start config nvim? (y/N)"
 read -r
 
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config nvim"
+
+  if [ -e "$RG_CONF" ]; then
+    check_rm "$RG_CONF.bak"
+    mv "$RG_CONFIG" "$RG_CONF.bak"
+  fi
+  ln -s "$(getPath "../../ripgrep/ripgreprc")" "$RG_CONF"
 
   if [ -e "$NVIMRC" ]; then
     check_rm "$NVIMRC.bak"
@@ -94,4 +101,5 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   nvim +'CocInstall -sync coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint ' +qa
 
   ok "Install vim plugins and LSPs success"
+  ok "After install, pls restart your terminal"
 fi
