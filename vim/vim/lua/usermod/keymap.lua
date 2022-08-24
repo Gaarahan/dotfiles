@@ -10,5 +10,6 @@ map_cmd('n|<Leader>sv', 'source $MYVIMRC') -- edit and source vimrc
 
 map_cmd('n|<leader>lg', 'LazyGit')
 map_cmd('n|<Leader>ag', 'Ag')
+map_cmd('n|<Leader>rg', 'Rg')
 map_cmd('n|<Leader>gf', 'GF')
 map_cmd('n|<Leader>fd', 'Format')
