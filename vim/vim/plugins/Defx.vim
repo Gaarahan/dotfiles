@@ -23,7 +23,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
         \ defx#is_directory() ?
         \ defx#do_action('open_directory') : defx#do_action('drop')
-  nnoremap <silent><buffer><expr> c
+  nnoremap <silent><buffer><expr> y
         \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
         \ defx#do_action('move')
@@ -32,13 +32,10 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> l
         \ defx#is_directory() ?
         \ defx#do_action('open_tree', 'toggle') : ""
-  nnoremap <silent><buffer><expr> n
+  nnoremap <silent><buffer><expr> c
         \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> C
-        \ defx#do_action('toggle_columns',
-        \                'mark:indent:icon:filename:type:size:time')
+        \ defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> S
         \ defx#do_action('toggle_sort', 'time')
   nnoremap <silent><buffer><expr> d
