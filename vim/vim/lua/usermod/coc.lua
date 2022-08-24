@@ -4,23 +4,11 @@ local map = utils.map
 local map_cmd = utils.map_cmd
 local escape_special_key = utils.escape_special_key
 
--- { KeyMap: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 -- Use tab for trigger completion with characters ahead and navigate.
-map('i|<TAB>', 'v:lua.tab_completion()', {
-  expr = true,
-  noremap = false 
-})
-map('i|<S-TAB>', 'pumvisible() ? "<C-p>" : "<S-TAB>"', {
-  expr = true,
-  noremap = false
-})
+map('i|<TAB>', 'v:lua.tab()', { expr = true, noremap = false })
+map('i|<S-TAB>', 'v:lua.shift_tab()', { expr = true, noremap = false })
 -- Make <CR> auto-select the first completion item and notify coc.nvim to format on enter, <cr> could be remapped by other vim plugin
-map(
-  'i|<CR>',
-  'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>" ',
-  { expr = true, noremap = false }
-)
+map('i|<CR>', 'v:lua.select_cur_complete()', { expr = true, noremap = false })
 
 -- Use `[g` and `]g` to navigate diagnostics, Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 map('n|[g','<Plug>(coc-diagnostic-prev)', { noremap = false })
@@ -96,6 +84,7 @@ vim.cmd[[
 
 -- { Functions : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 function show_documentation()
   if (vim.bo.filetype == 'help' or vim.bo.filetype == 'vim') then
     vim.cmd("execute 'h '.expand('<cword>')")
@@ -106,21 +95,33 @@ function show_documentation()
   end
 end
 
--- Use the follow command too install language server for coc :
---    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint
-local function check_back_space()
+function tab()
+  return vim.fn['coc#pum#visible']() == 1
+    and vim.fn['coc#pum#next'](1) 
+    or (
+      check_back_space() 
+        and utils.escape_special_key('<Tab>')
+        or vim.fn['coc#refresh']()
+    )
+end
+
+function shift_tab() 
+  return vim.fn['coc#pum#visible']() == 1
+    and vim.fn['coc#pum#prev'](1) 
+    or utils.escape_special_key('<C-h>')
+end
+
+function select_cur_complete() 
+  return vim.fn['coc#pum#visible']() == 1
+    and vim.fn['coc#pum#confirm']() 
+    or utils.escape_special_key('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
+end
+  
+function check_back_space()
   local col = vim.fn.col('.') - 1
   return col <= 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
-function tab_completion()
-  if vim.fn.pumvisible() > 0 then
-    return utils.escape_special_key('<C-n>')
-  end
+-- Use the follow command too install language server for coc :
+--    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint
 
-  if check_back_space() then
-    return utils.escape_special_key('<TAB>')
-  end
-
-  return vim.fn['coc#refresh']()
-end
