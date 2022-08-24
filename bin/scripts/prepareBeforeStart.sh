@@ -33,7 +33,7 @@ fi
 # ###########################################################
 
 running "checking homebrew..."
-brew_bin=$(which brew) 2>&1 > /dev/null
+brew_bin= which brew 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
   action "installing homebrew"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
