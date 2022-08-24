@@ -33,9 +33,15 @@ fi
 # ###########################################################
 
 running "checking homebrew..."
-if $(type brew &> /dev/null) ; then
+which brew &> /dev/null | true
+if [[ ${PIPESTATUS[0]} != 0 ]]; then
   action "installing homebrew"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  action "add brew to PATH"
+  echo "export PATH=$PATH:/opt/homebrew/bin" >> ~/.bash_profile
+  export PATH=$PATH:/opt/homebrew/bin
+
   if [[ $? != 0 ]]; then
     error "unable to install homebrew, script $0 abort!"
     exit 2
