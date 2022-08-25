@@ -98,7 +98,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   nvim +'PlugInstall --sync' +qa
 
   action "Start install coc plugins"
-  nvim +'CocInstall -sync coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint ' +qa
+  nvim +'CocI' +qa
 
   ok "Install vim plugins and LSPs success"
   ok "After install, pls restart your terminal"
