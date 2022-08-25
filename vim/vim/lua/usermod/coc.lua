@@ -122,6 +122,9 @@ function check_back_space()
   return col <= 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
--- Use the follow command too install language server for coc :
---    CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint
-
+-- Use the CocI too install language server for coc :
+vim.api.nvim_create_user_command(
+  'CocI',
+  'CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint coc-prettier',
+  { nargs = 0 }
+)
