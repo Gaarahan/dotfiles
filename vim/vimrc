@@ -17,7 +17,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'simrat39/symbols-outline.nvim'
 
 " Plug for base input
 Plug 'jiangmiao/auto-pairs'                     " auto pair bracket when input
@@ -42,7 +41,6 @@ Plug 'terrortylor/nvim-comment'                 " use :CommentToggle to toggle c
 Plug 'ybian/smartim'                            " quick switch to ENGLISH input when enter normal mode
 let g:smartim_default = 'com.apple.keylayout.ABC'
 
-Plug 'github/copilot.vim'
 Plug 'sbdchd/neoformat'
 Plug 'yuttie/comfortable-motion.vim'            " move smooth when use like <C-f>
 
@@ -69,10 +67,6 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" Plug for debug lua config
-Plug 'jbyuki/one-small-step-for-vimkind'
-Plug 'mfussenegger/nvim-dap'
 
 call plug#end()
 
