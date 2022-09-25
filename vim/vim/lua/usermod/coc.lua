@@ -58,17 +58,6 @@ map('o|ic', '<Plug>(coc-classobj-i)', { noremap = false })
 map('x|ac', '<Plug>(coc-classobj-a)', { noremap = false })
 map('o|ac', '<Plug>(coc-classobj-a)', { noremap = false })
 
--- Add `:Format` command to format current buffer.
-vim.cmd('command! -nargs=0 Format :call CocAction("format")')
--- Add `:OR` command for organize imports of the current buffer.
-vim.cmd('command! -nargs=0 OR :call CocAction("runCommand", "editor.action.organizeImport")')
-
--- Add (Neo)Vim's native statusline support.
--- NOTE: Please see `:h coc-status` for integrations with external plugins that
--- provide custom statusline: lightline.vim, vim-airline.
--- vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
---]]
-
 -- { Auto command : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 vim.cmd('autocmd CursorHold * silent call CocActionAsync("highlight")')
@@ -126,5 +115,23 @@ end
 vim.api.nvim_create_user_command(
   'CocI',
   'CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint coc-prettier',
+  { nargs = 0 }
+)
+
+-- Add `:Format` command to format current buffer.
+vim.api.nvim_create_user_command(
+  'Format',
+  function () 
+    vim.fn.CocAction("format")
+  end,
+  { nargs = 0 }
+)
+
+-- Add `:OR` command for organize imports of the current buffer.
+vim.api.nvim_create_user_command(
+  'OR',
+  funciton () 
+    vim.fn.CocAction("runCommand", "editor.action.organizeImport")
+  end,
   { nargs = 0 }
 )
