@@ -3,8 +3,8 @@ local set_option = utils.set_option
 local map_cmd = utils.map_cmd
 
 -- Move to previous/next
-map_cmd('n|<Leader>]', 'BufferPrevious')
-map_cmd('n|<Leader>[', 'BufferNext')
+map_cmd('n|<Leader>[', 'BufferPrevious')
+map_cmd('n|<Leader>]', 'BufferNext')
 
 -- Re-order to previous/next
 map_cmd('n|<Leader><', 'BufferMovePrevious')
@@ -28,9 +28,8 @@ map_cmd('n|<Space>bl', 'BufferOrderByLanguage')
 
 -- { Basic: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 --
--- close other buffers, %bd kill all buffers, e# open last closed buffer
-map_cmd('n|<Leader><Leader>o', '%bd|e#')
+-- close other buffers
+map_cmd('n|<Leader>bo', 'BufferCloseAllButCurrent')
 
 -- always show vim tabline
 set_option({ showtabline = 2 })
-
