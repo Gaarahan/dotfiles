@@ -1,5 +1,11 @@
--glob
-!userCase
+--glob
+!*.lua
 
 --glob
-!__test*__
+!userCase/*
+
+--glob
+!*/__test__/**/*.{json, snap}
+
+--glob
+!*/__tests__/**/*.{json, snap}
