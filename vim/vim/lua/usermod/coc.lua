@@ -130,7 +130,7 @@ vim.api.nvim_create_user_command(
 -- Add `:OR` command for organize imports of the current buffer.
 vim.api.nvim_create_user_command(
   'OR',
-  funciton () 
+  function () 
     vim.fn.CocAction("runCommand", "editor.action.organizeImport")
   end,
   { nargs = 0 }

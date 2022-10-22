@@ -61,9 +61,9 @@ local function hi(name, fg, bg, attr)
     vim.cmd("hi! clear " .. name)
 
     if attr ~= nil then
-        vim.highlight.create(name, { guifg = fg, guibg = bg, gui = attr }, true)
+      vim.api.nvim_set_hl(0, name, { fg = fg, bg = bg, bold = true })
     elseif fg ~= nil and bg ~= nil then
-        vim.highlight.create(name, { guifg = fg, guibg = bg }, true)
+      vim.api.nvim_set_hl(0, name, { fg = fg, bg = bg })
     end
 end
 
