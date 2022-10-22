@@ -47,7 +47,6 @@ Plug 'yuttie/comfortable-motion.vim'            " move smooth when use like <C-f
 Plug 'mattn/emmet-vim'                          " Plug for html
 Plug 'alvan/vim-closetag'
 Plug 'mxw/vim-jsx'
-Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " plug for vue
 Plug 'posva/vim-vue'
