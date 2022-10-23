@@ -63,8 +63,8 @@ packer.startup(function()
   use 'nvim-lua/plenary.nvim' -- required by gitsigns
   use 'lewis6991/gitsigns.nvim'
 
-  use {'junegunn/fzf',  cmd = 'fzf#install' }
-  use 'junegunn/fzf.vim'
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
 
 
 end)
