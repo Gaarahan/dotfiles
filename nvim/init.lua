@@ -1,3 +1,3 @@
-require("entry.plugin")
+require("plugin")
 
-require('entry.start')
+require('config')

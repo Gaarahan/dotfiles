@@ -10,7 +10,7 @@ local conf_modules = {
 }
 
 for i = 1, #conf_modules do
-  local modulePath = 'usermod.'..conf_modules[i]
+  local modulePath = './usermod.'..conf_modules[i]
   require(modulePath)
 end
 
