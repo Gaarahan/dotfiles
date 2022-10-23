@@ -11,8 +11,8 @@ map('i|<S-TAB>', 'v:lua.shift_tab()', { expr = true, noremap = false })
 map('i|<CR>', 'v:lua.select_cur_complete()', { expr = true, noremap = false })
 
 -- Use `[g` and `]g` to navigate diagnostics, Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-map('n|[g','<Plug>(coc-diagnostic-prev)', { noremap = false })
-map('n|]g','<Plug>(coc-diagnostic-next)', { noremap = false })
+map('n|[g', '<Plug>(coc-diagnostic-prev)', { noremap = false })
+map('n|]g', '<Plug>(coc-diagnostic-next)', { noremap = false })
 
 -- GoTo code navigation.
 map('n|gd', '<Plug>(coc-definition)', { noremap = false })
@@ -49,10 +49,10 @@ map('n|<leader>qf', '<Plug>(coc-fix-current)', { noremap = false })
 
 -- Map function and class text objects, can use command like 'vic' to select inner class
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-map('x|if', '<Plug>(coc-funcobj-i)' , { noremap = false })
-map('o|if', '<Plug>(coc-funcobj-i)' , { noremap = false })
-map('x|af', '<Plug>(coc-funcobj-a)' , { noremap = false })
-map('o|af', '<Plug>(coc-funcobj-a)' , { noremap = false })
+map('x|if', '<Plug>(coc-funcobj-i)', { noremap = false })
+map('o|if', '<Plug>(coc-funcobj-i)', { noremap = false })
+map('x|af', '<Plug>(coc-funcobj-a)', { noremap = false })
+map('o|af', '<Plug>(coc-funcobj-a)', { noremap = false })
 map('x|ic', '<Plug>(coc-classobj-i)', { noremap = false })
 map('o|ic', '<Plug>(coc-classobj-i)', { noremap = false })
 map('x|ac', '<Plug>(coc-classobj-a)', { noremap = false })
@@ -63,7 +63,7 @@ map('o|ac', '<Plug>(coc-classobj-a)', { noremap = false })
 vim.cmd('autocmd CursorHold * silent call CocActionAsync("highlight")')
 -- Setup formatexpr specified filetype(s).
 -- Update signature help on jump placeholder.
-vim.cmd[[
+vim.cmd [[
   augroup mygroup
     autocmd!
     autocmd FileType typescript,json setl formatexpr=CocAction("formatSelected")
@@ -75,63 +75,63 @@ vim.cmd[[
 
 
 function show_documentation()
-  if (vim.bo.filetype == 'help' or vim.bo.filetype == 'vim') then
-    vim.cmd("execute 'h '.expand('<cword>')")
-  elseif (vim.fn['coc#rpc#ready']() == 1) then
-    vim.fn.CocActionAsync('doHover')
-  else 
-    vim.cmd("execute '!' . &keywordprg . \" \" . expand('<cword>')")
-  end
+    if (vim.bo.filetype == 'help' or vim.bo.filetype == 'vim') then
+        vim.cmd("execute 'h '.expand('<cword>')")
+    elseif (vim.fn['coc#rpc#ready']() == 1) then
+        vim.fn.CocActionAsync('doHover')
+    else
+        vim.cmd("execute '!' . &keywordprg . \" \" . expand('<cword>')")
+    end
 end
 
 function tab()
-  return vim.fn['coc#pum#visible']() == 1
-    and vim.fn['coc#pum#next'](1) 
-    or (
-      check_back_space() 
-        and utils.escape_special_key('<Tab>')
-        or vim.fn['coc#refresh']()
+    return vim.fn['coc#pum#visible']() == 1
+            and vim.fn['coc#pum#next'](1)
+            or (
+            check_back_space()
+                    and utils.escape_special_key('<Tab>')
+                    or vim.fn['coc#refresh']()
     )
 end
 
-function shift_tab() 
-  return vim.fn['coc#pum#visible']() == 1
-    and vim.fn['coc#pum#prev'](1) 
-    or utils.escape_special_key('<C-h>')
+function shift_tab()
+    return vim.fn['coc#pum#visible']() == 1
+            and vim.fn['coc#pum#prev'](1)
+            or utils.escape_special_key('<C-h>')
 end
 
-function select_cur_complete() 
-  return vim.fn['coc#pum#visible']() == 1
-    and vim.fn['coc#pum#confirm']() 
-    or utils.escape_special_key('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
+function select_cur_complete()
+    return vim.fn['coc#pum#visible']() == 1
+            and vim.fn['coc#pum#confirm']()
+            or utils.escape_special_key('<C-g>u<CR><c-r>=coc#on_enter()<CR>')
 end
-  
+
 function check_back_space()
-  local col = vim.fn.col('.') - 1
-  return col <= 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+    local col = vim.fn.col('.') - 1
+    return col <= 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
 -- Use the CocI too install language server for coc :
 vim.api.nvim_create_user_command(
-  'CocI',
-  'CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint coc-prettier',
-  { nargs = 0 }
+        'CocI',
+        'CocInstall coc-html coc-css coc-tsserver coc-vetur coc-json coc-sh coc-clangd coc-markdownlint coc-prettier',
+        { nargs = 0 }
 )
 
 -- Add `:Format` command to format current buffer.
 vim.api.nvim_create_user_command(
-  'Format',
-  function () 
-    vim.fn.CocAction("format")
-  end,
-  { nargs = 0 }
+        'Format',
+        function()
+            vim.fn.CocAction("format")
+        end,
+        { nargs = 0 }
 )
 
 -- Add `:OR` command for organize imports of the current buffer.
 vim.api.nvim_create_user_command(
-  'OR',
-  function () 
-    vim.fn.CocAction("runCommand", "editor.action.organizeImport")
-  end,
-  { nargs = 0 }
+        'OR',
+        function()
+            vim.fn.CocAction("runCommand", "editor.action.organizeImport")
+        end,
+        { nargs = 0 }
 )
