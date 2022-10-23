@@ -67,12 +67,12 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   fi
 
   if [[ -d "$NVIM_HOME" ]]; then
+    check_rm "${NVIM_HOME}_back"
     mv "$NVIM_HOME" "${NVIM_HOME}_back"
-    ok "BackUp $NVIM_HOME to ${NVIM_HOME}_back"
+    bot "BackUp $NVIM_HOME to ${NVIM_HOME}_back"
   fi
 
-  mkdir "$NVIM_HOME"
-  ln -s "$(getPath "../../nvim")" "$NVIM_HOME"
+  ln -s "$(getPath "../../nvim")" "$HOME/.config"
 
   ok "Config success"
 else
