@@ -6,7 +6,8 @@ local conf_modules = {
     'appearance',
     'buffers',
     'coc',
-    'gitsigns'
+    'gitsigns',
+    'defx',
 }
 
 for i = 1, #conf_modules do

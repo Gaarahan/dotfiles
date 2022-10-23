@@ -16,7 +16,7 @@ packer.startup(function()
 
     --  plug for dir_tree
     use 'kristijanhusak/defx-icons'
-    use { 'Shougo/defx.nvim', cmd = ':UpdateRemotePlugins' }
+    use { 'Shougo/defx.nvim', run = ':UpdateRemotePlugins' }
 
     -- Plug for base input
     use 'jiangmiao/auto-pairs'                     -- auto pair bracket when input
