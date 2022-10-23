@@ -1,3 +1,3 @@
-require("lua.entry.plugin")
+require("entry.plugin")
 
-require('lua.entry.start')
+require('entry.start')

@@ -1,7 +1,7 @@
-nvim/nvim/plugged
-nvim/nvim/undo
-nvim/nvim/spell
-nvim/nvim/autoload
+nvim/plugged
+nvim/undo
+nvim/spell
+nvim/autoload
 
 .DS_store
 

@@ -57,7 +57,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
 
   if [ -e "$RG_CONF" ]; then
     check_rm "$RG_CONF.bak"
-    mv "$RG_CONFIG" "$RG_CONF.bak"
+    mv "$RG_CONF" "$RG_CONF.bak"
   fi
   ln -s "$(getPath "../../ripgrep/ripgreprc")" "$RG_CONF"
 
@@ -70,8 +70,9 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     mv "$NVIM_HOME" "${NVIM_HOME}_back"
     ok "BackUp $NVIM_HOME to ${NVIM_HOME}_back"
   fi
-  ln -s "$(getPath "../../vim/init.lua")" "$NVIMRC"
-  ln -s "$(getPath "../../vim/nvim")" "$NVIM_HOME"
+
+  mkdir "$NVIM_HOME"
+  ln -s "$(getPath "../../nvim")" "$NVIM_HOME"
 
   ok "Config success"
 else
