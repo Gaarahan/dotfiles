@@ -1,5 +1,6 @@
 local utils = require('usermod.utils')
 local map = utils.map
+local lua_fn = utils.lua_fn
 local map_cmd = utils.map_cmd
 
 map_cmd('n|<F3>', 'Defx', nil)
@@ -24,22 +25,27 @@ end
 defxAction('open_tree')
 
 -- register keymap
-function registerKeyMap()
-    if (vim.fn['defx#is_directory']() == true) then
-        defxAction('open_directory')
-    else
-        defxAction('drop')
-    end
-end
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
-    callback = function()
-        if (vim.bo.filetype == 'defx') then
-            map('n|<CR>', function()
-                print('got') -- TODO
-            end, nil)
+local function registerKeyMap()
+    map('n|<CR>', lua_fn(function()
+        print('got')
+        if (vim.fn['defx#is_directory']() == true) then
+            defxAction('open_directory')
+        else
+            defxAction('drop')
         end
     end
+    ), { buffer = true })
+end
+
+local function configDefxkeyMap()
+    if (vim.bo.filetype == 'defx') then
+        registerKeyMap()
+    end
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = configDefxkeyMap
 })
 
 
