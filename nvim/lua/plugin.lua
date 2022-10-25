@@ -15,8 +15,12 @@ packer.startup(function()
     use 'kyazdani42/nvim-web-devicons'
 
     --  plug for dir_tree
-    use 'kristijanhusak/defx-icons'
-    use { 'Shougo/defx.nvim', run = ':UpdateRemotePlugins' }
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
+    }
 
     -- Plug for base input
     use 'jiangmiao/auto-pairs'                     -- auto pair bracket when input

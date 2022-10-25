@@ -7,7 +7,7 @@ local conf_modules = {
     'buffers',
     'coc',
     'gitsigns',
-    'defx',
+    'nvimtree',
 }
 
 for i = 1, #conf_modules do
