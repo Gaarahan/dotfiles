@@ -43,13 +43,8 @@ packer.startup(function()
     use 'yuttie/comfortable-motion.vim'            -- move smooth when use like <C-f>
 
     -- Plug for html
-    use 'mattn/emmet-vim'
     use 'alvan/vim-closetag'
     use 'mxw/vim-jsx'
-
-    -- plug for vue
-    use 'posva/vim-vue'
-    use 'ThePrimeagen/vim-be-good'
 
     -- plug for markdown
     use 'godlygeek/tabular'

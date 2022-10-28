@@ -15,3 +15,20 @@ map_cmd('n|<Leader>gf', 'GF')
 map_cmd('n|<Leader>fd', 'Format')
 map_cmd('n|<Leader>cl', 'noh')
 map_cmd('n|<Leader>hi', 'History')
+
+-- Start interactive EasyAlign in visual mode (e.g. vipga)
+map('x|ga', '<Plug>(EasyAlign)', { noremap = false })
+
+-- easymotion
+-- <Leader>f{char} to move to {char}
+map('n|<leader>f', '<Plug>(easymotion-overwin-f)')
+
+-- s{char}{char} to move to {char}{char}
+map('n|<leader>s', '<Plug>(easymotion-overwin-f2)')
+
+-- Move to line
+map('n|<leader>l', '<Plug>(easymotion-overwin-line)')
+
+-- Move to word
+map('n|<leader>w', '<Plug>(easymotion-overwin-w)')
+

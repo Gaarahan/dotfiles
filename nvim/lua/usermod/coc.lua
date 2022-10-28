@@ -1,8 +1,6 @@
 local utils = require('usermod.utils')
-local set_option = utils.set_option
 local map = utils.map
 local map_cmd = utils.map_cmd
-local escape_special_key = utils.escape_special_key
 
 -- Use tab for trigger completion with characters ahead and navigate.
 map('i|<TAB>', 'v:lua.tab()', { expr = true, noremap = false })
