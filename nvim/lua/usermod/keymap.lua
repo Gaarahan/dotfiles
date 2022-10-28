@@ -27,7 +27,7 @@ map('n|<leader>f', '<Plug>(easymotion-overwin-f)')
 map('n|<leader>s', '<Plug>(easymotion-overwin-f2)')
 
 -- Move to line
-map('n|<leader>l', '<Plug>(easymotion-overwin-line)')
+map('n|<leader>L', '<Plug>(easymotion-overwin-line)')
 
 -- Move to word
 map('n|<leader>w', '<Plug>(easymotion-overwin-w)')
