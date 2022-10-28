@@ -2,6 +2,7 @@ nvim/plugged
 nvim/undo
 nvim/spell
 nvim/autoload
+nvim/plugin
 
 .DS_store
 
