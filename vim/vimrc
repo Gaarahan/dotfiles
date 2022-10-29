@@ -72,3 +72,12 @@ call plug#end()
 let g:VIM_SCRIPT_PATH = '~/.vim/'
 call helpers#source_dir(VIM_SCRIPT_PATH . './plugins')
 
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
