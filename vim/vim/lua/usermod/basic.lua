@@ -5,6 +5,12 @@ local set_option = utils.set_option
 
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
 vim.cmd('syntax enable')
+vim.api.nvim_exec(
+  [[
+    let $GIT_EDITOR = "nvr -cc vsplit --remote-wait +'set bufhidden=wipe'"
+  ]] ,
+  false
+)
 
 
 set_option({
