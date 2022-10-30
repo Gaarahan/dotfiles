@@ -8,6 +8,7 @@ local conf_modules = {
     'lsp',
     'gitsigns',
     'nvimtree',
+    'completion'
 }
 
 for i = 1, #conf_modules do
