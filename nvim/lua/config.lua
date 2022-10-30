@@ -5,7 +5,7 @@ local conf_modules = {
     'keymap',
     'appearance',
     'buffers',
-    'coc',
+    'lsp',
     'gitsigns',
     'nvimtree',
 }

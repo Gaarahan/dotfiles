@@ -1,8 +1,8 @@
 local ensure_packer = function()
     local fn = vim.fn
-    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
@@ -17,6 +17,7 @@ packer.startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
 
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+    use { 'williamboman/mason.nvim', config = function() require('mason').setup() end }-- install LSP servers, DAP servers, linters, and formatters
 
     -- Appearance customize
     use 'mhinz/vim-startify'                       -- customize the startup page
@@ -36,7 +37,6 @@ packer.startup(function()
 
     -- Plug for base input
     use 'jiangmiao/auto-pairs'                     -- auto pair bracket when input
-    use { 'neoclide/coc.nvim', branch = 'release' } -- auto complete
     use { 'andymass/vim-matchup', event = 'VimEnter' }                    -- make '%' support more feature
     use 'kamykn/popup-menu.nvim'
     use 'kamykn/spelunker.vim'
@@ -80,3 +80,5 @@ packer.startup(function()
         require('packer').sync()
     end
 end)
+
+require("mason").setup()

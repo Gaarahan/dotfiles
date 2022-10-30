@@ -78,17 +78,3 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
 else
   info "Skip config nvim"
 fi
-
-
-bot "Would you like to install vim plugins/LSPs right now? (y/N)"
-read -r
-if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
-  action "Start install vim plugins"
-  nvim +'PackerInstall' +qa
-
-  action "Start install coc plugins"
-  nvim +'CocI' +qa
-
-  ok "Install vim plugins and LSPs success"
-  ok "After install, pls restart your terminal"
-fi
