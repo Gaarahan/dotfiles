@@ -1,42 +1,30 @@
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']g', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+local utils = require('usermod.utils')
+local map = utils.map
+local map_cmd = utils.map_cmd
+local lua_fn = utils.lua_fn
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local saga = require('lspsaga')
+saga.init_lsp_saga()
+map_cmd('n|<leader>ac', 'Lspsaga code_action')
+map_cmd('n|<leader>rn', 'Lspsaga rename')
 
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ac', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>fd', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
+map_cmd('n|<leader>ld', 'Lspsaga show_line_diagnostics')
+map_cmd('n|<leader>cd', 'Lspsaga show_cursor_diagnostics')
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
+map_cmd('n|gr', 'Lspsaga lsp_finder')
+map_cmd('n|gd', 'Lspsaga peek_definition')
+
+-- go to diagnsotic
+map_cmd('n|[e', 'Lspsaga diagnostic_jump_prev', { silent = true })
+map_cmd('n|]e', 'Lspsaga diagnostic_jump_next', { silent = true })
+
+map_cmd('n|[E', lua_fn(function() 
+  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end), { silent = true })
+map_cmd('n|]E', lua_fn(function()
+  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end), { silent = true })
+
+map_cmd('n|<leader>o', 'LSoutlineToggle', { silent = true })
+map_cmd('n|K', 'Lspsaga hover_doc', { silent = true })
+map_cmd('n|<A-d>', 'Lspsaga open_floaterm', {silent = true})
