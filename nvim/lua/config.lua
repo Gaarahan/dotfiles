@@ -6,7 +6,6 @@ local conf_modules = {
     'appearance',
     'buffers',
     'lsp',
-    'gitsigns',
     'nvimtree',
     'completion'
 }
