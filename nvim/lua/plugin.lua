@@ -57,26 +57,23 @@ packer.startup(function()
   use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup({}) end }
   use { 'andymass/vim-matchup', event = 'VimEnter' }                    -- make '%' support more feature
   use 'tpope/vim-surround'  -- cs{need_replace}{target_char}
-
-  --[[
   use 'voldikss/vim-translator'                  -- select block and enter Translate*
   use 'junegunn/vim-easy-align'                  -- select block and enter 'ga[align-char]' to align by special char
   use 'easymotion/vim-easymotion'                -- use <leader><leader> to active plugin, use w/f to use more powerful function
 
-
-  -- Plug for html
-  use 'alvan/vim-closetag'
-  use 'mxw/vim-jsx'
-
   -- Plug for git
   use 'kdheepak/lazygit.nvim'
-  use 'nvim-lua/plenary.nvim' -- required by gitsigns
-  use 'lewis6991/gitsigns.nvim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = 'nvim-lua/plenary.nvim' 
+  }
 
-  use { 'junegunn/fzf', run = ":call fzf#install()" }
-  use { 'junegunn/fzf.vim' }
+  use {
+    'nvim-telescope/telescope.nvim', 
+    tag = '0.1.0',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
 
-  -- ]]
   if packer_bootstrap then
     require('packer').sync()
   end

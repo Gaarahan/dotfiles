@@ -22,9 +22,10 @@ set_option({
 
     smarttab = true, --  Change the number of space characters inserted for indentation
     expandtab = true, --  Makes tabbing smarter will realize you have 2 vs 4
-    smartindent = true, --  Converts tabs to spaces
-    --  Makes indenting smart
+    smartindent = true, --  Makes indenting smart
+
     smartcase = true,
+    spell = true, -- enable spell check
     ignorecase = true, --  Makes search use smart case
 
     updatetime = 100, --  Change vim update delay to update git change sign when edit

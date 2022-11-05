@@ -7,6 +7,8 @@ local conf_modules = {
     'buffers',
     'lsp',
     'nvimtree',
+    'gitsigns',
+    'telescope',
     'completion'
 }
 
