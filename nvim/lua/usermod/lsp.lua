@@ -16,10 +16,10 @@ map_cmd('n|gd', 'Lspsaga peek_definition')
 map_cmd('n|[e', 'Lspsaga diagnostic_jump_prev', { silent = true })
 map_cmd('n|]e', 'Lspsaga diagnostic_jump_next', { silent = true })
 
-map_cmd('n|[E', lua_fn(function() 
+map('n|[E', lua_fn(function() 
   require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end), { silent = true })
-map_cmd('n|]E', lua_fn(function()
+map('n|]E', lua_fn(function()
   require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end), { silent = true })
 
