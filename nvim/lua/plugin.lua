@@ -55,7 +55,6 @@ packer.startup(function()
 
   -- Plug for base input
   use 'jiangmiao/auto-pairs'
-  use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup({}) end }
   use { 'andymass/vim-matchup', event = 'VimEnter' }                    -- make '%' support more feature
   use 'tpope/vim-surround'  -- cs{need_replace}{target_char}
   use 'voldikss/vim-translator'                  -- select block and enter Translate*
