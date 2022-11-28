@@ -3,6 +3,11 @@ local map = utils.map
 local map_cmd = utils.map_cmd
 local lua_fn = utils.lua_fn
 
+-- disable virtual_text
+vim.diagnostic.config({
+  virtual_text = false
+})
+
 map_cmd('n|<leader>ac', 'Lspsaga code_action')
 map_cmd('n|<leader>rn', 'Lspsaga rename')
 
@@ -25,4 +30,3 @@ end), { silent = true })
 
 map_cmd('n|<leader>o', 'LSoutlineToggle', { silent = true })
 map_cmd('n|K', 'Lspsaga hover_doc', { silent = true })
-map_cmd('n|<A-d>', 'Lspsaga open_floaterm', {silent = true})

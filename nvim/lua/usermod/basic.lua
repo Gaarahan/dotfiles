@@ -12,7 +12,6 @@ set_option({
     number = true,
     clipboard = 'unnamedplus', --  use system clipboard
     cursorline = true,
-    fdm = 'syntax',
     encoding = 'utf-8', --  configure the encoding
     fileencoding = 'utf-8',
     mouse = 'a', --  enable mouse

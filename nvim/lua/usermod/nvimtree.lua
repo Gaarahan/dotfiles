@@ -15,7 +15,8 @@ require("nvim-tree").setup({
         adaptive_size = true,
         mappings = {
             list = {
-                { key = '<C-[>', action = 'dir_up' }
+                { key = '<C-[>', action = 'dir_up' },
+                { key = '-', action = '' }
             },
         },
     },
