@@ -8,7 +8,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
-export GIT_EDITOR="vim --clean"
 alias t=todo.sh
 alias vim=nvim
 

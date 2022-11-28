@@ -1,7 +1,4 @@
 --glob
-!*.lua
-
---glob
 !userCase/*
 
 --glob
