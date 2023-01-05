@@ -5,6 +5,8 @@ local set_option = utils.set_option
 
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
 vim.cmd('syntax enable')
+--  Don't append comment while open new line
+vim.cmd('autocmd BufNewFile,BufRead * setlocal formatoptions-=cro')
 
 set_option({
     ruler = true, --  enable ruler
@@ -34,5 +36,4 @@ set_option({
 })
 
 vim.opt.shortmess:append('c')        --  Don't pass messages to |ins-completion-menu|.
-vim.opt.formatoptions:remove('cro')  --  Don't append comment while open new line
 
