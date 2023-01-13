@@ -2,7 +2,7 @@
 !userCase/*
 
 --glob
-!*/__test__/**/*.{json, snap}
+!*/__test__/**/*
 
 --glob
-!*/__tests__/**/*.{json, snap}
+!*/__tests__/**/*

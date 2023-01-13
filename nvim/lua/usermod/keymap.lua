@@ -15,6 +15,7 @@ map_cmd('n|<Leader>gf', 'GF')
 map_cmd('n|<Leader>cl', 'noh')
 map_cmd('n|<Leader>hi', 'History')
 map_cmd('n|<leader>ms', 'Mason')
+map_cmd('n|<leader>fd', 'Format')
 
 -- Start interactive EasyAlign in visual mode (e.g. vipga)
 map('x|ga', '<Plug>(EasyAlign)', { noremap = false })

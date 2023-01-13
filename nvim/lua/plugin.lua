@@ -65,14 +65,17 @@ packer.startup(function()
   use 'kdheepak/lazygit.nvim'
   use {
     'lewis6991/gitsigns.nvim',
-    requires = 'nvim-lua/plenary.nvim' 
+    requires = 'nvim-lua/plenary.nvim'
   }
 
   use {
-    'nvim-telescope/telescope.nvim', 
+    'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep'}
   }
+  -- formatter
+  use 'mhartington/formatter.nvim'
+
 
   if packer_bootstrap then
     require('packer').sync()
