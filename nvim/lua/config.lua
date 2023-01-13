@@ -9,7 +9,8 @@ local conf_modules = {
     'nvimtree',
     'gitsigns',
     'telescope',
-    'completion'
+    'completion',
+    'formatter'
 }
 
 for i = 1, #conf_modules do
