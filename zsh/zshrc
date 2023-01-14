@@ -8,7 +8,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
-export GIT_EDITOR="vim --clean"
 alias t=todo.sh
 alias vim=nvim
 
@@ -58,6 +57,7 @@ unset_proxy() {
   unset http_proxy
   unset https_proxy
 }
+set_proxy
 
 
 # enable history ignore
@@ -73,8 +73,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export XDG_CONFIG_HOME="$HOME/.config"
 
-set_proxy
 export FZF_DEFAULT_COMMAND='ag .'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 

@@ -14,9 +14,9 @@ COL_CYAN=$ESC_SEQ"36;01m"
 
 ok() {
   if [ $# -eq 0 ]; then
-    printf "${COL_GREEN}[ok]${COL_RESET}"
+    printf "\n${COL_GREEN}[ok]${COL_RESET}"
   else
-    printf "${COL_GREEN}[ok]${COL_RESET} %b" "$1"
+    printf "\n${COL_GREEN}[ok]${COL_RESET} %b" "$1"
   fi
 }
 

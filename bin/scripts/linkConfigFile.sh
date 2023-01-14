@@ -45,10 +45,8 @@ fi
 # Config NeoVim
 # ###########################################################
 
-VIMRC="$HOME/.vimrc"
-VIM_HOME="$HOME/.vim"
 NVIM_HOME="$HOME/.config/nvim"
-NVIMRC="$NVIM_HOME/init.vim"
+NVIMRC="$NVIM_HOME/init.lua"
 RG_CONF="$HOME/.ripgreprc"
 
 bot "Start config nvim? (y/N)"
@@ -59,7 +57,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
 
   if [ -e "$RG_CONF" ]; then
     check_rm "$RG_CONF.bak"
-    mv "$RG_CONFIG" "$RG_CONF.bak"
+    mv "$RG_CONF" "$RG_CONF.bak"
   fi
   ln -s "$(getPath "../../ripgrep/ripgreprc")" "$RG_CONF"
 
@@ -68,38 +66,18 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     mv "$NVIMRC" "$NVIMRC.bak"
   fi
 
-  if [ -e "$VIMRC" ]; then
-    check_rm "$VIMRC.bak"
-    mv "$VIMRC" "$VIMRC.bak"
+  if [[ -d "$NVIM_HOME" ]]; then
+    check_rm "${NVIM_HOME}_back"
+    mv "$NVIM_HOME" "${NVIM_HOME}_back"
+    bot "BackUp $NVIM_HOME to ${NVIM_HOME}_back"
   fi
 
-  ln -s "$(getPath "../../vim/vimrc")" "$VIMRC"
-  if [[ ! -d "$NVIM_HOME" ]]; then
-    mkdir "$NVIM_HOME"
-  fi
-  ln -s "$(getPath "../../vim/init.vim")" "$NVIMRC"
-
-  if [[ -d "$VIM_HOME" ]]; then
-    mv "$VIM_HOME" "${VIM_HOME}_back"
-    ok "BackUp $VIM_HOME to ${VIM_HOME}_back"
-  fi
-  ln -s "$(getPath "../../vim/vim")" "$HOME/.vim"
+  running "link config file"
+  ln -s "$(getPath "../../nvim")" "$HOME/.config"
+  running "install packer.nvim"
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
   ok "Config success"
 else
   info "Skip config nvim"
-fi
-
-
-bot "Would you like to install vim plugins/LSPs right now? (y/N)"
-read -r
-if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
-  action "Start install vim plugins"
-  nvim +'PlugInstall --sync' +qa
-
-  action "Start install coc plugins"
-  nvim +'CocI' +qa
-
-  ok "Install vim plugins and LSPs success"
-  ok "After install, pls restart your terminal"
 fi

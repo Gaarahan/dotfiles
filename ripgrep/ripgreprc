@@ -1,11 +1,8 @@
 --glob
-!*.lua
-
---glob
 !userCase/*
 
 --glob
-!**/*/__tests__/**/*
+!*/__test__/**/*
 
 --glob
-!**/*/__test__/**/*
+!*/__tests__/**/*
