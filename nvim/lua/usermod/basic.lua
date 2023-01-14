@@ -8,6 +8,13 @@ vim.cmd('syntax enable')
 --  Don't append comment while open new line
 vim.cmd('autocmd BufNewFile,BufRead * setlocal formatoptions-=cro')
 
+vim.api.nvim_exec(
+  [[
+    let $GIT_EDITOR = "nvr -cc vsplit --remote-wait +'set bufhidden=wipe'"
+  ]] ,
+  false
+)
+
 set_option({
     ruler = true, --  enable ruler
     laststatus = 2,
