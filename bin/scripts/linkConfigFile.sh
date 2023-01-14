@@ -72,7 +72,10 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     bot "BackUp $NVIM_HOME to ${NVIM_HOME}_back"
   fi
 
+  running "link config file"
   ln -s "$(getPath "../../nvim")" "$HOME/.config"
+  running "install packer.nvim"
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
   ok "Config success"
 else
