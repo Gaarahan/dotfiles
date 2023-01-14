@@ -15,7 +15,7 @@
 
 `use neovim, config write with lua`
 
-![image](https://user-images.githubusercontent.com/34125917/156583231-99b29f5d-4e8e-47ae-aa6b-694214554b0d.png)
+![vim & tmux & lazygit](https://user-images.githubusercontent.com/34125917/212490415-26eb779a-9026-4431-8cd1-0509662d260b.png)
 
 
 ### i3
