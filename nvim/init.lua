@@ -1,3 +1,3 @@
 require("plugin")
 
-require('config')
+require("config")

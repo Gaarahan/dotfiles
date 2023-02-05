@@ -9,6 +9,7 @@ brewCheckOrInstall nvm
 brewCheckOrInstall yarn
 brewCheckOrInstall python3
 brewCheckOrInstall ruby
+brewCheckOrInstall rust
 
 brewCheckOrInstall zsh
 brewCheckOrInstall tmux
