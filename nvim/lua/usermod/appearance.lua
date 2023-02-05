@@ -9,7 +9,7 @@ set_option({
 	termguicolors = true,
 })
 
-vim.cmd("color gruvbox")
+vim.cmd("color oceanic_material")
 
 -- { Barbar : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
