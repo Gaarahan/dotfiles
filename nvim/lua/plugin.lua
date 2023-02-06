@@ -19,6 +19,7 @@ packer.startup(function()
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
 	use("glepnir/oceanic-material") -- theme
+	use { "ellisonleao/gruvbox.nvim" }
 	use("nvim-lualine/lualine.nvim") -- buffer line and status line
 	use("romgrk/barbar.nvim")
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
