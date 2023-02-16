@@ -40,6 +40,9 @@ set_option({
 	hidden = true, --  Can change to other buffer when have unsaved change
 
 	signcolumn = "yes", --  Show sign column
+		
+	foldmethod = "expr", -- use treesitter fold
+	foldexpr = "nvim_treesitter#foldexpr()",
 })
 
 vim.opt.shortmess:append("c") --  Don't pass messages to |ins-completion-menu|.
