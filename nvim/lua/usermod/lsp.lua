@@ -36,12 +36,12 @@ map(
 	{ silent = true }
 )
 
-map_cmd("n|<leader>o", "LSoutlineToggle", { silent = true })
+map_cmd("n|<leader>o", "Lspsaga outline", { silent = true })
 map_cmd("n|K", "Lspsaga hover_doc", { silent = true })
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "help", "markdown" },
+	ensure_installed = { "c", "lua", "vim", "help", "markdown", "markdown_inline" },
 	sync_install = false,
 	auto_install = true,
 
