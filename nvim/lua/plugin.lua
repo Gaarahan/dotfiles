@@ -19,7 +19,7 @@ packer.startup(function()
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
 	use("glepnir/oceanic-material") -- theme
-	use { "ellisonleao/gruvbox.nvim" }
+	use({ "ellisonleao/gruvbox.nvim" })
 	use("nvim-lualine/lualine.nvim") -- buffer line and status line
 	use("romgrk/barbar.nvim")
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
@@ -54,7 +54,7 @@ packer.startup(function()
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
-	use("L3MON4D3/LuaSnip") -- Snippets plugin
+	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 
 	-- Plug for base input
 	use("jiangmiao/auto-pairs")
