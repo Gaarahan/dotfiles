@@ -62,7 +62,13 @@ packer.startup(function()
 	use("tpope/vim-surround") -- cs{need_replace}{target_char}
 	use("voldikss/vim-translator") -- select block and enter Translate*
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
-	use("easymotion/vim-easymotion") -- use <leader><leader> to active plugin, use w/f to use more powerful function
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2",
+		config = function()
+			require("hop").setup()
+		end,
+	})
 	use({
 		"echasnovski/mini.ai",
 		branch = "stable",

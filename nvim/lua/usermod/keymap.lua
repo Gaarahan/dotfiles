@@ -1,6 +1,35 @@
 local utils = require("usermod.utils")
 local map = utils.map
 local map_cmd = utils.map_cmd
+local lua_fn = utils.lua_fn
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+
+-- override the default find key
+map(
+	"n|f",
+	lua_fn(function()
+		hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+	end, { remap = true })
+)
+map(
+	"n|F",
+	lua_fn(function()
+		hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+	end, { remap = true })
+)
+map(
+	"n|t",
+	lua_fn(function()
+		hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+	end, { remap = true })
+)
+map(
+	"n|T",
+	lua_fn(function()
+		hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+	end, { remap = true })
+)
 
 -- map general keystroke
 map("n|<SPACE>", "<Nop>")
@@ -19,16 +48,3 @@ map_cmd("n|<leader>fd", "Format")
 
 -- Start interactive EasyAlign in visual mode (e.g. vipga)
 map("x|ga", "<Plug>(EasyAlign)", { noremap = false })
-
--- easymotion
--- <Leader><Leader>f{char} to move to {char}
-map("n|<leader><learder>f", "<Plug>(easymotion-overwin-f)")
-
--- s{char}{char} to move to {char}{char}
-map("n|<leader><leader>s", "<Plug>(easymotion-overwin-f2)")
-
--- Move to line
-map("n|<leader><leader>l", "<Plug>(easymotion-overwin-line)")
-
--- Move to word
-map("n|<leader><leader>w", "<Plug>(easymotion-overwin-w)")
