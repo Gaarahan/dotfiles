@@ -83,9 +83,11 @@ packer.startup(function()
 		tag = "0.1.0",
 		requires = {
 			"nvim-telescope/telescope-live-grep-args.nvim",
+			"princejoogie/dir-telescope.nvim",
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
+			require("telescope").load_extension("princejoogie/dir-telescope.nvim")
 		end,
 	})
 	-- formatter
