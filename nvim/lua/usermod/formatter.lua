@@ -15,6 +15,22 @@ require("formatter").setup({
 			require("formatter.filetypes.lua").stylua,
 		},
 
+		javascript = {
+			require("formatter.filetypes.javascript").prettierd,
+		},
+
+    javascriptreact = {
+			require("formatter.filetypes.javascriptreact").prettierd,
+    },
+
+		html = {
+			require("formatter.filetypes.html").prettierd,
+		},
+
+		css = {
+			require("formatter.filetypes.css").prettierd,
+		},
+
 		typescriptreact = {
 			require("formatter.filetypes.typescriptreact").prettierd,
 		},
