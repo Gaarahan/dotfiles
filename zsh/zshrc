@@ -57,14 +57,29 @@ unset_proxy() {
   unset http_proxy
   unset https_proxy
 }
-set_proxy
+# set_proxy
+
+find_dir() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+find_history() {
+  local cmd
+  cmd=$(print -rNC1 -- ${(u)history} | fzf --read0 "$@") &&
+  print -rz -- $cmd
+}
 
 
 # enable history ignore
 export HISTCONTROL=ignorespace
 bindkey -s "^G" " lazygit\n"
 bindkey -r "^S"
-bindkey -s "^P" "pet exec\n"
+bindkey -s "^P" " pet exec\n"
+bindkey -s "^I" " find_dir\n"
+bindkey -s "^R" " find_history\n"
 
 stty eof undef  # prevent C-d to close panel
 
