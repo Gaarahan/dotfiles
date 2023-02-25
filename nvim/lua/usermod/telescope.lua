@@ -36,12 +36,6 @@ map(
 	end)
 )
 map(
-	"n|<leader>fi",
-	lua_fn(function()
-		require("telescope").extensions.dir.live_grep()
-	end)
-)
-map(
 	"n|<leader>fg",
 	lua_fn(function()
 		require("telescope").extensions.live_grep_args.live_grep_args()
