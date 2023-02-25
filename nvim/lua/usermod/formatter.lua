@@ -19,9 +19,9 @@ require("formatter").setup({
 			require("formatter.filetypes.javascript").prettierd,
 		},
 
-    javascriptreact = {
+		javascriptreact = {
 			require("formatter.filetypes.javascriptreact").prettierd,
-    },
+		},
 
 		html = {
 			require("formatter.filetypes.html").prettierd,
