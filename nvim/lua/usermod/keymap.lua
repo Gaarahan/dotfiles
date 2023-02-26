@@ -186,7 +186,7 @@ legendary.setup({
 		{
 			"<leader>ff",
 			function()
-				builtin.find_files()
+				require("telescope.builtin").find_files()
 			end,
 			description = "Find file name",
 		},

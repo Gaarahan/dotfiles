@@ -15,7 +15,6 @@ local use = packer.use
 
 packer.startup(function()
 	use("wbthomason/packer.nvim") -- Package manager
-	use("mrjones2014/legendary.nvim") -- keymap manager
 
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
@@ -101,9 +100,9 @@ packer.startup(function()
 
 	use({ "iamcco/markdown-preview.nvim", cmd = "cd app && yarn install", ft = { "markdown", "vim-plug" } })
 
+	use("mrjones2014/legendary.nvim") -- keymap manager
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
 
-require("mason").setup()
