@@ -15,6 +15,7 @@ local use = packer.use
 
 packer.startup(function()
 	use("wbthomason/packer.nvim") -- Package manager
+	use("mrjones2014/legendary.nvim") -- keymap manager
 
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
@@ -23,6 +24,7 @@ packer.startup(function()
 	use("nvim-lualine/lualine.nvim") -- buffer line and status line
 	use("romgrk/barbar.nvim")
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
+	use("stevearc/dressing.nvim")
 
 	--  plug for dir_tree
 	use({

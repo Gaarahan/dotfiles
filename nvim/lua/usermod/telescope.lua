@@ -28,34 +28,3 @@ require("telescope").setup({
 		},
 	},
 })
-
-map(
-	"n|<leader>ff",
-	lua_fn(function()
-		builtin.find_files()
-	end)
-)
-map(
-	"n|<leader>fg",
-	lua_fn(function()
-		require("telescope").extensions.live_grep_args.live_grep_args()
-	end)
-)
-map(
-	"n|<leader>fr",
-	lua_fn(function()
-		builtin.resume()
-	end)
-)
-map(
-	"n|<leader>fb",
-	lua_fn(function()
-		builtin.current_buffer_fuzzy_find()
-	end)
-)
-map(
-	"n|<leader>fh",
-	lua_fn(function()
-		builtin.help_tags()
-	end)
-)

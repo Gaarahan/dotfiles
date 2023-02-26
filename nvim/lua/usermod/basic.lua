@@ -1,6 +1,9 @@
 local utils = require("usermod.utils")
 local set_option = utils.set_option
 
+utils.map("n|<SPACE>", "<Nop>")
+vim.g.mapleader = " "
+
 -- set options
 
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
@@ -40,6 +43,7 @@ set_option({
 	hidden = true, --  Can change to other buffer when have unsaved change
 
 	signcolumn = "yes", --  Show sign column
+	showtabline = 2, -- always show vim tabline
 })
 
 vim.opt.shortmess:append("c") --  Don't pass messages to |ins-completion-menu|.
