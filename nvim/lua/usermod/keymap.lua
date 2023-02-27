@@ -36,7 +36,7 @@ legendary.setup({
 		},
 		{
 			"<leader>ms",
-			":noh<CR>",
+			":Mason<CR>",
 			description = "Open mason - LSP manager",
 		},
 		{
