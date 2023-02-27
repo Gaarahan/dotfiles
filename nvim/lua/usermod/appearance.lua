@@ -134,4 +134,7 @@ require("dressing").setup({
 			end
 		end,
 	},
+	input = {
+		enabled = false,
+	},
 })
