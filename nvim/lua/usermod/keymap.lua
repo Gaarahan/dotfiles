@@ -62,7 +62,7 @@ legendary.setup({
 		{
 			"<leader>bo",
 			":BufferCloseAllButCurrent<CR>",
-			description = "Close current buffer",
+			description = "Close all but current buffer",
 		},
 		{
 			"<leader>bd",
@@ -170,6 +170,14 @@ legendary.setup({
 			end,
 			description = "Go to previous diff hunk",
 		},
+		{
+			"<leader>tb",
+			function()
+				local gs = package.loaded.gitsigns
+				gs.toggle_current_line_blame()
+			end,
+			description = "Toggle current line git blame",
+		},
 
 		-- file explorer --
 		{
@@ -257,6 +265,16 @@ legendary.setup({
 			mode = { "v" },
 			description = "Map p to not replace the default register",
 			hide = true,
+		},
+	},
+	commands = {
+		{
+			":MarkdownPreview",
+			description = "Open markdown preview",
+		},
+		{
+			":MarkdownPreviewStop",
+			description = "Close markdown preview",
 		},
 	},
 	-- Customize the prompt that appears on your vim.ui.select() handler

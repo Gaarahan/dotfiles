@@ -43,7 +43,11 @@ packer.startup(function()
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		config = function()
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+			})
 		end,
 	})
 	use({
@@ -87,7 +91,7 @@ packer.startup(function()
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.1",
 		requires = {
 			"nvim-telescope/telescope-live-grep-args.nvim",
 		},
@@ -98,11 +102,17 @@ packer.startup(function()
 	-- formatter
 	use("mhartington/formatter.nvim")
 
-	use({ "iamcco/markdown-preview.nvim", cmd = "cd app && yarn install", ft = { "markdown", "vim-plug" } })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 
 	use("mrjones2014/legendary.nvim") -- keymap manager
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
-
