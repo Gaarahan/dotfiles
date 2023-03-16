@@ -187,7 +187,7 @@ legendary.setup({
 		},
 		{
 			"<F4>",
-			":NvimTreeFocus<CR>",
+			":NvimTreeFindFileToggle<CR>",
 			description = "Open current file in explorer",
 		},
 		-- searcher --
