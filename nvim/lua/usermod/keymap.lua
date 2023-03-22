@@ -1,4 +1,4 @@
-local utils = require("usermod.utils")
+)
 local map = utils.map
 local map_cmd = utils.map_cmd
 local lua_fn = utils.lua_fn
@@ -28,6 +28,12 @@ legendary.setup({
 			"<Plug>(EasyAlign)",
 			description = "Start interactive EasyAlign in visual mode (e.g. vipga)",
 			mode = { "x" },
+		},
+		{
+			"<leader>fp",
+			":Farr<CR>",
+			description = "Quick find and replace, t to toggle exclude and s to replace",
+			mode = { "n", "x" },
 		},
 		{
 			"<leader>cl",
@@ -97,13 +103,18 @@ legendary.setup({
 			description = "Show current cursor diagnostics",
 		},
 		{
+			"gi",
+			":Telescope lsp_implementations<CR>",
+			description = "Go to implementations",
+		},
+		{
 			"gr",
-			":Lspsaga lsp_finder<CR>",
-			description = "Open lsp finder(go to reference)",
+			":Telescope lsp_references<CR>",
+			description = "Go to references",
 		},
 		{
 			"gd",
-			":Lspsaga peek_definition<CR>",
+			":Telescope lsp_definitions<CR>",
 			description = "Go to definition",
 		},
 		{
