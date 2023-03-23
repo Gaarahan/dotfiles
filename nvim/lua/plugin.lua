@@ -67,6 +67,7 @@ packer.startup(function()
 	use("tpope/vim-surround") -- cs{need_replace}{target_char}
 	use("voldikss/vim-translator") -- select block and enter Translate*
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
+	use("brooth/far.vim") -- quick find and replace
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
