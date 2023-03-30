@@ -21,7 +21,12 @@ packer.startup(function()
 	use("glepnir/oceanic-material") -- theme
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("nvim-lualine/lualine.nvim") -- buffer line and status line
-	use("romgrk/barbar.nvim")
+	use({
+		"romgrk/barbar.nvim",
+		config = function()
+			require("bufferline").setup({})
+		end,
+	})
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
 
 	--  plug for dir_tree
