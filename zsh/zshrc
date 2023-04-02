@@ -59,14 +59,14 @@ unset_proxy() {
 }
 # set_proxy
 
-find_dir() {
+_find_dir() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
-find_history() {
+_find_history() {
   local cmd
   cmd=$(print -rNC1 -- ${(u)history} | fzf --read0 "$@") &&
   print -rz -- $cmd
@@ -78,8 +78,8 @@ export HISTCONTROL=ignorespace
 bindkey -s "^G" " lazygit\n"
 bindkey -r "^S"
 bindkey -s "^P" " pet exec\n"
-bindkey -s "^I" " find_dir\n"
-bindkey -s "^R" " find_history\n"
+bindkey -s "^O" " _find_dir\n"
+bindkey -s "^R" " _find_history\n"
 
 stty eof undef  # prevent C-d to close panel
 
@@ -91,6 +91,7 @@ export NVM_DIR="$HOME/.nvm"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export FZF_DEFAULT_COMMAND='ag .'
+export EDITOR='vim'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"

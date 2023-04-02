@@ -28,6 +28,7 @@ packer.startup(function()
 		end,
 	})
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
+	use("stevearc/dressing.nvim")
 
 	--  plug for dir_tree
 	use({
@@ -47,7 +48,11 @@ packer.startup(function()
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 		config = function()
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+			})
 		end,
 	})
 	use({
@@ -67,6 +72,7 @@ packer.startup(function()
 	use("tpope/vim-surround") -- cs{need_replace}{target_char}
 	use("voldikss/vim-translator") -- select block and enter Translate*
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
+	use("brooth/far.vim") -- quick find and replace
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
@@ -91,24 +97,28 @@ packer.startup(function()
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.1",
 		requires = {
 			"nvim-telescope/telescope-live-grep-args.nvim",
-			"princejoogie/dir-telescope.nvim",
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
-			require("telescope").load_extension("princejoogie/dir-telescope.nvim")
 		end,
 	})
 	-- formatter
 	use("mhartington/formatter.nvim")
 
-	use({ "iamcco/markdown-preview.nvim", cmd = "cd app && yarn install", ft = { "markdown", "vim-plug" } })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 
+	use("mrjones2014/legendary.nvim") -- keymap manager
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
-
-require("mason").setup()

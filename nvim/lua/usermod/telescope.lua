@@ -3,6 +3,12 @@ local utils = require("usermod.utils")
 local lga_actions = require("telescope-live-grep-args.actions")
 local map = utils.map
 local lua_fn = utils.lua_fn
+local builtin_pickers = require("telescope.pickers")
+
+local picker_config = {}
+for b, _ in pairs(builtin_pickers) do
+	picker_config[b] = { fname_width = 70 }
+end
 
 require("telescope").setup({
 	defaults = {
@@ -15,7 +21,22 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 		},
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				height = 0.9,
+				preview_cutoff = 120,
+				prompt_position = "bottom",
+				width = 0.9,
+			},
+		},
 	},
+	pickers = vim.tbl_extend("force", picker_config, {
+		lsp_references = { fname_width = 70, show_line = false },
+		lsp_definitions = { fname_width = 70, show_line = false },
+		lsp_type_definitions = { fname_width = 70, show_line = false },
+		lsp_implementations = { fname_width = 70, show_line = false },
+	}),
 	extensions = {
 		live_grep_args = {
 			auto_quoting = true, -- enable/disable auto-quoting
@@ -28,40 +49,3 @@ require("telescope").setup({
 		},
 	},
 })
-
-map(
-	"n|<leader>ff",
-	lua_fn(function()
-		builtin.find_files()
-	end)
-)
-map(
-	"n|<leader>fi",
-	lua_fn(function()
-		require("telescope").extensions.dir.live_grep()
-	end)
-)
-map(
-	"n|<leader>fg",
-	lua_fn(function()
-		require("telescope").extensions.live_grep_args.live_grep_args()
-	end)
-)
-map(
-	"n|<leader>fr",
-	lua_fn(function()
-		builtin.resume()
-	end)
-)
-map(
-	"n|<leader>fb",
-	lua_fn(function()
-		builtin.current_buffer_fuzzy_find()
-	end)
-)
-map(
-	"n|<leader>fh",
-	lua_fn(function()
-		builtin.help_tags()
-	end)
-)

@@ -1,9 +1,6 @@
 local utils = require("usermod.utils")
 local map_cmd = utils.map_cmd
 
-map_cmd("n|<F3>", "NvimTreeToggle", nil)
-map_cmd("n|<F4>", "NvimTreeFindFile", nil)
-
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -28,5 +25,8 @@ require("nvim-tree").setup({
 	},
 	filters = {
 		dotfiles = true,
+	},
+	git = {
+		enable = false,
 	},
 })
