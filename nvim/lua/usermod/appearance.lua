@@ -10,8 +10,6 @@ set_option({
 
 vim.cmd("color gruvbox")
 
--- { Lualine.nvim : }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 local customize_onedark = require("lualine.themes.onedark")
 
 customize_onedark.normal.a.bg = "#5DD02E"
