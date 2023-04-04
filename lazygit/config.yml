@@ -1,3 +1,5 @@
+gui:
+  language: 'en'
 keybinding:
   universal:
     filteringMenu: '<c-f>'
