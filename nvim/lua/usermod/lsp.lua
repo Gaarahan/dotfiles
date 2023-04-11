@@ -10,7 +10,7 @@ vim.diagnostic.config({
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "help", "markdown", "markdown_inline" },
+	ensure_installed = { "c", "json", "bash", "lua", "vim", "markdown", "markdown_inline" },
 	sync_install = false,
 	auto_install = true,
 
