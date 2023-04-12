@@ -10,14 +10,12 @@ vim.diagnostic.config({
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "json", "bash", "lua", "vim", "markdown", "markdown_inline" },
+	ensure_installed = { "c", "json", "bash", "lua", "vim", "markdown", "markdown_inline", "javascript", "typescript" },
 	sync_install = false,
 	auto_install = true,
 
 	highlight = {
 		enable = true,
-
-		ignore_install = { "javascript" },
 
 		-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
 		disable = function(lang, buf)
