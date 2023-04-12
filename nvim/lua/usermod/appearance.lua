@@ -14,6 +14,8 @@ local customize_onedark = require("lualine.themes.onedark")
 
 customize_onedark.normal.a.bg = "#5DD02E"
 
+-- { Status line: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -43,6 +45,8 @@ require("lualine").setup({
 	extensions = {},
 })
 
+-- { Prompt: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 require("dressing").setup({
 	select = {
 		get_config = function(opts)
@@ -61,3 +65,11 @@ require("dressing").setup({
 		enabled = false,
 	},
 })
+
+-- { Home page: }"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vim.g.startify_lists = {
+	{ type = "dir", header = { "   MRU" .. vim.fn.getcwd() } },
+	{ type = "sessions", header = { "   Sessions" } },
+	{ type = "bookmarks", header = { "   Bookmarks" } },
+	{ type = "commands", header = { "   Commands" } },
+}
