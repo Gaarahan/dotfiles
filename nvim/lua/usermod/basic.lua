@@ -9,7 +9,6 @@ vim.g.mapleader = " "
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
 --  Don't append comment while open new line
 vim.cmd("autocmd BufNewFile,BufRead * setlocal formatoptions-=cro")
-vim.cmd("autocmd FileType startify syntax on")
 
 vim.api.nvim_exec(
 	[[
@@ -48,7 +47,6 @@ set_option({
 	foldmethod = "expr", -- enable fold, but don't fold at start
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 99,
-	syntax = "off", -- close syntax highlight by regexp, use treesitter instead
 })
 
 vim.opt.shortmess:append("c") --  Don't pass messages to |ins-completion-menu|.
