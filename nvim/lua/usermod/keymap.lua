@@ -24,6 +24,11 @@ legendary.setup({
 			description = "Lazy Git",
 		},
 		{
+			"<leader>d",
+			":DogeGenerate<CR>",
+			description = "Generate doc",
+		},
+		{
 			"ga",
 			"<Plug>(EasyAlign)",
 			description = "Start interactive EasyAlign in visual mode (e.g. vipga)",

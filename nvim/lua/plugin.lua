@@ -66,6 +66,11 @@ packer.startup(function()
 	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
 	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 
+	use({
+		"kkoomen/vim-doge",
+		run = ":call doge#install()",
+	})
+
 	-- Plug for base input
 	use("jiangmiao/auto-pairs")
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- make '%' support more feature
