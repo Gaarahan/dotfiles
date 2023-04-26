@@ -145,14 +145,14 @@ legendary.setup({
 		{
 			"[E",
 			function()
-				require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 			end,
 			description = "Go to previous error",
 		},
 		{
 			"]E",
 			function()
-				require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 			end,
 			description = "Go to next error",
 		},
