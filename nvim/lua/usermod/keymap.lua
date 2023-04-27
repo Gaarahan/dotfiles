@@ -218,7 +218,7 @@ legendary.setup({
 			description = "Find string in workspace",
 		},
 		{
-			"<leader>fd",
+			"<leader>fi",
 			":Telescope dir live_grep<CR>",
 			description = "Find string in special dir",
 		},
