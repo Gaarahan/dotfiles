@@ -109,6 +109,17 @@ packer.startup(function()
 			require("telescope").load_extension("live_grep_args")
 		end,
 	})
+	use({
+		"princejoogie/dir-telescope.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("dir-telescope").setup({
+				hidden = false,
+				no_ignore = false,
+				show_preview = true,
+			})
+		end,
+	})
 	-- formatter
 	use("mhartington/formatter.nvim")
 
