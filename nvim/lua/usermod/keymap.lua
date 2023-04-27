@@ -1,7 +1,3 @@
-local utils = require("usermod.utils")
-local map = utils.map
-local map_cmd = utils.map_cmd
-local lua_fn = utils.lua_fn
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 local legendary = require("legendary")
@@ -220,6 +216,11 @@ legendary.setup({
 				require("telescope").extensions.live_grep_args.live_grep_args()
 			end,
 			description = "Find string in workspace",
+		},
+		{
+			"<leader>fd",
+			":Telescope dir live_grep<CR>",
+			description = "Find string in special dir",
 		},
 		{
 			"<leader>fr",
