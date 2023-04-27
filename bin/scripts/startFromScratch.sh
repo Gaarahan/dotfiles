@@ -20,7 +20,7 @@ brewCheckOrInstall neovim
 
 brewCheckOrInstall fzf
 brewCheckOrInstall bat
-brewCheckOrInstall ag
+brewCheckOrInstall fg
 brewCheckOrInstall ripgrep
 brewCheckOrInstall pet
 
