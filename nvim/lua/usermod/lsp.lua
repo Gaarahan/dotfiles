@@ -1,8 +1,3 @@
-local utils = require("usermod.utils")
-local map = utils.map
-local map_cmd = utils.map_cmd
-local lua_fn = utils.lua_fn
-
 -- disable builtin diagnostic virtual_text
 vim.diagnostic.config({
 	virtual_text = false,
