@@ -91,6 +91,20 @@ packer.startup(function()
 			require("mini.ai").setup()
 		end,
 	}) -- more textobjects
+	use({
+		"phelipetls/jsonpath.nvim",
+		config = function()
+			if vim.fn.exists("+winbar") == 1 then
+				vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
+			end
+		end,
+	})
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 
 	-- Plug for git
 	use("kdheepak/lazygit.nvim")
