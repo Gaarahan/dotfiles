@@ -283,6 +283,21 @@ legendary.setup({
 			description = "Map p to not replace the default register",
 			hide = true,
 		},
+		{
+			"gc",
+			description = "Comment with line-comment",
+		},
+		{
+			"gb",
+			description = "Comment with block-comment",
+		},
+		{
+			"<leader>yp",
+			function()
+				vim.fn.setreg("+", require("jsonpath").get())
+			end,
+			description = "Copy json path",
+		},
 	},
 	commands = {
 		{
@@ -292,6 +307,20 @@ legendary.setup({
 		{
 			":MarkdownPreviewStop",
 			description = "Close markdown preview",
+		},
+	},
+	autocmds = {
+		{
+			"BufEnter",
+			function()
+				if vim.fn.exists("+winbar") == 1 then
+					vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
+				end
+			end,
+			description = "Add JSON path in winbar",
+			opts = {
+				pattern = { "*.json" },
+			},
 		},
 	},
 	-- Customize the prompt that appears on your vim.ui.select() handler
