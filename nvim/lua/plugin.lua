@@ -64,6 +64,16 @@ packer.startup(function()
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
 	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({
+				text = {
+					spinner = "dots",
+				},
+			})
+		end,
+	})
 
 	use({
 		"kkoomen/vim-doge",
@@ -78,19 +88,18 @@ packer.startup(function()
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
 	use("brooth/far.vim") -- quick find and replace
 	use({
+		"rlue/vim-barbaric",
+		config = function()
+			vim.g.barbaric_ime = "macos"
+		end,
+	}) -- auto switch input method
+	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
 		config = function()
 			require("hop").setup()
 		end,
 	})
-	use({
-		"echasnovski/mini.ai",
-		branch = "stable",
-		config = function()
-			require("mini.ai").setup()
-		end,
-	}) -- more textobjects
 	use({
 		"phelipetls/jsonpath.nvim",
 		config = function()
