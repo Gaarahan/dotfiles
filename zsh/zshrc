@@ -1,11 +1,10 @@
-export ZSH="/Users/gaarahan/.oh-my-zsh"
 ZSH_THEME="af-magic"
 plugins=(
   git
   vi-mode
 )
 
-source $ZSH/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 alias t=todo.sh
