@@ -1,8 +1,4 @@
-local builtin = require("telescope.builtin")
-local utils = require("usermod.utils")
 local lga_actions = require("telescope-live-grep-args.actions")
-local map = utils.map
-local lua_fn = utils.lua_fn
 local builtin_pickers = require("telescope.pickers")
 
 local picker_config = {}
