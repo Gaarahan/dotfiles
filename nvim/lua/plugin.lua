@@ -75,9 +75,14 @@ packer.startup(function()
 		end,
 	})
 
-	use({
+  use({ -- Generate jsdoc
 		"kkoomen/vim-doge",
 		run = ":call doge#install()",
+		config = function()
+			vim.g.doge_javascript_settings = {
+				omit_redundant_param_types = 1,
+			}
+		end,
 	})
 
 	-- Plug for base input
@@ -99,15 +104,8 @@ packer.startup(function()
 		config = function()
 			require("hop").setup()
 		end,
-	})
-	use({
-		"phelipetls/jsonpath.nvim",
-		config = function()
-			if vim.fn.exists("+winbar") == 1 then
-				vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
-			end
-		end,
-	})
+	})	
+	use("phelipetls/jsonpath.nvim")
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
