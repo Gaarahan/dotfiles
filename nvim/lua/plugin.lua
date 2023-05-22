@@ -20,14 +20,17 @@ packer.startup(function()
 	use("mhinz/vim-startify") -- customize the startup page
 	use({ "ellisonleao/gruvbox.nvim" })
 	use("nvim-lualine/lualine.nvim") -- buffer line and status line
-	use({
-		"romgrk/barbar.nvim",
-		config = function()
-			require("bufferline").setup({})
-		end,
-	})
+	use({ "romgrk/barbar.nvim" })
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
 	use("stevearc/dressing.nvim")
+
+	-- plug for startup
+	use({
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	})
 
 	--  plug for dir_tree
 	use({
@@ -62,7 +65,6 @@ packer.startup(function()
 	}) -- install LSP servers, DAP servers, linters, and formatters
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
 	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 	use({
 		"j-hui/fidget.nvim",
@@ -75,7 +77,7 @@ packer.startup(function()
 		end,
 	})
 
-  use({ -- Generate jsdoc
+	use({ -- Generate jsdoc
 		"kkoomen/vim-doge",
 		run = ":call doge#install()",
 		config = function()
@@ -104,7 +106,7 @@ packer.startup(function()
 		config = function()
 			require("hop").setup()
 		end,
-	})	
+	})
 	use("phelipetls/jsonpath.nvim")
 	use({
 		"numToStr/Comment.nvim",
@@ -128,6 +130,7 @@ packer.startup(function()
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
+			require("telescope").load_extension("projects")
 		end,
 	})
 	use({
