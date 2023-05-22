@@ -24,14 +24,6 @@ packer.startup(function()
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
 	use("stevearc/dressing.nvim")
 
-	-- plug for startup
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({})
-		end,
-	})
-
 	--  plug for dir_tree
 	use({
 		"nvim-tree/nvim-tree.lua",
@@ -130,7 +122,6 @@ packer.startup(function()
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
-			require("telescope").load_extension("projects")
 		end,
 	})
 	use({
@@ -157,6 +148,10 @@ packer.startup(function()
 	})
 
 	use("mrjones2014/legendary.nvim") -- keymap manager
+
+	-- lazyload
+	use({ "nvim-treesitter/playground", opt = true, cmd = { "TSPlaygroundToggle" } })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
