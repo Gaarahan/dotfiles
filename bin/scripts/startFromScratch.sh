@@ -14,6 +14,7 @@ brewCheckOrInstall rust
 brewCheckOrInstall zsh
 brewCheckOrInstall tmux
 brewCheckOrInstall lazygit
+brewCheckOrInstall git-delta
 
 brewCheckOrInstall luajit
 brewCheckOrInstall neovim
