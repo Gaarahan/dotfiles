@@ -5,6 +5,13 @@ local legendary = require("legendary")
 legendary.setup({
 	keymaps = {
 		{
+			"/",
+			function()
+				require("telescope.builtin").current_buffer_fuzzy_find()
+			end,
+			description = "Find string in current buffer",
+		},
+		{
 			"<leader>fc",
 			":Legendary<CR>",
 			description = "Find Command",
@@ -29,12 +36,6 @@ legendary.setup({
 			"<Plug>(EasyAlign)",
 			description = "Start interactive EasyAlign in visual mode (e.g. vipga)",
 			mode = { "x" },
-		},
-		{
-			"<leader>fp",
-			":Farr<CR>",
-			description = "Quick find and replace, t to toggle exclude and s to replace",
-			mode = { "n", "x" },
 		},
 		{
 			"<leader>cl",
@@ -211,11 +212,32 @@ legendary.setup({
 			description = "Find file name",
 		},
 		{
+			"<leader>fb",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			description = "Find opened buffer",
+		},
+		{
+			"<leader>fs",
+			function()
+				require("telescope.builtin").lsp_document_symbols()
+			end,
+			description = "Find symbols in current file",
+		},
+		{
 			"<leader>fg",
 			function()
 				require("telescope").extensions.live_grep_args.live_grep_args()
 			end,
 			description = "Find string in workspace",
+		},
+		{
+			"<leader>fp",
+			function()
+        require'telescope'.extensions.projects.projects({})
+			end,
+			description = "Find project",
 		},
 		{
 			"<leader>fi",
@@ -228,13 +250,6 @@ legendary.setup({
 				require("telescope.builtin").resume()
 			end,
 			description = "Resume previous find",
-		},
-		{
-			"<leader>fb",
-			function()
-				require("telescope.builtin").current_buffer_fuzzy_find()
-			end,
-			description = "Find string in current buffer",
 		},
 		{
 			"<leader>fh",
