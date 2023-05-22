@@ -233,13 +233,6 @@ legendary.setup({
 			description = "Find string in workspace",
 		},
 		{
-			"<leader>fp",
-			function()
-        require'telescope'.extensions.projects.projects({})
-			end,
-			description = "Find project",
-		},
-		{
 			"<leader>fi",
 			":Telescope dir live_grep<CR>",
 			description = "Find string in special dir",
