@@ -5,7 +5,17 @@ vim.diagnostic.config({
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "json", "bash", "lua", "vim", "markdown", "markdown_inline", "javascript", "typescript" },
+	ensure_installed = {
+		"c",
+		"json",
+		"bash",
+		"lua",
+		"vim",
+		"markdown",
+		"markdown_inline",
+		"javascript",
+		"typescript",
+	},
 	sync_install = false,
 	auto_install = true,
 
