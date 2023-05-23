@@ -120,6 +120,11 @@ legendary.setup({
 			description = "Go to definition",
 		},
 		{
+			"gw",
+			":HopWord",
+			description = "Go to word",
+		},
+		{
 			"<leader>o",
 			":Lspsaga outline<CR>",
 			description = "Show outline",
@@ -236,6 +241,13 @@ legendary.setup({
 			"<leader>fi",
 			":Telescope dir live_grep<CR>",
 			description = "Find string in special dir",
+		},
+		{
+			"<leader>fp",
+			function()
+				require("telescope").extensions.projects.projects({})
+			end,
+			description = "Find recent project",
 		},
 		{
 			"<leader>fr",
