@@ -120,8 +120,8 @@ legendary.setup({
 			description = "Go to definition",
 		},
 		{
-			"gw",
-			":HopWord",
+			"gw",			
+			":HopWord<CR>",
 			description = "Go to word",
 		},
 		{
