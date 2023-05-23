@@ -86,12 +86,13 @@ packer.startup(function()
 	use("voldikss/vim-translator") -- select block and enter Translate*
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
 	use("brooth/far.vim") -- quick find and replace
+	-- auto switch input method
 	use({
 		"rlue/vim-barbaric",
 		config = function()
 			vim.g.barbaric_ime = "macos"
 		end,
-	}) -- auto switch input method
+	})
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
@@ -114,6 +115,16 @@ packer.startup(function()
 		requires = "nvim-lua/plenary.nvim",
 	})
 
+	-- telescope
+	use({
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({
+				detection_methods = { "patterns" },
+				patterns = { "=.git" },
+			})
+		end,
+	})
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
@@ -122,6 +133,7 @@ packer.startup(function()
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
+			require("telescope").load_extension("projects")
 		end,
 	})
 	use({
@@ -138,19 +150,21 @@ packer.startup(function()
 	-- formatter
 	use("mhartington/formatter.nvim")
 
+	-- keymap manager
+	use("mrjones2014/legendary.nvim")
+
+	-- lazyload
+	use({ "nvim-treesitter/playground", opt = true, cmd = { "TSPlaygroundToggle" } })
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
 		setup = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+		opt = true,
+		cmd = { "MarkdownPreview" },
 		ft = { "markdown" },
 	})
-
-	use("mrjones2014/legendary.nvim") -- keymap manager
-
-	-- lazyload
-	use({ "nvim-treesitter/playground", opt = true, cmd = { "TSPlaygroundToggle" } })
 
 	if packer_bootstrap then
 		require("packer").sync()
