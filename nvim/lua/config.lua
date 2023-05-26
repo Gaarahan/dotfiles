@@ -10,6 +10,7 @@ local conf_modules = {
 	"telescope",
 	"completion",
 	"formatter",
+	"nvim-ufo",
 }
 
 for i = 1, #conf_modules do
