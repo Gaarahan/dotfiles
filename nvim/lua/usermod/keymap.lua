@@ -1,6 +1,7 @@
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 local legendary = require("legendary")
+local ufo = require("ufo")
 
 legendary.setup({
 	keymaps = {
@@ -120,7 +121,7 @@ legendary.setup({
 			description = "Go to definition",
 		},
 		{
-			"gw",			
+			"gw",
 			":HopWord<CR>",
 			description = "Go to word",
 		},
@@ -243,13 +244,6 @@ legendary.setup({
 			description = "Find string in special dir",
 		},
 		{
-			"<leader>fp",
-			function()
-				require("telescope").extensions.projects.projects({})
-			end,
-			description = "Find recent project",
-		},
-		{
 			"<leader>fr",
 			function()
 				require("telescope.builtin").resume()
@@ -262,6 +256,21 @@ legendary.setup({
 				require("telescope.builtin").help_tags()
 			end,
 			description = "Find string in help page",
+		},
+		{
+			"gc",
+			description = "Comment with line-comment",
+		},
+		{
+			"gb",
+			description = "Comment with block-comment",
+		},
+		{
+			"<leader>yp",
+			function()
+				vim.fn.setreg("+", require("jsonpath").get())
+			end,
+			description = "Copy json path",
 		},
 		-- hidden --
 		{
@@ -304,19 +313,18 @@ legendary.setup({
 			hide = true,
 		},
 		{
-			"gc",
-			description = "Comment with line-comment",
-		},
-		{
-			"gb",
-			description = "Comment with block-comment",
-		},
-		{
-			"<leader>yp",
+			"zR",
 			function()
-				vim.fn.setreg("+", require("jsonpath").get())
+				ufo.openAllFolds()
 			end,
-			description = "Copy json path",
+			hide = true,
+		},
+		{
+			"zM",
+			function()
+				ufo.closeAllFolds()
+			end,
+			hide = true,
 		},
 	},
 	commands = {
