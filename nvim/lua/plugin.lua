@@ -23,6 +23,7 @@ packer.startup(function()
 	use({ "romgrk/barbar.nvim" })
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
 	use("stevearc/dressing.nvim")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
 	--  plug for dir_tree
 	use({
@@ -117,15 +118,6 @@ packer.startup(function()
 
 	-- telescope
 	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({
-				detection_methods = { "patterns" },
-				patterns = { "=.git" },
-			})
-		end,
-	})
-	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
 		requires = {
@@ -133,7 +125,6 @@ packer.startup(function()
 		},
 		config = function()
 			require("telescope").load_extension("live_grep_args")
-			require("telescope").load_extension("projects")
 		end,
 	})
 	use({
