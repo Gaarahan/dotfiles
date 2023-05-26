@@ -56,8 +56,8 @@ require("dressing").setup({
 
 vim.g.startify_change_to_dir = 0
 vim.g.startify_lists = {
-	{ type = "dir", header = { "   MRU" .. vim.fn.getcwd() } },
 	{ type = "sessions", header = { "   Sessions" } },
+	{ type = "dir", header = { "   MRU" .. vim.fn.getcwd() } },
 	{ type = "bookmarks", header = { "   Bookmarks" } },
 	{ type = "commands", header = { "   Commands" } },
 }
