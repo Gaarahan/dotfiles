@@ -19,11 +19,11 @@ packer.startup(function()
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
 	use({ "ellisonleao/gruvbox.nvim" })
-	use("nvim-lualine/lualine.nvim") -- buffer line and status line
-	use({ "romgrk/barbar.nvim" })
+	use("nvim-lualine/lualine.nvim") -- status line
+	use({ "romgrk/barbar.nvim" }) -- buffer line
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
-	use("stevearc/dressing.nvim")
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use("stevearc/dressing.nvim") -- beautify vim.ui
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- improve vim fold
 
 	--  plug for dir_tree
 	use({
@@ -49,16 +49,13 @@ packer.startup(function()
 				},
 			})
 		end,
-	})
+	}) -- for lsp rename、jump in diagnostics、code action、hover doc
 	use({
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
 	}) -- install LSP servers, DAP servers, linters, and formatters
-	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
-	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
@@ -68,7 +65,12 @@ packer.startup(function()
 				},
 			})
 		end,
-	})
+	}) -- show lsp progress
+
+	-- Autocompletion plugin
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
+	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 
 	use({ -- Generate jsdoc
 		"kkoomen/vim-doge",
@@ -81,7 +83,7 @@ packer.startup(function()
 	})
 
 	-- Plug for base input
-	use("jiangmiao/auto-pairs")
+	use("jiangmiao/auto-pairs") -- auto pair when input
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- make '%' support more feature
 	use("tpope/vim-surround") -- cs{need_replace}{target_char}
 	use("voldikss/vim-translator") -- select block and enter Translate*
@@ -100,14 +102,14 @@ packer.startup(function()
 		config = function()
 			require("hop").setup()
 		end,
-	})
-	use("phelipetls/jsonpath.nvim")
+	}) -- improve f t, fast moving in doc
+	use("phelipetls/jsonpath.nvim") -- show jsonpath when edit json
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
-	})
+	}) -- quick comment code or remove comment
 
 	-- Plug for git
 	use("kdheepak/lazygit.nvim")
