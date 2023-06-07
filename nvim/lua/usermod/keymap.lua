@@ -126,11 +126,6 @@ legendary.setup({
 			description = "Go to word",
 		},
 		{
-			"<leader>o",
-			":Lspsaga outline<CR>",
-			description = "Show outline",
-		},
-		{
 			"K",
 			":Lspsaga hover_doc<CR>",
 			description = "Show document",
@@ -158,6 +153,16 @@ legendary.setup({
 				require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 			end,
 			description = "Go to next error",
+		},
+		{
+			"[q",
+			":cp<CR>",
+			description = "Go to previous quickfix",
+		},
+		{
+			"]q",
+			":cn<CR>",
+			description = "Go to next quickfix",
 		},
 
 		-- git --
