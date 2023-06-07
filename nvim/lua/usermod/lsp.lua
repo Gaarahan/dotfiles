@@ -5,9 +5,19 @@ capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
-
-local language_servers = require("lspconfig").util.available_servers()
-for _, ls in ipairs(language_servers) do
+-- FIXME: To support each new language, need change this list and treesitter list
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = {
+	"clangd",
+	"rust_analyzer",
+	"pyright",
+	"tsserver",
+	"cssls",
+	"stylelint_lsp",
+	"eslint",
+	"lua_ls",
+}
+for _, ls in ipairs(servers) do
 	lspconfig[ls].setup({
 		capabilities = capabilities,
 	})
