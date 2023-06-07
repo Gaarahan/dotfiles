@@ -1,30 +1,5 @@
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-local lspconfig = require("lspconfig")
-
-
--- FIXME: To support each new language, need change this list and treesitter list
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {
-	"clangd",
-	"rust_analyzer",
-	"pyright",
-	"tsserver",
-	"cssls",
-	"stylelint_lsp",
-	"eslint",
-	"lua_ls",
-}
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		-- on_attach = my_custom_on_attach,
-		capabilities = capabilities,
-	})
-end
-
 
 -- lua setup
 cmp.setup({
