@@ -23,11 +23,6 @@ legendary.setup({
 			description = "Source vim configuration",
 		},
 		{
-			"<leader>lg",
-			":LazyGit<CR>",
-			description = "Lazy Git",
-		},
-		{
 			"<leader>d",
 			":DogeGenerate<CR>",
 			description = "Generate doc",
@@ -238,9 +233,7 @@ legendary.setup({
 		},
 		{
 			"<leader>fg",
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args()
-			end,
+			":Telescope live_grep<CR>",
 			description = "Find string in workspace",
 		},
 		{
@@ -353,6 +346,17 @@ legendary.setup({
 			description = "Add JSON path in winbar",
 			opts = {
 				pattern = { "*.json" },
+			},
+		},
+		{
+			"BufEnter",
+			function()
+				vim.opt.formatoptions:remove("c")
+				vim.opt.formatoptions:remove("o")
+			end,
+			description = "Don't automatically add comment",
+			opts = {
+				pattern = { "*" },
 			},
 		},
 	},

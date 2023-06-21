@@ -7,8 +7,6 @@ vim.g.mapleader = " "
 -- set options
 
 vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
---  Don't append comment while open new line
-vim.cmd("autocmd BufNewFile,BufRead * setlocal formatoptions-=cro")
 
 vim.api.nvim_exec(
 	[[

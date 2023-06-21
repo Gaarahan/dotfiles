@@ -1,4 +1,3 @@
-local lga_actions = require("telescope-live-grep-args.actions")
 local builtin_pickers = require("telescope.pickers")
 
 local picker_config = {}
@@ -33,15 +32,4 @@ require("telescope").setup({
 		lsp_type_definitions = { fname_width = 70, show_line = false },
 		lsp_implementations = { fname_width = 70, show_line = false },
 	}),
-	extensions = {
-		live_grep_args = {
-			auto_quoting = true, -- enable/disable auto-quoting
-			mappings = { -- extend mappings
-				i = {
-					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-					["<C-h>"] = lga_actions.quote_prompt({ postfix = " --no-ignore " }),
-				},
-			},
-		},
-	},
 })
