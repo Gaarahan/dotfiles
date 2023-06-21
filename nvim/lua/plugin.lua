@@ -111,8 +111,6 @@ packer.startup(function()
 		end,
 	}) -- quick comment code or remove comment
 
-	-- Plug for git
-	use("kdheepak/lazygit.nvim")
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -122,12 +120,6 @@ packer.startup(function()
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
-		requires = {
-			"nvim-telescope/telescope-live-grep-args.nvim",
-		},
-		config = function()
-			require("telescope").load_extension("live_grep_args")
-		end,
 	})
 	use({
 		"princejoogie/dir-telescope.nvim",
