@@ -58,6 +58,7 @@ packer.startup(function()
 	}) -- install LSP servers, DAP servers, linters, and formatters
 	use({
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		config = function()
 			require("fidget").setup({
 				text = {
@@ -119,7 +120,7 @@ packer.startup(function()
 	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		{ branch = "0.1.x" },
 	})
 	use({
 		"princejoogie/dir-telescope.nvim",
