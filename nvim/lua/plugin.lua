@@ -120,7 +120,7 @@ packer.startup(function()
 	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		{ branch = "0.1.x" },
+		branch = "0.1.x",
 	})
 	use({
 		"princejoogie/dir-telescope.nvim",
