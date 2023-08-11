@@ -6,7 +6,7 @@ local ufo = require("ufo")
 legendary.setup({
 	keymaps = {
 		{
-			"/",
+			"<leader>fb",
 			function()
 				require("telescope.builtin").current_buffer_fuzzy_find()
 			end,
@@ -47,6 +47,11 @@ legendary.setup({
 			"<leader>fd",
 			":Format<CR>",
 			description = "Format current doc",
+		},
+		{
+			"<leader>fe",
+			":EslintFixAll<CR>",
+			description = "Fix all eslint issue",
 		},
 		{
 			"<leader>[",
@@ -197,6 +202,11 @@ legendary.setup({
 			end,
 			description = "Toggle current line git blame",
 		},
+		{
+			"<leader>lg",
+			":LazyGit<CR>",
+			description = "Toggle current line git blame",
+		},
 
 		-- file explorer --
 		{
@@ -216,13 +226,6 @@ legendary.setup({
 				require("telescope.builtin").find_files()
 			end,
 			description = "Find file name",
-		},
-		{
-			"<leader>fb",
-			function()
-				require("telescope.builtin").buffers()
-			end,
-			description = "Find opened buffer",
 		},
 		{
 			"<leader>fs",
