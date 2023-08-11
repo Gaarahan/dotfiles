@@ -1,10 +1,6 @@
 local lspconfig = require("lspconfig")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- FIXME: To support each new language, need change this list and treesitter list
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
