@@ -73,16 +73,6 @@ packer.startup(function()
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
 
-	use({ -- Generate jsdoc
-		"kkoomen/vim-doge",
-		run = ":call doge#install()",
-		config = function()
-			vim.g.doge_javascript_settings = {
-				omit_redundant_param_types = 1,
-			}
-		end,
-	})
-
 	-- Plug for base input
 	use("jiangmiao/auto-pairs") -- auto pair when input
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- make '%' support more feature
@@ -90,13 +80,6 @@ packer.startup(function()
 	use("voldikss/vim-translator") -- select block and enter Translate*
 	use("junegunn/vim-easy-align") -- select block and enter 'ga[align-char]' to align by special char
 	use("brooth/far.vim") -- quick find and replace
-	-- auto switch input method
-	use({
-		"rlue/vim-barbaric",
-		config = function()
-			vim.g.barbaric_ime = "macos"
-		end,
-	})
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2",
