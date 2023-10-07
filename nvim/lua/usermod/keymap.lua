@@ -202,6 +202,16 @@ legendary.setup({
 			":LazyGit<CR>",
 			description = "Toggle current line git blame",
 		},
+		{
+			"<leader>dh",
+			":DiffviewFileHistory %<CR>",
+			description = "Show git history of current buffer",
+		},
+		{
+			"<leader>dc",
+			":DiffviewClose<CR>",
+			description = "Close git diffview",
+		},
 
 		-- file explorer --
 		{
