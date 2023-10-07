@@ -15,10 +15,19 @@ local use = packer.use
 
 packer.startup(function()
 	use("wbthomason/packer.nvim") -- Package manager
+	use("dstein64/vim-startuptime")
 
 	-- Appearance customize
 	use("mhinz/vim-startify") -- customize the startup page
-	use({ "ellisonleao/gruvbox.nvim" })
+	use({
+		"ellisonleao/gruvbox.nvim",
+		config = function()
+			require("gruvbox").setup({
+				contrast = "soft",
+				inverse = false,
+			})
+		end,
+	})
 	use("nvim-lualine/lualine.nvim") -- status line
 	use({ "romgrk/barbar.nvim" }) -- buffer line
 	use("yuttie/comfortable-motion.vim") -- move smooth when use like <C-f>
@@ -72,9 +81,15 @@ packer.startup(function()
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use({ "L3MON4D3/LuaSnip", version = "<CurrentMajor>.*", run = "make install_jsregexp" }) -- Snippets plugin
+	use("windwp/nvim-ts-autotag")
 
 	-- Plug for base input
-	use("jiangmiao/auto-pairs") -- auto pair when input
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 	use({ "andymass/vim-matchup", event = "VimEnter" }) -- make '%' support more feature
 	use("tpope/vim-surround") -- cs{need_replace}{target_char}
 	use("voldikss/vim-translator") -- select block and enter Translate*
@@ -100,6 +115,7 @@ packer.startup(function()
 		requires = "nvim-lua/plenary.nvim",
 	})
 	use("kdheepak/lazygit.nvim")
+	use("sindrets/diffview.nvim")
 
 	-- telescope
 	use({
