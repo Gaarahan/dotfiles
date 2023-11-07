@@ -25,7 +25,9 @@ require("telescope").setup({
 				width = 0.9,
 			},
 		},
+		path_display = { 'smart' },
 	},
+
 	pickers = vim.tbl_extend("force", picker_config, {
 		lsp_references = { fname_width = 70, show_line = false },
 		lsp_definitions = { fname_width = 70, show_line = false },
