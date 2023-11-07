@@ -228,20 +228,20 @@ legendary.setup({
 		{
 			"<leader>ff",
 			function()
-				require("telescope.builtin").find_files()
+				require("usermod.telescopePickers").prettyFilesPicker({ picker = "find_files" })
 			end,
 			description = "Find file name",
 		},
 		{
 			"<leader>fs",
-			function()
-				require("telescope.builtin").lsp_document_symbols()
-			end,
+      ":Telescope lsp_document_symbols<CR>",
 			description = "Find symbols in current file",
 		},
 		{
 			"<leader>fg",
-			":Telescope live_grep<CR>",
+			function()
+				require("usermod.telescopePickers").prettyGrepPicker({ picker = "live_grep" })
+			end,
 			description = "Find string in workspace",
 		},
 		{
@@ -373,4 +373,4 @@ legendary.setup({
 	select_prompt = "Find Command",
 	include_builtin = false,
 	include_legendary_cmds = false,
-})
+}
