@@ -373,4 +373,4 @@ legendary.setup({
 	select_prompt = "Find Command",
 	include_builtin = false,
 	include_legendary_cmds = false,
-}
+})
