@@ -18,7 +18,15 @@
 ![vim & tmux & lazygit](https://user-images.githubusercontent.com/34125917/212490415-26eb779a-9026-4431-8cd1-0509662d260b.png)
 
 
-### i3
+### Useage
+
+Clone this repo, and run:
+```sh
+cd dotfiles
+chmod a+x ./bin/doInstall & sh ./bin/doInstall
+```
+
+## i3
 
 `my personal configuration for i3-gaps+polybar`
 
@@ -32,4 +40,3 @@
 6. i3lock - fancy - screen lock tool
 7. compton - got transparent feature running
 8. ranger - term tool to watch local file
-
