@@ -4,7 +4,7 @@ plugins=(
   vi-mode
 )
 
-current_directory=$(dirname "$(readlink -f "$0")")
+current_directory=$(dirname "$(readlink -f "$HOME/.zshrc")")
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
