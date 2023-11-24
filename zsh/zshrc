@@ -2,6 +2,7 @@ ZSH_THEME="af-magic"
 plugins=(
   git
   vi-mode
+  z
 )
 
 current_directory=$(dirname "$(readlink -f "$HOME/.zshrc")")
