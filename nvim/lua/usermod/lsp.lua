@@ -17,6 +17,7 @@ local servers = {
 for _, ls in ipairs(servers) do
 	lspconfig[ls].setup({
 		capabilities = capabilities,
+    single_file_support = false,
 	})
 end
 
