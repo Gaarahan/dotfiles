@@ -9,7 +9,8 @@ if [ "${isDebugMode}" == 'd' ]; then
 fi
 # }}
 
-source "$(dirname "$0")/scripts/utils.sh"
+util_path=$(realpath "$(dirname "$0")/../scripts/utils.sh")
+source $util_path
 
 # 保存初始目录
 initial_path=$(pwd)
@@ -44,6 +45,8 @@ for node in ${folder_path}/*; do
         failed_folders+="$(basename "$target_folder") "
       fi
       cd "$initial_path"
+    else
+      info "Skip ($target_folder), not a git repo \n"
     fi
   fi
 done
