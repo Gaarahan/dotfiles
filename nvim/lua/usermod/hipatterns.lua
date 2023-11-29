@@ -1,4 +1,4 @@
-{
+return {
 	"echasnovski/mini.hipatterns",
 	init = function()
 		local hipatterns = require("mini.hipatterns")
@@ -16,5 +16,3 @@
 		})
 	end,
 }
-
-return M
