@@ -6,7 +6,7 @@ local ufo = require("ufo")
 legendary.setup({
 	keymaps = {
 		{
-			"/",
+			"<leader>fb",
 			function()
 				require("telescope.builtin").current_buffer_fuzzy_find()
 			end,
@@ -21,11 +21,6 @@ legendary.setup({
 			"<leader>sv",
 			":source $MYVIMRC<CR>",
 			description = "Source vim configuration",
-		},
-		{
-			"<leader>d",
-			":DogeGenerate<CR>",
-			description = "Generate doc",
 		},
 		{
 			"ga",
@@ -47,6 +42,11 @@ legendary.setup({
 			"<leader>fd",
 			":Format<CR>",
 			description = "Format current doc",
+		},
+		{
+			"<leader>fe",
+			":EslintFixAll<CR>",
+			description = "Fix all eslint issue",
 		},
 		{
 			"<leader>[",
@@ -197,6 +197,21 @@ legendary.setup({
 			end,
 			description = "Toggle current line git blame",
 		},
+		{
+			"<leader>lg",
+			":LazyGit<CR>",
+			description = "Toggle current line git blame",
+		},
+		{
+			"<leader>dh",
+			":DiffviewFileHistory %<CR>",
+			description = "Show git history of current buffer",
+		},
+		{
+			"<leader>dc",
+			":DiffviewClose<CR>",
+			description = "Close git diffview",
+		},
 
 		-- file explorer --
 		{
@@ -213,27 +228,20 @@ legendary.setup({
 		{
 			"<leader>ff",
 			function()
-				require("telescope.builtin").find_files()
+				require("usermod.telescopePickers").prettyFilesPicker({ picker = "find_files" })
 			end,
 			description = "Find file name",
 		},
 		{
-			"<leader>fb",
-			function()
-				require("telescope.builtin").buffers()
-			end,
-			description = "Find opened buffer",
-		},
-		{
 			"<leader>fs",
-			function()
-				require("telescope.builtin").lsp_document_symbols()
-			end,
+      ":Telescope lsp_document_symbols<CR>",
 			description = "Find symbols in current file",
 		},
 		{
 			"<leader>fg",
-			":Telescope live_grep<CR>",
+			function()
+				require("usermod.telescopePickers").prettyGrepPicker({ picker = "live_grep" })
+			end,
 			description = "Find string in workspace",
 		},
 		{

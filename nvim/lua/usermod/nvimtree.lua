@@ -1,6 +1,3 @@
-local utils = require("usermod.utils")
-local map_cmd = utils.map_cmd
-
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 
@@ -15,6 +12,11 @@ require("nvim-tree").setup({
 		dotfiles = true,
 	},
 	git = {
-		enable = false,
+		timeout = 1000,
+	},
+	filesystem_watchers = {
+		enable = true,
+		debounce_delay = 50,
+		ignore_dirs = { "node_modules" },
 	},
 })

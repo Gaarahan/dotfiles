@@ -1,10 +1,6 @@
 local lspconfig = require("lspconfig")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- FIXME: To support each new language, need change this list and treesitter list
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = {
@@ -12,6 +8,7 @@ local servers = {
 	"rust_analyzer",
 	"pyright",
 	"tsserver",
+	"html",
 	"cssls",
 	"stylelint_lsp",
 	"eslint",
@@ -20,6 +17,7 @@ local servers = {
 for _, ls in ipairs(servers) do
 	lspconfig[ls].setup({
 		capabilities = capabilities,
+    single_file_support = false,
 	})
 end
 
@@ -35,6 +33,7 @@ require("nvim-treesitter.configs").setup({
 		"json",
 		"bash",
 		"lua",
+		"html",
 		"vim",
 		"markdown",
 		"markdown_inline",
@@ -43,7 +42,9 @@ require("nvim-treesitter.configs").setup({
 	},
 	sync_install = false,
 	auto_install = true,
-
+	autotag = {
+		enable = true,
+	},
 	highlight = {
 		enable = true,
 

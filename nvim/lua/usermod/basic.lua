@@ -33,7 +33,7 @@ set_option({
 	smartindent = true, --  Makes indenting smart
 
 	smartcase = true,
-	spell = true, -- enable spell check
+	-- spell = true, -- enable spell check
 	ignorecase = true, --  Makes search use smart case
 
 	updatetime = 100, --  Change vim update delay to update git change sign when edit

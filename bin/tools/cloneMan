@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# debug mode {{
+getopts "d" isDebugMode
+
+if [ "${isDebugMode}" == 'd' ]; then
+  set -x
+  set -v
+fi
+# }}
+
+util_path=$(realpath "$(dirname "$0")/../scripts/utils.sh")
+source $util_path
+
+# 保存初始目录
+initial_path=$(pwd)
+
+# 提示用户输入文件夹路径或使用默认值
+read -p "请输入文件夹路径（默认为$HOME/Documents/）：" folder_path
+folder_path=${folder_path:-"$HOME/Documents"}
+
+# 判断目录下是否存在git目录的函数
+check_git_directory() {
+  [ -d "$1/.git" ]
+}
+
+##################### RUNING
+
+# 记录成功和失败的文件夹列表
+success_folders=""
+failed_folders=""
+
+bot "Start check ${folder_path}\n"
+
+for node in ${folder_path}/*; do
+  target_folder=$(realpath $node)
+  if [ -d "$target_folder" ]; then
+    # 如果是git仓库，执行git pull
+    if $(check_git_directory "$target_folder"); then
+      cd "$target_folder"
+      running "Run git pull in ($target_folder) \n"
+      if git pull; then
+        success_folders+="$(basename "$target_folder") "
+      else
+        failed_folders+="$(basename "$target_folder") "
+      fi
+      cd "$initial_path"
+    else
+      info "Skip ($target_folder), not a git repo \n"
+    fi
+  fi
+done
+
+# 打印成功和失败的文件夹列表
+ok "执行 git pull 成功的文件夹：$success_folders \n"
+
+error "执行 git pull 失败的文件夹：$failed_folders \n"
+
+cd $initial_path
