@@ -3,6 +3,7 @@ nvim/undo
 nvim/spell
 nvim/autoload
 nvim/plugin
+lazy-lock.json
 
 .DS_store
 
