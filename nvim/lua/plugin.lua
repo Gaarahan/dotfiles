@@ -42,12 +42,12 @@ local plugins = {
 	}, -- for lsp rename、jump in diagnostics、code action、hover doc
 	{
 		"williamboman/mason.nvim",
-    lazy = true,
+		lazy = true,
 		init = function()
 			require("mason").setup()
 		end,
 	}, -- install LSP servers, DAP servers, linters, and formatters
-	{ "j-hui/fidget.nvim", opts = { text = { spinner = "dots" } } }, -- show lsp progress
+	{ "j-hui/fidget.nvim", opts = {} }, -- show lsp progress
 
 	-- Autocompletion plugin
 	"hrsh7th/nvim-cmp",
@@ -84,7 +84,6 @@ local plugins = {
 	}, -- quick comment code or remove comment
 
 	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-	"kdheepak/lazygit.nvim",
 	"sindrets/diffview.nvim",
 
 	telescopeConf,

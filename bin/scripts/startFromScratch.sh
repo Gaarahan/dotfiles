@@ -11,7 +11,11 @@ brewCheckOrInstall python3
 brewCheckOrInstall ruby
 brewCheckOrInstall rust
 
+# zsh and plugins
 brewCheckOrInstall zsh
+brewCheckOrInstall zsh-autosuggestions
+brewCheckOrInstall zsh-syntax-highlighting
+
 brewCheckOrInstall tmux
 brewCheckOrInstall lazygit
 brewCheckOrInstall git-delta

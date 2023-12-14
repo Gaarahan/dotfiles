@@ -1,4 +1,6 @@
+DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="af-magic"
+
 plugins=(
   git
   vi-mode
@@ -8,6 +10,7 @@ plugins=(
 current_directory=$(dirname "$(readlink -f "$HOME/.zshrc")")
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 alias t=todo.sh
@@ -52,8 +55,8 @@ _fix_cursor() {
 precmd_functions+=(_fix_cursor)
 
 set_proxy() {
-  export http_proxy=socks5://127.0.0.1:7890
-  export https_proxy=socks5://127.0.0.1:7890
+  export http_proxy=socks5://127.0.0.1:13659
+  export https_proxy=socks5://127.0.0.1:13659
 }
 unset_proxy() {
   unset http_proxy
@@ -106,3 +109,5 @@ export PATH="$dot_bin_path:$PATH"
 export M2_HOME="$HOME/maven/apache-maven-3.6.3"
 export PATH="/opt/homebrew/opt/openjdk/bin:~/cargo/.bin:$M2_HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
