@@ -6,7 +6,7 @@
 # @raycast.mode compact
 
 # Optional parameters:
-# @raycast.icon 🤖
+# @raycast.icon 👾
 # @raycast.argument1 { "type": "text", "placeholder": "PORT or PACKAGE" }
 # @raycast.packageName local
 
