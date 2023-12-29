@@ -10,6 +10,7 @@ brewCheckOrInstall yarn
 brewCheckOrInstall python3
 brewCheckOrInstall ruby
 brewCheckOrInstall rust
+brewCheckOrInstall raycast --cask
 
 # zsh and plugins
 brewCheckOrInstall zsh
