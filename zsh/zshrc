@@ -55,8 +55,8 @@ _fix_cursor() {
 precmd_functions+=(_fix_cursor)
 
 set_proxy() {
-  export http_proxy=socks5://127.0.0.1:13659
-  export https_proxy=socks5://127.0.0.1:13659
+  export http_proxy=socks5://127.0.0.1:7890
+  export https_proxy=socks5://127.0.0.1:7890
 }
 unset_proxy() {
   unset http_proxy
