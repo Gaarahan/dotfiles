@@ -13,7 +13,7 @@
 # Documentation:
 # @raycast.description Open local by port
 
-if [[ $string =~ ^[0-9]+$ ]]; then
+if [[ $1 =~ ^[0-9]+$ ]]; then
   # if all number: open localhost
   open "https://localhost:$1"
 else 
