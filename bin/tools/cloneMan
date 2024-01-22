@@ -25,10 +25,12 @@ check_git_directory() {
 }
 
 ##################### RUNING
+should_skip=("dotfiles")
 
 # 记录成功和失败的文件夹列表
 success_folders=""
 failed_folders=""
+not_master_folders=""
 
 bot "Start check ${folder_path}\n"
 
@@ -44,6 +46,12 @@ for node in ${folder_path}/*; do
       else
         failed_folders+="$(basename "$target_folder") "
       fi
+
+      cur_branch=$(git symbolic-ref --short HEAD)
+      if [[ "$cur_branch" != "master" ]]; then
+        not_master_folders+="$(basename "$target_folder") "
+      fi
+
       cd "$initial_path"
     else
       info "Skip ($target_folder), not a git repo \n"
@@ -53,6 +61,8 @@ done
 
 # 打印成功和失败的文件夹列表
 ok "执行 git pull 成功的文件夹：$success_folders \n"
+
+warn "非 master 的文件夹：$not_master_folders \n"
 
 error "执行 git pull 失败的文件夹：$failed_folders \n"
 
