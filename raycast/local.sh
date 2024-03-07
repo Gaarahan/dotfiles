@@ -7,7 +7,7 @@
 
 # Optional parameters:
 # @raycast.icon 👾
-# @raycast.argument1 { "type": "text", "placeholder": "PORT or PACKAGE" }
+# @raycast.argument1 { "type": "text", "placeholder": "PORT or PACKAGE or TRACE" }
 # @raycast.packageName local
 
 # Documentation:
@@ -16,7 +16,9 @@
 if [[ $1 =~ ^[0-9]+$ ]]; then
   # if all number: open localhost
   open "https://localhost:$1"
-else 
+elif [[ $1 =~ ^[a-z0-9]{30} ]]; then
+  open "https://yuntu.alipay.com/yuntu/trace/traceView?traceId=$1"
+else
   # else search in yuyan
   open "https://yuyan.antfin-inc.com/search?q=$1"
 fi
