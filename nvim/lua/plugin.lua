@@ -16,12 +16,12 @@ local plugins = {
       })
     end,
   },
-  "nvim-lualine/lualine.nvim",                                                 -- status line
+  "nvim-lualine/lualine.nvim",                                                   -- status line
   { "romgrk/barbar.nvim",    dependencies = { "nvim-tree/nvim-web-devicons" } }, -- buffer line
-  "yuttie/comfortable-motion.vim",                                             -- move smooth when use like <C-f>
-  "stevearc/dressing.nvim",                                                    -- beautify vim.ui
-  { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } }, -- improve vim fold
-  hipatternsConf,                                                              -- highlight todo and colors
+  "yuttie/comfortable-motion.vim",                                               -- move smooth when use like <C-f>
+  "stevearc/dressing.nvim",                                                      -- beautify vim.ui
+  { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },  -- improve vim fold
+  hipatternsConf,                                                                -- highlight todo and colors
 
   --  plug for dir_tree
   { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -50,13 +50,13 @@ local plugins = {
     init = function()
       require("mason").setup()
     end,
-  },                                 -- install LSP servers, DAP servers, linters, and formatters
+  },                                  -- install LSP servers, DAP servers, linters, and formatters
   { "j-hui/fidget.nvim", opts = {} }, -- show lsp progress
 
   -- Autocompletion plugin
   "hrsh7th/nvim-cmp",
   "mattn/emmet-vim",
-  "hrsh7th/cmp-nvim-lsp",                                                 -- LSP source for nvim-cmp
+  "hrsh7th/cmp-nvim-lsp",                                                   -- LSP source for nvim-cmp
   { "L3MON4D3/LuaSnip",  version = "v2.*", run = "make install_jsregexp" }, -- Snippets plugin
   "windwp/nvim-ts-autotag",
 
@@ -68,17 +68,17 @@ local plugins = {
     end,
   },
   { "andymass/vim-matchup",    event = "VimEnter" }, -- make '%' support more feature
-  "tpope/vim-surround",                          -- cs{need_replace}{target_char}
-  "voldikss/vim-translator",                     -- select block and enter Translate*
-  "junegunn/vim-easy-align",                     -- select block and enter 'ga[align-char]' to align by special char
-  "brooth/far.vim",                              -- quick find and replace
+  "tpope/vim-surround",                              -- cs{need_replace}{target_char}
+  "voldikss/vim-translator",                         -- select block and enter Translate*
+  "junegunn/vim-easy-align",                         -- select block and enter 'ga[align-char]' to align by special char
+  "nvim-pack/nvim-spectre",                          -- quick find and replace
   {
     "phaazon/hop.nvim",
     branch = "v2",
     init = function()
       require("hop").setup()
     end,
-  },                         -- improve f t, fast moving in doc
+  },                          -- improve f t, fast moving in doc
   "phelipetls/jsonpath.nvim", -- show jsonpath when edit json
   {
     "numToStr/Comment.nvim",
