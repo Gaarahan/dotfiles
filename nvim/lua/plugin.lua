@@ -27,7 +27,7 @@ local plugins = {
   { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons" } },
 
   -- LSP
-  { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
   {
     "nvimdev/lspsaga.nvim",
@@ -86,6 +86,35 @@ local plugins = {
       require("Comment").setup()
     end,
   }, -- quick comment code or remove comment
+  {
+    "johmsalas/text-case.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("textcase").setup({})
+      require("telescope").load_extension("textcase")
+    end,
+    keys = {
+      "ga", -- Default invocation prefix
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+    },
+    cmd = {
+      -- NOTE: The Subs command name can be customized via the option "substitude_command_name"
+      "Subs",
+      "TextCaseOpenTelescope",
+      "TextCaseOpenTelescopeQuickChange",
+      "TextCaseOpenTelescopeLSPChange",
+      "TextCaseStartReplacingCommand",
+    },
+    -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+    -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+    -- available after the first executing of it or after a keymap of text-case.nvim has been used.
+    lazy = false,
+  },
+  {
+    'heavenshell/vim-jsdoc',
+    build = 'make install',
+    ft = { 'javascript', 'typescript', 'typescriptreact' }
+  },
 
   { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   "sindrets/diffview.nvim",
@@ -100,8 +129,8 @@ local plugins = {
   { "nvim-treesitter/playground", lazy = true, cmd = { "TSPlaygroundToggle" } },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
+    build = "cd app && npm install",
+    config = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     lazy = true,
