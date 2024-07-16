@@ -128,24 +128,24 @@ legendary.setup({
       description = "Show document",
     },
     {
-      "[e",
+      "[E",
       ":Lspsaga diagnostic_jump_prev<CR>",
       description = "Go to previous diagnostic",
     },
     {
-      "]e",
+      "]E",
       ":Lspsaga diagnostic_jump_next<CR>",
       description = "Go to next diagnostic",
     },
     {
-      "[E",
+      "[e",
       function()
         require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
       end,
       description = "Go to previous error",
     },
     {
-      "]E",
+      "]e",
       function()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
       end,
@@ -266,6 +266,13 @@ legendary.setup({
       description = "Find string in help page",
     },
     {
+      '<leader>s',
+      function()
+        require('spectre').toggle();
+      end,
+      description = 'Find and Replace text'
+    },
+    {
       "gc",
       description = "Comment with line-comment",
     },
@@ -334,6 +341,11 @@ legendary.setup({
       end,
       hide = true,
     },
+    {
+      "<leader>ya",
+      "ggVGy",
+      description = 'Copy all document'
+    }
   },
   commands = {
     {

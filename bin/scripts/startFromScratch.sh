@@ -29,6 +29,7 @@ brewCheckOrInstall bat
 brewCheckOrInstall fg
 brewCheckOrInstall ripgrep
 brewCheckOrInstall pet
+brewCheckOrInstall gnu-sed
 
 #  change terminal font
 brewCheckOrInstall homebrew/cask-fonts/font-hack-nerd-font
