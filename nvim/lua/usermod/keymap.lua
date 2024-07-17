@@ -1,21 +1,8 @@
-local hop = require("hop")
-local directions = require("hop.hint").HintDirection
 local legendary = require("legendary")
-local ufo = require("ufo")
+local keymapList = require('usermod.keymaps.index')
 
 legendary.setup({
-  keymaps = {
-    {
-      "<leader>fc",
-      ":Legendary<CR>",
-      description = "Find Command",
-    },
-    {
-      "<leader>sv",
-      ":source $MYVIMRC<CR>",
-      description = "Source vim configuration",
-    }
-  },
+  keymaps = keymapList,
   commands = {
     {
       ":MarkdownPreview",

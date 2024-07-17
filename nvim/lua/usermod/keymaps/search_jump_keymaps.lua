@@ -62,7 +62,7 @@ return {
     end,
     description = 'Find and Replace text'
   },
--- buffer
+  -- buffer
   {
     "<leader>dd",
     ":BufferClose<CR>",

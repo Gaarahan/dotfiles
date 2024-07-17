@@ -24,7 +24,6 @@ return {
     ":HopWord<CR>",
     description = "Go to word",
   },
-  
   {
     "[q",
     ":cp<CR>",
@@ -105,3 +104,4 @@ return {
     hide = true,
   }
 }
+
