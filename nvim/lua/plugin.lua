@@ -50,14 +50,21 @@ local plugins = {
     init = function()
       require("mason").setup()
     end,
-  },                                  -- install LSP servers, DAP servers, linters, and formatters
-  { "j-hui/fidget.nvim", opts = {} }, -- show lsp progress
+  },                                     -- install LSP servers, DAP servers, linters, and formatters
+  { "j-hui/fidget.nvim",    opts = {} }, -- show lsp progress
 
   -- Autocompletion plugin
   "hrsh7th/nvim-cmp",
-  "mattn/emmet-vim",
-  "hrsh7th/cmp-nvim-lsp",                                                   -- LSP source for nvim-cmp
-  { "L3MON4D3/LuaSnip",  version = "v2.*", run = "make install_jsregexp" }, -- Snippets plugin
+  "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    run = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    init = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end
+  }, -- Snippets plugin
   "windwp/nvim-ts-autotag",
 
   -- Plug for base input
@@ -67,11 +74,11 @@ local plugins = {
       require("nvim-autopairs").setup({})
     end,
   },
-  { "andymass/vim-matchup",    event = "VimEnter" }, -- make '%' support more feature
-  "tpope/vim-surround",                              -- cs{need_replace}{target_char}
-  "voldikss/vim-translator",                         -- select block and enter Translate*
-  "junegunn/vim-easy-align",                         -- select block and enter 'ga[align-char]' to align by special char
-  "nvim-pack/nvim-spectre",                          -- quick find and replace
+  { "andymass/vim-matchup", event = "VimEnter" }, -- make '%' support more feature
+  "tpope/vim-surround",                           -- cs{need_replace}{target_char}
+  "voldikss/vim-translator",                      -- select block and enter Translate*
+  "junegunn/vim-easy-align",                      -- select block and enter 'ga[align-char]' to align by special char
+  "nvim-pack/nvim-spectre",                       -- quick find and replace
   {
     "phaazon/hop.nvim",
     branch = "v2",
@@ -118,6 +125,7 @@ local plugins = {
 
   { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   "sindrets/diffview.nvim",
+  "RRethy/vim-illuminate",
 
   telescopeConf,
   formatterConf,
