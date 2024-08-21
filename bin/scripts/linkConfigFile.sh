@@ -45,7 +45,8 @@ fi
 # Config LazyGit
 # ###########################################################
 
-LAZY_GIT_CONF="$XDG_CONFIG_HOME/lazygit/config.yml"
+LAZY_GIT_DIR="$HOME/.config/lazygit/"
+LAZY_GIT_CONF="$LAZY_GIT_DIR/config.yml"
 
 bot "Link 'lazygit/config.yml' to $LAZY_GIT_CONF, this will backup the old file? (y/N)"
 read -r
@@ -56,6 +57,9 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   if [ -e "$LAZY_GIT_CONF" ]; then
     check_rm "$LAZY_GIT_CONF.bak"
     mv "$LAZY_GIT_CONF" "$LAZY_GIT_CONF.bak"
+  fi
+  if [ ! -d $LAZY_GIT_DIR ]; then
+    mkdir $LAZY_GIT_DIR
   fi
   ln -s "$(getPath "../../lazygit/config.yml")" "$LAZY_GIT_CONF"
   ok "Config success"

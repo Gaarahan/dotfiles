@@ -39,8 +39,8 @@ if [[ ${PIPESTATUS[0]} != 0 ]]; then
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   
   action "add brew to PATH"
-  echo "export PATH=$PATH:/opt/homebrew/bin" >> ~/.bash_profile
-  export PATH=$PATH:/opt/homebrew/bin
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/"$(whoami)"/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   if [[ $? != 0 ]]; then
     error "unable to install homebrew, script $0 abort!"
@@ -80,4 +80,3 @@ getPath() {
   realpath "$SHELL_POSITION/$1"
 }
 # }}
-

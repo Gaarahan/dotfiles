@@ -99,15 +99,7 @@ export FZF_DEFAULT_COMMAND='ag .'
 export EDITOR='vim'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-export CLASSPATH=".:/usr/local/lib/antlr-4.9.3-complete.jar:$CLASSPATH"
-alias antlr4='java -jar /usr/local/lib/antlr-4.9.3-complete.jar'
-alias grun='java org.antlr.v4.gui.TestRig'
-
 dot_bin_path=$(realpath "$current_directory/../bin/tools/")
 export PATH="$dot_bin_path:$PATH"
-
-export M2_HOME="$HOME/maven/apache-maven-3.6.3"
-export PATH="/opt/homebrew/opt/openjdk/bin:~/cargo/.bin:$M2_HOME/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
