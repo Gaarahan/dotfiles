@@ -11,9 +11,9 @@ local conf_modules = {
 	"nvimtree",
 	"gitsigns",
 	"nvim-ufo",
-  }
+}
 
-  for i = 1, #conf_modules do
+for i = 1, #conf_modules do
 	local modulePath = "./usermod." .. conf_modules[i]
 	require(modulePath)
-  end
+end
