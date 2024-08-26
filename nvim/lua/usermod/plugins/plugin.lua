@@ -2,6 +2,8 @@ local hipatternsConf = require("usermod.plugins.hipatterns")
 local telescopeConf = require("usermod.plugins.telescope")
 local formatterConf = require("usermod.plugins.formatter")
 local luaSnipConf = require('usermod.plugins.completion')
+local lspConf = require('usermod.plugins.lsp')
+local gitConf = require('usermod.plugins.git')
 
 local plugins = {
   "dstein64/vim-startuptime",
@@ -25,34 +27,10 @@ local plugins = {
   hipatternsConf,                                                                -- highlight todo and colors
 
   --  plug for dir_tree
-  { "nvim-tree/nvim-tree.lua",         dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
   -- LSP
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
-  {
-    "nvimdev/lspsaga.nvim",
-    init = function()
-      require("lspsaga").setup({
-        lightbulb = {
-          enable = false,
-        },
-      })
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons'
-    },
-    event = 'LspAttach'
-  }, -- for lsp rename、jump in diagnostics、code action、hover doc
-  {
-    "williamboman/mason.nvim",
-    lazy = true,
-    init = function()
-      require("mason").setup()
-    end,
-  },                                     -- install LSP servers, DAP servers, linters, and formatters
-  { "j-hui/fidget.nvim",    opts = {} }, -- show lsp progress
+  lspConf,
 
   -- Autocompletion plugin
   luaSnipConf,
@@ -65,7 +43,7 @@ local plugins = {
       require("nvim-autopairs").setup({})
     end,
   },
-  { "andymass/vim-matchup", event = "VimEnter" }, -- make '%' support more feature
+  { "andymass/vim-matchup",    event = "VimEnter" }, -- make '%' support more feature
   "tpope/vim-surround",                           -- cs{need_replace}{target_char}
   "voldikss/vim-translator",                      -- select block and enter Translate*
   "junegunn/vim-easy-align",                      -- select block and enter 'ga[align-char]' to align by special char
@@ -114,9 +92,9 @@ local plugins = {
     ft = { 'javascript', 'typescript', 'typescriptreact' }
   },
 
-  { "lewis6991/gitsigns.nvim",    dependencies = { "nvim-lua/plenary.nvim" } },
-  "sindrets/diffview.nvim",
-  "RRethy/vim-illuminate",
+  gitConf,
+
+  "RRethy/vim-illuminate", -- automate highlight words
 
   telescopeConf,
   formatterConf,
@@ -125,7 +103,7 @@ local plugins = {
   "mrjones2014/legendary.nvim",
 
   -- lazyload
-  { "nvim-treesitter/playground", lazy = true,                               cmd = { "TSPlaygroundToggle" } },
+  { "nvim-treesitter/playground", lazy = true, cmd = { "TSPlaygroundToggle" } },
   {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
