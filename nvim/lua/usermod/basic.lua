@@ -41,6 +41,7 @@ set_option({
 
 	signcolumn = "yes", --  Show sign column
 	showtabline = 2, -- always show vim tablin
+  maxmempattern = 5000, -- increase pattern memory
 })
 
 vim.opt.shortmess:append("c") --  Don't pass messages to |ins-completion-menu|.

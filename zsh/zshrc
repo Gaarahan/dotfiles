@@ -16,11 +16,6 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 alias t=todo.sh
 alias vim=nvim
 
-if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* ]]
-then
-  tmux attach -t Gaarahan || tmux new -s Gaarahan
-fi
-
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -103,3 +98,8 @@ dot_bin_path=$(realpath "$current_directory/../bin/tools/")
 export PATH="$dot_bin_path:$PATH"
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* && $VOL_ROOT != *"小程序开发者工具"* ]]
+then
+  tmux attach -t Gaarahan || tmux new -s Gaarahan
+fi

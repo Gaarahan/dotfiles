@@ -40,7 +40,7 @@ legendary.setup({
     },
     {
       "<leader>fd",
-      ":GuardFmt<CR>",
+      ":Guard fmt<CR>",
       description = "Format current doc",
     },
     {
