@@ -37,6 +37,15 @@ return {
       })
     end
   },
+
+  { -- show current context (eg. which function、which object)
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesitter-context").setup()
+    end
+  },
+
   {
     "nvimdev/lspsaga.nvim",
     init = function()
@@ -57,6 +66,7 @@ return {
     },
     event = 'LspAttach'
   }, -- for lsp rename、jump in diagnostics、code action、hover doc
+
   {
     "williamboman/mason.nvim",
     dependencies = {
@@ -81,6 +91,7 @@ return {
         end
       }
     end,
-  }, -- install LSP servers, DAP servers, linters, and formatters
-  { "j-hui/fidget.nvim",    opts = {} }, -- show lsp progress
+  },                                  -- install LSP servers, DAP servers, linters, and formatters
+
+  { "j-hui/fidget.nvim", opts = {} }, -- show lsp progress
 }
