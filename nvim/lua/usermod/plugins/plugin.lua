@@ -35,6 +35,12 @@ local plugins = {
   -- Autocompletion plugin
   luaSnipConf,
   "windwp/nvim-ts-autotag",
+  {
+    "mattn/emmet-vim",
+    init = function()
+      vim.g.user_emmet_leader_key = '<C-A>'
+    end
+  },
 
   -- Plug for base input
   {
@@ -44,10 +50,10 @@ local plugins = {
     end,
   },
   { "andymass/vim-matchup",    event = "VimEnter" }, -- make '%' support more feature
-  "tpope/vim-surround",                           -- cs{need_replace}{target_char}
-  "voldikss/vim-translator",                      -- select block and enter Translate*
-  "junegunn/vim-easy-align",                      -- select block and enter 'ga[align-char]' to align by special char
-  "nvim-pack/nvim-spectre",                       -- quick find and replace
+  "tpope/vim-surround",                              -- cs{need_replace}{target_char}
+  "voldikss/vim-translator",                         -- select block and enter Translate*
+  "junegunn/vim-easy-align",                         -- select block and enter 'ga[align-char]' to align by special char
+  "nvim-pack/nvim-spectre",                          -- quick find and replace
   {
     "phaazon/hop.nvim",
     branch = "v2",
