@@ -21,7 +21,11 @@ source "$profilePath"
 brewCheckOrInstall yarn
 brewCheckOrInstall python3
 brewCheckOrInstall rust
-brewCheckOrInstall raycast --cask
+
+brewCheckOrInstall raycast --cask # use raycast for search app and commands
+brewCheckOrInstall maccy  # use maccy for clipboard manage
+brewCheckOrInstall rectangle --cask  # use rectangle for window manage
+brewCheckOrInstall shottr --cask  # use shottr for screenshot
 
 # zsh and plugins
 brewCheckOrInstall zsh
@@ -44,8 +48,8 @@ brewCheckOrInstall gnu-sed
 #  change terminal font
 brewCheckOrInstall --cask font-hack-nerd-font
 
-defaults write com.googlecode.iterm2 "Normal Font" -string "Monaco"
-defaults write com.googlecode.iterm2 "Non Ascii Font" -string "Hack Nerd Font Mono"
+# defaults write com.googlecode.iterm2 "Normal Font" -string "Monaco"
+# defaults write com.googlecode.iterm2 "Non Ascii Font" -string "Hack Nerd Font Mono"
 
 bot "Install packages for neovim:"
 running "Install neovim on python3"
