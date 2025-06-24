@@ -75,23 +75,23 @@ return {
     },
     init = function()
       require("mason").setup();
-      require("mason-lspconfig").setup();
-      require("mason-lspconfig").setup_handlers {
-        function(server_name) -- default handler (optional)
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-            single_file_support = false,
-          }
-        end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
-        ["rust_analyzer"] = function()
-          require("rust-tools").setup {}
-        end
-      }
+      require("mason-lspconfig").setup({
+        automatic_enable = true,
+        ensure_installed = { "cssls", "css_variables", "eslint", "eslint_d", "lua_ls", "prettier", "stylelint", "ts_ls", "vue_ls" }
+      });
     end,
   },                                  -- install LSP servers, DAP servers, linters, and formatters
 
   { "j-hui/fidget.nvim", opts = {} }, -- show lsp progress
+
+  {
+    'mfussenegger/nvim-lint',
+    init = function()
+      vim.env.ESLINT_D_PPID = vim.fn.getpid()
+      require('lint').linters_by_ft = {
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+      }
+    end
+  }
 }
