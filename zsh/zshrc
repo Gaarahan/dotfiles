@@ -99,7 +99,7 @@ export PATH="$dot_bin_path:$PATH"
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* && $VOL_ROOT != *"小程序开发者工具"* ]]
+if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* && "$TERM_PROGRAM" != "vscode"  && $VOL_ROOT != *"小程序开发者工具"* ]]
 then
   tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
