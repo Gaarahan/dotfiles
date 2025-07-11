@@ -58,6 +58,11 @@ return {
         lightbulb = {
           enable = false,
         },
+        outline = {
+          layout = 'float',
+          detail = false,
+          max_height = 0.8
+        }
       })
     end,
     dependencies = {
@@ -77,7 +82,7 @@ return {
       require("mason").setup();
       require("mason-lspconfig").setup({
         automatic_enable = true,
-        ensure_installed = { "cssls", "css_variables", "eslint", "eslint_d", "lua_ls", "prettier", "stylelint", "ts_ls", "vue_ls" }
+        ensure_installed = { "cssls", "css_variables", "eslint", "lua_ls", "ts_ls", "vue_ls" }
       });
     end,
   },                                  -- install LSP servers, DAP servers, linters, and formatters
