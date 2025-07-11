@@ -1,9 +1,9 @@
 local hipatternsConf = require("usermod.plugins.hipatterns")
-local telescopeConf = require("usermod.plugins.telescope")
 local formatterConf = require("usermod.plugins.formatter")
 local luaSnipConf = require('usermod.plugins.completion')
 local lspConf = require('usermod.plugins.lsp')
 local gitConf = require('usermod.plugins.git')
+local snacksConf = require('usermod.plugins.snacks')
 
 local plugins = {
   "dstein64/vim-startuptime",
@@ -21,13 +21,9 @@ local plugins = {
   },
   "nvim-lualine/lualine.nvim",                                                   -- status line
   { "romgrk/barbar.nvim",    dependencies = { "nvim-tree/nvim-web-devicons" } }, -- buffer line
-  "yuttie/comfortable-motion.vim",                                               -- move smooth when use like <C-f>
   "stevearc/dressing.nvim",                                                      -- beautify vim.ui
   { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },  -- improve vim fold
   hipatternsConf,                                                                -- highlight todo and colors
-
-  --  plug for dir_tree
-  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
   -- LSP
   lspConf,
@@ -69,30 +65,6 @@ local plugins = {
     end,
   }, -- quick comment code or remove comment
   {
-    "johmsalas/text-case.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    config = function()
-      require("textcase").setup({})
-      require("telescope").load_extension("textcase")
-    end,
-    keys = {
-      "ga", -- Default invocation prefix
-      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
-    },
-    cmd = {
-      -- NOTE: The Subs command name can be customized via the option "substitude_command_name"
-      "Subs",
-      "TextCaseOpenTelescope",
-      "TextCaseOpenTelescopeQuickChange",
-      "TextCaseOpenTelescopeLSPChange",
-      "TextCaseStartReplacingCommand",
-    },
-    -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
-    -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
-    -- available after the first executing of it or after a keymap of text-case.nvim has been used.
-    lazy = false,
-  },
-  {
     'heavenshell/vim-jsdoc',
     build = 'make install',
     ft = { 'javascript', 'typescript', 'typescriptreact' }
@@ -100,9 +72,7 @@ local plugins = {
 
   gitConf,
 
-  "RRethy/vim-illuminate", -- automate highlight words
-
-  telescopeConf,
+  snacksConf,
   formatterConf,
 
   -- keymap manager
