@@ -5,9 +5,8 @@ local conf_modules = {
 
   -- config ---
   "basic",
-  "keymap",
+  "keymaps.keymap", -- config keymaps
   "appearance",
-  "nvimtree",
   "nvim-ufo",
 }
 
