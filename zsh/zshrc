@@ -57,7 +57,7 @@ unset_proxy() {
   unset http_proxy
   unset https_proxy
 }
-# set_proxy
+set_proxy
 
 _find_dir() {
   local dir
