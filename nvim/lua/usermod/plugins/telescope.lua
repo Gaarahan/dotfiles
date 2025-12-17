@@ -1,6 +1,6 @@
 local M = {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	tag = "v0.2.0",
 	lazy = true,
 	dependencies = { "princejoogie/dir-telescope.nvim" },
 	init = function()
@@ -36,6 +36,7 @@ local M = {
 					},
 				},
 				path_display = { "smart" },
+				dynamic_preview_title = true,
 			},
 			pickers = vim.tbl_extend("force", picker_config, {
 				lsp_references = { fname_width = 70, show_line = false },

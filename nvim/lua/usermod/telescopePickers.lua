@@ -27,7 +27,9 @@ function telescopePickers.getPathAndTail(fileName)
 
 	-- Apply truncation and other pertaining modifications to the path according to Telescope path rules
 	local pathToDisplay = telescopeUtilities.transform_path({
-		path_display = { "truncate" },
+		path_display = {
+			shorten = { len = 3, exclude = { -1, -2, -3 } },
+		},
 	}, pathWithoutTail)
 
 	-- Return as Tuple
@@ -191,8 +193,8 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 			items = {
 				{ width = fileTypeIconWidth },
 				{ width = nil },
-				{ width = nil }, -- Maximum path size, keep it short
-				{ remaining = true },
+				{ width = nil },
+        { remaining = true },      -- grep text
 			},
 		})
 

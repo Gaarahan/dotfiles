@@ -48,7 +48,7 @@ require("dressing").setup({
 		end,
 	},
 	input = {
-		enabled = false,
+		enabled = true,
 	},
 })
 

@@ -19,7 +19,7 @@ require("nvim-tree").setup({
   },
   filesystem_watchers = {
     enable = true,
-    debounce_delay = 50,
+    debounce_delay = 200,
     ignore_dirs = { "node_modules" },
   },
 })

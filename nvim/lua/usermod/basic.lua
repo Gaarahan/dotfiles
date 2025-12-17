@@ -36,7 +36,7 @@ set_option({
 	spell = true, -- enable spell check
 	ignorecase = true, --  Makes search use smart case
 
-	updatetime = 100, --  Change vim update delay to update git change sign when edit
+	updatetime = 500, --  Change vim update delay to update git change sign when edit
 	hidden = true, --  Can change to other buffer when have unsaved change
 
 	signcolumn = "yes", --  Show sign column

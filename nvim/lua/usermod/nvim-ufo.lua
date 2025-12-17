@@ -1,7 +1,12 @@
-vim.o.foldcolumn = "0" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+local utils = require("usermod.utils")
+local set_option = utils.set_option
+
+set_option({
+  foldcolumn = "0", -- close
+  foldlevel = 99,-- Using ufo provider need a large value, feel free to decrease the value
+  foldlevelstart = 99,
+  foldenable = true
+})
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
