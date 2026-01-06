@@ -200,11 +200,6 @@ legendary.setup({
       description = "Toggle current line git blame",
     },
     {
-      "<leader>lg",
-      ":LazyGit<CR>",
-      description = "Toggle current line git blame",
-    },
-    {
       "<leader>dh",
       ":DiffviewFileHistory %<CR>",
       description = "Show git history of current buffer",
@@ -242,9 +237,14 @@ legendary.setup({
     {
       "<leader>fg",
       function()
-        require("usermod.telescopePickers").prettyGrepPicker({ picker = "live_grep" })
+        require("usermod.telescopePickers").prettyGrepPicker({
+          picker = "live_grep",
+          options = {
+            disable_coordinates = true,
+          },
+        })
       end,
-      description = "Find string in workspace",
+      description = "Find string (Ctrl-k:Case, Ctrl-l:Word, Ctrl-r:Regex)",
     },
     {
       "<leader>fi",
@@ -342,9 +342,36 @@ legendary.setup({
       hide = true,
     },
     {
+      "zk",
+      function()
+        ufo.goPreviousClosedFold()
+      end,
+      description = "Go to prev closed fold",
+    },
+    {
+      "zj",
+      function()
+        ufo.goNextClosedFold()
+      end,
+      description = "Go to next closed flod",
+    },
+    {
       "<leader>ya",
       "ggVGy",
       description = 'Copy all document'
+    }
+    ,
+    {
+      "<C-g>",
+      function()
+        local path = vim.fn.expand("%:p")
+        if path == "" then
+          path = vim.fn.expand("%")
+        end
+        vim.fn.setreg("+", path)
+        vim.api.nvim_echo({ { ("Copied path: " .. path), "None" } }, false, {})
+      end,
+      description = "Show and copy current file path",
     }
   },
   commands = {
@@ -381,6 +408,14 @@ legendary.setup({
         pattern = { "*" },
       },
     },
+    {
+      "FileType",
+      "wincmd H",
+      description = "Always open help file in vertical split",
+      opts = {
+        pattern = { "help" }
+      }
+    }
   },
   -- Customize the prompt that appears on your vim.ui.select() handler
   -- Can be a string or a function that returns a string.
