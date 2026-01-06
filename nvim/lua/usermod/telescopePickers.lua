@@ -6,6 +6,7 @@ local telescopePickers = {}
 -- Store Utilities we'll use frequently
 local telescopeUtilities = require("telescope.utils")
 local telescopeMakeEntryModule = require("telescope.make_entry")
+local action_state = require("telescope.actions.state")
 local plenaryStrings = require("plenary.strings")
 local devIcons = require("nvim-web-devicons")
 local telescopeEntryDisplayModule = require("telescope.pickers.entry_display")
@@ -14,6 +15,56 @@ local telescopeEntryDisplayModule = require("telescope.pickers.entry_display")
 -- --------------------------
 -- INSIGHT: This width applies to all icons that represent a file type
 local fileTypeIconWidth = plenaryStrings.strdisplaywidth(devIcons.get_icon("fname", { default = true }))
+
+---- Global State for Grep ----
+local grep_flags = {
+	case_sensitive = false,
+	whole_word = false,
+	regex = true,
+}
+
+local function get_vimgrep_args()
+	local args = {
+		"rg",
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+	}
+	if grep_flags.case_sensitive then
+		table.insert(args, "--case-sensitive")
+	else
+		table.insert(args, "--smart-case")
+	end
+	if grep_flags.whole_word then
+		table.insert(args, "--word-regexp")
+	end
+	if not grep_flags.regex then
+		table.insert(args, "--fixed-strings")
+	end
+	return args
+end
+
+local function update_picker_title(picker)
+	local title = "Live Grep [^k:Case, ^l:Word, ^r:Regex]"
+	local active = {}
+	if grep_flags.case_sensitive then
+		table.insert(active, "Case")
+	end
+	if grep_flags.whole_word then
+		table.insert(active, "Word")
+	end
+	if not grep_flags.regex then
+		table.insert(active, "Literal")
+	else
+		table.insert(active, "Regex")
+	end
+	if #active > 0 then
+		title = title .. " (Active: " .. table.concat(active, "|") .. ")"
+	end
+	picker.prompt_border:change_title(title)
+end
 
 ---- Helper functions ----
 
@@ -261,7 +312,68 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 
 	-- Finally, check which file picker was requested and open it with its associated options
 	if pickerAndOptions.picker == "live_grep" then
-		require("telescope.builtin").live_grep(options)
+		local finders = require("telescope.finders")
+		local make_entry = require("telescope.make_entry")
+		local pickers = require("telescope.pickers")
+		local conf = require("telescope.config").values
+
+		options.entry_maker = options.entry_maker or make_entry.gen_from_vimgrep(options)
+
+		local function create_finder()
+			return finders.new_job(function(prompt)
+				if not prompt or prompt == "" then
+					return nil
+				end
+
+				local args = get_vimgrep_args()
+				if options.additional_args then
+					local add = type(options.additional_args) == "function" and options.additional_args(options)
+						or options.additional_args
+					vim.list_extend(args, add)
+				end
+
+				return vim.tbl_flatten({ args, "--", prompt, options.search_dirs or {} })
+			end, options.entry_maker, options.max_results, options.cwd)
+		end
+
+		options.attach_mappings = function(prompt_bufnr, map)
+			local function toggle(flag)
+				grep_flags[flag] = not grep_flags[flag]
+				local picker = action_state.get_current_picker(prompt_bufnr)
+				local new_finder = create_finder()
+				picker:refresh(new_finder, { reset_prompt = false })
+				update_picker_title(picker)
+			end
+
+			map("i", "<C-k>", function()
+				toggle("case_sensitive")
+			end)
+			map("i", "<C-l>", function()
+				toggle("whole_word")
+			end)
+			map("i", "<C-r>", function()
+				toggle("regex")
+			end)
+
+			-- Initial title update
+			vim.schedule(function()
+				local picker = action_state.get_current_picker(prompt_bufnr)
+				if picker then
+					update_picker_title(picker)
+				end
+			end)
+
+			return true
+		end
+
+		pickers
+			.new(options, {
+				prompt_title = "Live Grep",
+				finder = create_finder(),
+				previewer = conf.grep_previewer(options),
+				sorter = require("telescope.sorters").highlighter_only(options),
+			})
+			:find()
 	elseif pickerAndOptions.picker == "grep_string" then
 		require("telescope.builtin").grep_string(options)
 	elseif pickerAndOptions.picker == "" then
