@@ -2,7 +2,6 @@ local M = {
 	"nvim-telescope/telescope.nvim",
 	tag = "v0.2.0",
 	lazy = true,
-	dependencies = { "princejoogie/dir-telescope.nvim" },
 	init = function()
 		local telescope = require("telescope")
 
@@ -44,13 +43,6 @@ local M = {
 				lsp_type_definitions = { fname_width = 70, show_line = false },
 				lsp_implementations = { fname_width = 70, show_line = false },
 			}),
-		})
-
-		-- load dir grep
-		require("dir-telescope").setup({
-			hidden = false,
-			no_ignore = false,
-			show_preview = true,
 		})
 	end,
 }

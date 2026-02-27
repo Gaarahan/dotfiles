@@ -221,6 +221,31 @@ legendary.setup({
       ":NvimTreeFindFileToggle<CR>",
       description = "Open current file in explorer",
     },
+    {
+      "gf",
+      function()
+        local api = require("nvim-tree.api")
+        local node = api.tree.get_node_under_cursor()
+        if not node then
+          return
+        end
+
+        local path = node.absolute_path
+        if node.type ~= "directory" then
+          path = vim.fn.fnamemodify(path, ":h")
+        end
+
+        require("usermod.telescopePickers").prettyGrepPicker({
+          picker = "live_grep",
+          options = {
+            search_dirs = { path },
+            prompt_title = "Search in " .. vim.fn.fnamemodify(path, ":t"),
+          },
+        })
+      end,
+      description = "Grep folder(in nvim-tree)",
+      filters = { ft = "NvimTree" },
+    },
     -- searcher --
     {
       "<leader>ff",

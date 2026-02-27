@@ -46,8 +46,9 @@ local function get_vimgrep_args()
 	return args
 end
 
-local function update_picker_title(picker)
-	local title = "Live Grep [^k:Case, ^l:Word, ^r:Regex]"
+local function update_picker_title(picker, base_title)
+	base_title = base_title or "Live Grep"
+	local title = base_title .. " [^k:Case, ^l:Word, ^r:Regex]"
 	local active = {}
 	if grep_flags.case_sensitive then
 		table.insert(active, "Case")
@@ -342,7 +343,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 				local picker = action_state.get_current_picker(prompt_bufnr)
 				local new_finder = create_finder()
 				picker:refresh(new_finder, { reset_prompt = false })
-				update_picker_title(picker)
+				update_picker_title(picker, options.prompt_title)
 			end
 
 			map("i", "<C-k>", function()
@@ -359,7 +360,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 			vim.schedule(function()
 				local picker = action_state.get_current_picker(prompt_bufnr)
 				if picker then
-					update_picker_title(picker)
+					update_picker_title(picker, options.prompt_title)
 				end
 			end)
 
@@ -368,7 +369,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 
 		pickers
 			.new(options, {
-				prompt_title = "Live Grep",
+				prompt_title = options.prompt_title or "Live Grep",
 				finder = create_finder(),
 				previewer = conf.grep_previewer(options),
 				sorter = require("telescope.sorters").highlighter_only(options),
