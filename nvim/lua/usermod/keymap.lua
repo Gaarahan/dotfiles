@@ -3,6 +3,50 @@ local directions = require("hop.hint").HintDirection
 local legendary = require("legendary")
 local ufo = require("ufo")
 
+-- 使用 Lua 模块级变量替代 vim.g，避免全局变量状态保存问题
+local terminal_state = {
+  win = nil,
+  buf = nil
+}
+
+local function toggle_right_terminal_vsplit()
+  -- 检查是否已经存在终端窗口
+  local terminal_win = nil
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].buftype == "terminal" then
+      terminal_win = win
+      break
+    end
+  end
+
+  if terminal_win then
+    -- 如果找到终端窗口，隐藏它（不关闭，只是隐藏）
+    vim.api.nvim_win_hide(terminal_win)
+    terminal_state.win = nil
+    return
+  end
+
+  -- 如果没有终端窗口，创建新窗口并设置尺寸
+  vim.cmd("botright vsplit")
+  terminal_state.win = vim.api.nvim_get_current_win()
+  local total_width = vim.api.nvim_get_option("columns")
+  local terminal_width = math.floor(total_width * 0.4)
+  vim.api.nvim_win_set_width(terminal_state.win, terminal_width)
+
+  -- 检查是否有已隐藏的终端缓冲区，否则创建新的
+  if terminal_state.buf and vim.api.nvim_buf_is_valid(terminal_state.buf) and vim.bo[terminal_state.buf].buftype == "terminal" then
+    vim.api.nvim_set_current_buf(terminal_state.buf)
+  else
+    vim.cmd("terminal")
+    terminal_state.buf = vim.api.nvim_get_current_buf()
+    vim.bo[terminal_state.buf].bufhidden = "hide"
+    vim.bo[terminal_state.buf].swapfile = false
+  end
+
+  vim.cmd("startinsert")
+end
+
 legendary.setup({
   keymaps = {
     {
@@ -79,6 +123,12 @@ legendary.setup({
         require("telescope.builtin").buffers()
       end,
       description = "Pick special buffer",
+    },
+    {
+      "<C-t>",
+      toggle_right_terminal_vsplit,
+      description = "Toggle right terminal (vsplit) - Press C-t",
+      mode = { "n", "t" },
     },
 
     -- lsp --
