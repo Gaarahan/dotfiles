@@ -10,6 +10,35 @@ local terminal_state = {
 }
 
 local function toggle_right_terminal_vsplit()
+  -- 自动复制当前代码位置到剪贴板
+  local path = vim.fn.expand("%:p")
+  if path ~= "" then
+    -- 获取选中区域的行号范围
+    local start_line, end_line
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "v" or mode == "V" or mode == "\22" then
+      -- 视觉模式下获取选中区域
+      -- 先退出visual mode获取选中位置
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
+      start_line = vim.fn.getpos("'<")[2]
+      end_line = vim.fn.getpos("'>")[2]
+    else
+      -- 普通模式下只获取当前行
+      start_line = vim.fn.line(".")
+      end_line = start_line
+    end
+
+    local code_location
+    if start_line == end_line then
+      code_location = string.format("%s:%d", path, start_line)
+    else
+      code_location = string.format("%s:%d~%d", path, start_line, end_line)
+    end
+
+    vim.fn.setreg("+", code_location)
+    vim.api.nvim_echo({ { ("Copied code location: " .. code_location), "None" } }, false, {})
+  end
+
   -- 检查是否已经存在终端窗口
   local terminal_win = nil
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -38,7 +67,9 @@ local function toggle_right_terminal_vsplit()
   if terminal_state.buf and vim.api.nvim_buf_is_valid(terminal_state.buf) and vim.bo[terminal_state.buf].buftype == "terminal" then
     vim.api.nvim_set_current_buf(terminal_state.buf)
   else
-    vim.cmd("terminal")
+    -- 创建新的终端时，指定要自动执行的命令
+    local auto_command = "traecli"
+    vim.cmd("terminal " .. auto_command)
     terminal_state.buf = vim.api.nvim_get_current_buf()
     vim.bo[terminal_state.buf].bufhidden = "hide"
     vim.bo[terminal_state.buf].swapfile = false
@@ -128,7 +159,7 @@ legendary.setup({
       "<C-t>",
       toggle_right_terminal_vsplit,
       description = "Toggle right terminal (vsplit) - Press C-t",
-      mode = { "n", "t" },
+      mode = { "n", "t", "v" },
     },
 
     -- lsp --
@@ -447,7 +478,7 @@ legendary.setup({
         vim.api.nvim_echo({ { ("Copied path: " .. path), "None" } }, false, {})
       end,
       description = "Show and copy current file path",
-    }
+    },
   },
   commands = {
     {

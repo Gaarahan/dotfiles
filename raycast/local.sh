@@ -16,9 +16,10 @@
 if [[ $1 =~ ^[0-9]+$ ]]; then
   # if all number: open localhost
   open "https://localhost:$1"
-elif [[ $1 =~ ^[a-z0-9]{30} ]]; then
-  open "https://yuntu.alipay.com/yuntu/trace/traceView?traceId=$1"
+elif [[ $1 =~ ^[A-Z0-9]{34} ]]; then
+  # looks like a logid
+  open "https://cloud.bytedance.net/argos/streamlog/info_overview/log_id_search?logId=$1"
 else
-  # else search in yuyan
-  open "https://yuyan.antfin-inc.com/search?q=$1"
+  # else search in bnpm
+  open "https://bnpm.bytedance.net/search?query=$1&pageNumber=1&pageSize=20&private=false"
 fi
