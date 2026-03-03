@@ -12,6 +12,29 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     check_rm "$ZSHRC.bak"
     mv "$ZSHRC" "$ZSHRC.bak"
   fi
+
+  running "ensuring bin/tools are executable"
+  script_dir="${BASH_SOURCE[0]%/*}"
+  root_dir="$(cd "$script_dir/../.." && pwd)"
+  tools_dir="$root_dir/bin/tools"
+  lazygit_pager="$root_dir/lazygit/lazygit-delta-pager"
+  changed=0
+  for f in "$tools_dir"/* "$lazygit_pager"; do
+    [ -f "$f" ] || continue
+    if [ ! -x "$f" ]; then
+      chmod +x "$f" 2>/dev/null || true
+      if [ -x "$f" ]; then
+        echo "  chmod +x $f"
+        changed=1
+      fi
+    fi
+  done
+  if [ "$changed" -eq 0 ]; then
+    ok "no chmod needed"
+  else
+    ok
+  fi
+
   ln -s "$(getPath "../../zsh/zshrc")" "$ZSHRC"
   ok "Config success"
 

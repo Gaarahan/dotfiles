@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+
+script_dir="${BASH_SOURCE[0]%/*}"
+repo_root="$(cd "$script_dir/../.." && pwd)"
+exec /bin/bash "$repo_root/lazygit/lazygit-delta-pager" "$@"

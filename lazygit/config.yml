@@ -1,9 +1,11 @@
 gui:
   language: 'en'
+  # Use delta's own side-by-side for modified files; keep lazygit diff view single-pane.
+  splitDiff: never
 keybinding:
   universal:
     filteringMenu: '<c-f>'
 git:
   pagers:
     - colorArg: always
-      pager: delta --dark --paging=never
+      pager: lazygit-delta-pager

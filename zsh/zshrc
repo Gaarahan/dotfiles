@@ -14,7 +14,7 @@ plugins=(
   z
 )
 
-current_directory=$(dirname "$(readlink -f "$HOME/.zshrc")")
+current_directory="${${(%):-%N}:A:h}"
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -102,9 +102,6 @@ export FZF_DEFAULT_COMMAND='ag .'
 export EDITOR='vim'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-dot_bin_path=$(realpath "$current_directory/../bin/tools/")
-export PATH="$dot_bin_path:$PATH"
-
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* && "$TERM_PROGRAM" != "vscode"  && $VOL_ROOT != *"小程序开发者工具"* ]]
@@ -137,3 +134,10 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+dot_bin_path="${current_directory:A}/../bin/tools"
+dot_bin_path="${dot_bin_path:A}"
+case ":$PATH:" in
+  *":$dot_bin_path:"*) ;;
+  *) export PATH="$dot_bin_path:$PATH" ;;
+esac

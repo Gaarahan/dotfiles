@@ -1,0 +1,40 @@
+#!/bin/bash
+set -euo pipefail
+
+log_file="${LAZYGIT_DELTA_PAGER_LOG:-/tmp/lazygit-delta-pager.log}"
+log() {
+  # Best-effort logging; never break paging.
+  {
+    printf '[%s] pid=%s %s\n' "$(date '+%F %T')" "$$" "$*"
+  } >>"$log_file" 2>/dev/null || true
+}
+
+tmp="$(mktemp -t lazygit-delta.XXXXXX)"
+tmp_plain="$(mktemp -t lazygit-delta-plain.XXXXXX)"
+cleanup() { rm -f "$tmp" "$tmp_plain"; }
+trap cleanup EXIT
+
+log "invoked argv=($*)"
+log "env PWD=${PWD} TERM=${TERM-} PATH=${PATH}"
+
+cat >"$tmp"
+
+# Strip ANSI color codes for robust detection (lazygit typically passes --color=always)
+perl -pe 's/\e\[[0-9;]*[mK]//g' <"$tmp" >"$tmp_plain" || cp -f "$tmp" "$tmp_plain"
+
+log "stdin_head_begin"
+{ sed -n '1,40p' "$tmp" | sed 's/\r$//' ; echo '...'; } | while IFS= read -r line; do log "stdin| $line"; done
+log "stdin_head_end"
+
+# For added/deleted files, `delta --side-by-side` can render poorly.
+# Detect these cases and fall back to unified view.
+if grep -Eq '^(new file mode|deleted file mode)|^--- /dev/null|^\+\+\+ /dev/null' "$tmp_plain"; then
+  log "mode=unified (added/deleted file detected)"
+  cmd=(delta --dark --paging=never --line-numbers --syntax-theme=gruvbox-dark)
+else
+  log "mode=side-by-side (normal modification)"
+  cmd=(delta --dark --paging=never --line-numbers --side-by-side --syntax-theme=gruvbox-dark)
+fi
+
+log "exec: ${cmd[*]}"
+"${cmd[@]}" <"$tmp"
