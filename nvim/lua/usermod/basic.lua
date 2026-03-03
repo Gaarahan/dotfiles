@@ -6,8 +6,6 @@ vim.g.mapleader = " "
 
 -- set options
 
-vim.cmd('autocmd BufEnter *.png, *.jpg, *.gif exec "silent !open ".expand("%") | :bw')
-
 vim.api.nvim_exec(
 	[[
     let $GIT_EDITOR = "nvr -cc vsplit --remote-wait +'set bufhidden=wipe'"
@@ -43,5 +41,4 @@ set_option({
 	showtabline = 2, -- always show vim tablin
   maxmempattern = 5000, -- increase pattern memory
 })
-
 vim.opt.shortmess:append("c") --  Don't pass messages to |ins-completion-menu|.

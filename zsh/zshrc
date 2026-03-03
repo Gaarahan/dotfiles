@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/bytedance/.oh-my-zsh/custom/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="af-magic"
 
@@ -18,7 +25,8 @@ alias vim=nvim
 
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home)
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 bindkey -v # use vim mode
 
@@ -57,7 +65,7 @@ unset_proxy() {
   unset http_proxy
   unset https_proxy
 }
-set_proxy
+# set_proxy
 
 _find_dir() {
   local dir
@@ -103,3 +111,29 @@ if [[ -z "$TMUX" && "$TERMINAL_EMULATOR" != "JetBrains"* && "$TERM_PROGRAM" != "
 then
   tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
+
+export PATH="$PATH:/Users/bytedance/Library/Android/sdk/platform-tools/"
+
+# pnpm
+export PNPM_HOME="/Users/bytedance/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Added by coco installer
+export PATH="/Users/bytedance/.local/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+# pyenv end
+
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'

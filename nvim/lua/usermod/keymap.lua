@@ -521,6 +521,47 @@ legendary.setup({
       opts = {
         pattern = { "help" }
       }
+    },
+    {
+      "BufEnter",
+      function()
+        local file = vim.fn.expand("%:p")
+        if file == "" then
+          return
+        end
+        vim.cmd("silent! !open " .. vim.fn.shellescape(file))
+        vim.cmd("bw")
+      end,
+      description = "Open image file externally and close buffer",
+      opts = {
+        pattern = { "*.png", "*.jpg", "*.gif" },
+      },
+    },
+    {
+      "TermOpen",
+      function()
+        -- Terminal buffers are not natural-language text, so spell-checking there
+        -- tends to underline almost everything (including Chinese). Disable it.
+        vim.opt_local.spell = false
+      end,
+      description = "Disable spell in terminal buffers",
+    },
+    {
+      "TermEnter",
+      function()
+        vim.opt_local.spell = false
+      end,
+      description = "Disable spell in terminal buffers (enter)",
+    },
+    {
+      "BufEnter",
+      function()
+        vim.opt_local.spell = false
+      end,
+      description = "Disable spell in terminal buffers (term://*)",
+      opts = {
+        pattern = { "term://*" },
+      },
     }
   },
   -- Customize the prompt that appears on your vim.ui.select() handler

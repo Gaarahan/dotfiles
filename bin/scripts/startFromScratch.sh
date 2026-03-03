@@ -45,6 +45,9 @@ brewCheckOrInstall ripgrep
 brewCheckOrInstall knqyf263/pet/pet
 brewCheckOrInstall gnu-sed
 
+# use dust to check dir size
+brewCheckOrInstall dust
+
 #  change terminal font
 brewCheckOrInstall --cask font-hack-nerd-font
 
