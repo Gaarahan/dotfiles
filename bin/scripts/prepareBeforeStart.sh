@@ -1,5 +1,7 @@
 set -e
 
+# NOTE: This repo's install flow is intended for macOS only.
+
 source "./bin/scripts/utils.sh"
 
 # ###########################################################
@@ -39,8 +41,33 @@ if [[ ${PIPESTATUS[0]} != 0 ]]; then
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   
   action "add brew to PATH"
-  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/"$(whoami)"/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  # Support both Apple Silicon (/opt/homebrew) and Intel (/usr/local).
+  brew_bin=""
+  if [ -x "/opt/homebrew/bin/brew" ]; then
+    brew_bin="/opt/homebrew/bin/brew"
+  elif [ -x "/usr/local/bin/brew" ]; then
+    brew_bin="/usr/local/bin/brew"
+  fi
+
+  # Persist shellenv setup to ~/.zprofile (portable, no hardcoded username).
+  if ! grep -q "brew shellenv" "$HOME/.zprofile" 2>/dev/null; then
+    {
+      echo
+      echo '# Added by dotfiles installer (macOS only)'
+      echo 'if [ -x /opt/homebrew/bin/brew ]; then'
+      echo '  eval "$(/opt/homebrew/bin/brew shellenv)"'
+      echo 'elif [ -x /usr/local/bin/brew ]; then'
+      echo '  eval "$(/usr/local/bin/brew shellenv)"'
+      echo 'fi'
+    } >> "$HOME/.zprofile"
+  fi
+
+  if [ -n "$brew_bin" ]; then
+    eval "$("$brew_bin" shellenv)"
+  elif command -v brew >/dev/null 2>&1; then
+    eval "$(brew shellenv)"
+  fi
 
   if [[ $? != 0 ]]; then
     error "unable to install homebrew, script $0 abort!"
@@ -66,10 +93,13 @@ fi
 brewCheckOrInstall coreutils
 
 # get absolute path from relative path {{
-CORE_UTIL_PATH="/usr/local/opt/coreutils/libexec/gnubin"
+CORE_UTIL_PATH=""
+if command -v brew >/dev/null 2>&1; then
+  CORE_UTIL_PATH="$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin"
+fi
 
 getPath() {
-  if [[ $PATH =~ "$CORE_UTIL_PATH" ]]; then
+  if [[ -n "$CORE_UTIL_PATH" && ! $PATH =~ "$CORE_UTIL_PATH" ]]; then
     export PATH="$CORE_UTIL_PATH:$PATH"
   fi
   local curr_path=$(pwd)

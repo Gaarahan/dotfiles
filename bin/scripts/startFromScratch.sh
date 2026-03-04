@@ -1,22 +1,24 @@
 # ###########################################################
 # install required packages
 # ###########################################################
+
+# NOTE: This repo's install flow is intended for macOS only.
+
 brewCheckOrInstall curl
 brewCheckOrInstall wget
 brewCheckOrInstall git
 
 brewCheckOrInstall nvm
-profilePath="/Users/$(whoami)/.bashrc"
-if [ -f "$profilePath" ] && grep -q "NVM_DIR" "$profilePath"; then
-  warn "skip nvm path config"
-else
-  action "add nvm to path"
-  echo 'export NVM_DIR="$HOME/.nvm"' >> "$profilePath"
-  echo '[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm' >> "$profilePath"
-  echo '[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> "$profilePath"
-  ok
+
+# Load nvm for this script session (do NOT write into user's shell rc here).
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  \. "$NVM_DIR/nvm.sh"
+elif command -v brew >/dev/null 2>&1; then
+  _nvm_sh="$(brew --prefix nvm 2>/dev/null)/nvm.sh"
+  [ -s "$_nvm_sh" ] && \. "$_nvm_sh"
+  unset _nvm_sh
 fi
-source "$profilePath"
 
 brewCheckOrInstall yarn
 brewCheckOrInstall python3

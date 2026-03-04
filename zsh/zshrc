@@ -1,6 +1,6 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-fpath=("/Users/bytedance/.oh-my-zsh/custom/completions" $fpath)
+fpath=("$HOME/.oh-my-zsh/custom/completions" $fpath)
 autoload -Uz compinit
 compinit
 # OPENSPEC:END
@@ -90,8 +90,23 @@ bindkey -s "^R" " _find_history\n"
 stty eof undef  # prevent C-d to close panel
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# nvm (macOS only)
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  \. "$NVM_DIR/nvm.sh"  # This loads nvm
+elif command -v brew >/dev/null 2>&1; then
+  _nvm_sh="$(brew --prefix nvm 2>/dev/null)/nvm.sh"
+  [ -s "$_nvm_sh" ] && \. "$_nvm_sh"
+  unset _nvm_sh
+fi
+
+if [ -s "$NVM_DIR/bash_completion" ]; then
+  \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+elif command -v brew >/dev/null 2>&1; then
+  _nvm_comp="$(brew --prefix nvm 2>/dev/null)/etc/bash_completion.d/nvm"
+  [ -s "$_nvm_comp" ] && \. "$_nvm_comp"
+  unset _nvm_comp
+fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export FZF_DEFAULT_COMMAND='ag .'
