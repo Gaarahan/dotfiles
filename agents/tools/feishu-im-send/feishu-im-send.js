@@ -14,6 +14,9 @@
  *   feishu-im-send --configure
  *   feishu-im-send --configure --app-id "xxx" --app-secret "yyy" --receive-id "ou_xxx" --force
  *
+ * Note:
+ *   - receive_id_type is fixed to open_id, so receive_id should be like "ou_xxx".
+ *
  * Env:
  *   FEISHU_APP_ID / FEISHU_APP_SECRET
  *   FEISHU_RECEIVE_ID (optional default receive_id)
@@ -302,6 +305,9 @@ function parseArgs(argv) {
         '  feishu-im-send --show-config',
         '  feishu-im-send --configure',
         '  feishu-im-send --configure --app-id "xxx" --app-secret "yyy" --receive-id "ou_xxx" --force',
+        '',
+        '说明：',
+        '  本工具固定使用 receive_id_type=open_id，因此 receive_id 需为 open_id（示例：ou_xxx）。',
         '',
         'env 文件（可选）：',
         `  默认：${getDefaultEnvFilePath()}`,
