@@ -10,33 +10,37 @@ local terminal_state = {
 }
 
 local function toggle_right_terminal_vsplit()
-  -- 自动复制当前代码位置到剪贴板
-  local path = vim.fn.expand("%:p")
-  if path ~= "" then
-    -- 获取选中区域的行号范围
-    local start_line, end_line
-    local mode = vim.api.nvim_get_mode().mode
-    if mode == "v" or mode == "V" or mode == "\22" then
-      -- 视觉模式下获取选中区域
-      -- 先退出visual mode获取选中位置
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
-      start_line = vim.fn.getpos("'<")[2]
-      end_line = vim.fn.getpos("'>")[2]
-    else
-      -- 普通模式下只获取当前行
-      start_line = vim.fn.line(".")
-      end_line = start_line
-    end
+  -- 自动复制当前代码位置到剪贴板（终端窗口内触发时跳过）
+  local cur_buf = vim.api.nvim_get_current_buf()
+  local is_terminal_buf = vim.bo[cur_buf].buftype == "terminal"
+  if not is_terminal_buf then
+    local path = vim.fn.expand("%:p")
+    if path ~= "" then
+      -- 获取选中区域的行号范围
+      local start_line, end_line
+      local mode = vim.api.nvim_get_mode().mode
+      if mode == "v" or mode == "V" or mode == "\22" then
+        -- 视觉模式下获取选中区域
+        -- 先退出visual mode获取选中位置
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
+        start_line = vim.fn.getpos("'<")[2]
+        end_line = vim.fn.getpos("'>")[2]
+      else
+        -- 普通模式下只获取当前行
+        start_line = vim.fn.line(".")
+        end_line = start_line
+      end
 
-    local code_location
-    if start_line == end_line then
-      code_location = string.format("%s:%d", path, start_line)
-    else
-      code_location = string.format("%s:%d~%d", path, start_line, end_line)
-    end
+      local code_location
+      if start_line == end_line then
+        code_location = string.format("%s:%d", path, start_line)
+      else
+        code_location = string.format("%s:%d~%d", path, start_line, end_line)
+      end
 
-    vim.fn.setreg("+", code_location)
-    vim.api.nvim_echo({ { ("Copied code location: " .. code_location), "None" } }, false, {})
+      vim.fn.setreg("+", code_location)
+      vim.api.nvim_echo({ { ("Copied code location: " .. code_location), "None" } }, false, {})
+    end
   end
 
   -- 检查是否已经存在终端窗口
