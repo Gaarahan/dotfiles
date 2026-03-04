@@ -130,3 +130,25 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
 else
   info "Skip config nvim"
 fi
+
+# ###########################################################
+# Config Agents (~/.agents)
+# ###########################################################
+
+AGENTS_HOME="$HOME/.agents"
+
+bot "Link './agents' to '~/.agents', this will backup the old directory? (y/N)"
+read -r
+
+if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
+  info "Start config agents"
+
+  if [ -e "$AGENTS_HOME" ] || [ -L "$AGENTS_HOME" ]; then
+    check_rm "$AGENTS_HOME.bak"
+    mv "$AGENTS_HOME" "$AGENTS_HOME.bak"
+  fi
+  ln -s "$(getPath "../../agents")" "$AGENTS_HOME"
+  ok "Config success"
+else
+  info "Skip config agents"
+fi
