@@ -16,17 +16,15 @@ plugins=(
 
 current_directory="${${(%):-%N}:A:h}"
 
+# Centralized PATH management
+source "${current_directory:A}/path.zsh"
+
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 alias t=todo.sh
 alias vim=nvim
-
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 bindkey -v # use vim mode
 
@@ -58,8 +56,8 @@ _fix_cursor() {
 precmd_functions+=(_fix_cursor)
 
 set_proxy() {
-  export http_proxy=socks5://127.0.0.1:7890
-  export https_proxy=socks5://127.0.0.1:7890
+  export http_proxy=http://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7890
 }
 unset_proxy() {
   unset http_proxy
@@ -91,8 +89,6 @@ bindkey -s "^R" " _find_history\n"
 
 stty eof undef  # prevent C-d to close panel
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -109,35 +105,8 @@ then
   tmux attach -t Gaarahan || tmux new -s Gaarahan
 fi
 
-export PATH="$PATH:/Users/bytedance/Library/Android/sdk/platform-tools/"
-
-# pnpm
-export PNPM_HOME="/Users/bytedance/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Added by coco installer
-export PATH="/Users/bytedance/.local/bin:$PATH"
-export PATH=$HOME/.local/bin:$PATH
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-# pyenv end
-
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
-dot_bin_path="${current_directory:A}/../bin/tools"
-dot_bin_path="${dot_bin_path:A}"
-case ":$PATH:" in
-  *":$dot_bin_path:"*) ;;
-  *) export PATH="$dot_bin_path:$PATH" ;;
-esac
+# pyenv (PATH handled in zsh/path.zsh)
+eval "$(pyenv init - zsh)"
+# pyenv end
