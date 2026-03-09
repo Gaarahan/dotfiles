@@ -7,6 +7,8 @@ return {
     local ft = require('guard.filetype')
 
     ft('typescript,javascript,typescriptreact,json,markdown,html'):fmt('prettier')
+    ft('python'):fmt('black')
+
     vim.g.guard_config = {
       fmt_on_save = false,
       lsp_as_default_formatter = true,

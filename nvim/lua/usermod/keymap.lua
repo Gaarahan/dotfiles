@@ -89,12 +89,12 @@ legendary.setup({
       function()
         require("telescope.builtin").current_buffer_fuzzy_find()
       end,
-      description = "Find string in current buffer",
+      description = "Find string in current buffer - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fc",
       ":Legendary<CR>",
-      description = "Find Command",
+      description = "Find Command - [mrjones2014/legendary.nvim]",
     },
     {
       "<leader>sv",
@@ -104,7 +104,7 @@ legendary.setup({
     {
       "ga",
       "<Plug>(EasyAlign)",
-      description = "Start interactive EasyAlign in visual mode (e.g. vipga)",
+      description = "Start interactive EasyAlign in visual mode (e.g. vipga) - [junegunn/vim-easy-align]",
       mode = { "x" },
     },
     {
@@ -115,12 +115,12 @@ legendary.setup({
     {
       "<leader>ms",
       ":Mason<CR>",
-      description = "Open mason - LSP manager",
+      description = "Open mason - LSP manager - [mason-org/mason.nvim]",
     },
     {
       "<leader>fd",
       ":Guard fmt<CR>",
-      description = "Format current doc",
+      description = "Format current doc - [nvimdev/guard.nvim]",
     },
     {
       "<leader>fe",
@@ -130,34 +130,34 @@ legendary.setup({
     {
       "<leader>[",
       ":BufferPrevious<CR>",
-      description = "Move to previous buffer",
+      description = "Move to previous buffer - [romgrk/barbar.nvim]",
     },
     {
       "<leader>]",
       ":BufferNext<CR>",
-      description = "Move to next buffer",
+      description = "Move to next buffer - [romgrk/barbar.nvim]",
     },
     {
       "<leader>dd",
       ":BufferClose<CR>",
-      description = "Close current buffer",
+      description = "Close current buffer - [romgrk/barbar.nvim]",
     },
     {
       "<leader>bo",
       ":BufferCloseAllButCurrent<CR>",
-      description = "Close all but current buffer",
+      description = "Close all but current buffer - [romgrk/barbar.nvim]",
     },
     {
       "<leader>bd",
       ":BufferOrderByDirectory<CR>",
-      description = "Buffer order by dir",
+      description = "Buffer order by dir - [romgrk/barbar.nvim]",
     },
     {
       "<C-p>",
       function()
         require("telescope.builtin").buffers()
       end,
-      description = "Pick special buffer",
+      description = "Pick special buffer - [nvim-telescope/telescope.nvim]",
     },
     {
       "<C-t>",
@@ -170,71 +170,71 @@ legendary.setup({
     {
       "<leader>ac",
       ":Lspsaga code_action<CR>",
-      description = "Show code action",
+      description = "Show code action - [nvimdev/lspsaga.nvim]",
     },
     {
       "<leader>rn",
       ":Lspsaga rename<CR>",
-      description = "Rename current symbol",
+      description = "Rename current symbol - [nvimdev/lspsaga.nvim]",
     },
     {
       "<leader>ld",
       ":Lspsaga show_line_diagnostics<CR>",
-      description = "Show current line diagnostics",
+      description = "Show current line diagnostics - [nvimdev/lspsaga.nvim]",
     },
     {
       "<leader>lc",
       ":Lspsaga show_cursor_diagnostics<CR>",
-      description = "Show current cursor diagnostics",
+      description = "Show current cursor diagnostics - [nvimdev/lspsaga.nvim]",
     },
     {
       "gi",
       ":Telescope lsp_implementations<CR>",
-      description = "Go to implementations",
+      description = "Go to implementations - [nvim-telescope/telescope.nvim]",
     },
     {
       "gr",
       ":Telescope lsp_references<CR>",
-      description = "Go to references",
+      description = "Go to references - [nvim-telescope/telescope.nvim]",
     },
     {
       "gd",
       ":Telescope lsp_definitions<CR>",
-      description = "Go to definition",
+      description = "Go to definition - [nvim-telescope/telescope.nvim]",
     },
     {
       "gw",
       ":HopWord<CR>",
-      description = "Go to word",
+      description = "Go to word - [phaazon/hop.nvim]",
     },
     {
       "K",
       ":Lspsaga hover_doc<CR>",
-      description = "Show document",
+      description = "Show document - [nvimdev/lspsaga.nvim]",
     },
     {
       "[E",
       ":Lspsaga diagnostic_jump_prev<CR>",
-      description = "Go to previous diagnostic",
+      description = "Go to previous diagnostic - [nvimdev/lspsaga.nvim]",
     },
     {
       "]E",
       ":Lspsaga diagnostic_jump_next<CR>",
-      description = "Go to next diagnostic",
+      description = "Go to next diagnostic - [nvimdev/lspsaga.nvim]",
     },
     {
       "[e",
       function()
         require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
       end,
-      description = "Go to previous error",
+      description = "Go to previous error - [nvimdev/lspsaga.nvim]",
     },
     {
       "]e",
       function()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
       end,
-      description = "Go to next error",
+      description = "Go to next error - [nvimdev/lspsaga.nvim]",
     },
     {
       "[q",
@@ -260,7 +260,7 @@ legendary.setup({
         end)
         return "<Ignore>"
       end,
-      description = "Go to next diff hunk",
+      description = "Go to next diff hunk - [lewis6991/gitsigns.nvim]",
     },
     {
       "[c",
@@ -274,7 +274,7 @@ legendary.setup({
         end)
         return "<Ignore>"
       end,
-      description = "Go to previous diff hunk",
+      description = "Go to previous diff hunk - [lewis6991/gitsigns.nvim]",
     },
     {
       "<leader>tb",
@@ -282,29 +282,29 @@ legendary.setup({
         local gs = package.loaded.gitsigns
         gs.toggle_current_line_blame()
       end,
-      description = "Toggle current line git blame",
+      description = "Toggle current line git blame - [lewis6991/gitsigns.nvim]",
     },
     {
       "<leader>dh",
       ":DiffviewFileHistory %<CR>",
-      description = "Show git history of current buffer",
+      description = "Show git history of current buffer - [sindrets/diffview.nvim]",
     },
     {
       "<leader>dc",
       ":DiffviewClose<CR>",
-      description = "Close git diffview",
+      description = "Close git diffview - [sindrets/diffview.nvim]",
     },
 
     -- file explorer --
     {
       "<F3>",
       ":NvimTreeToggle<CR>",
-      description = "Toggle file explorer",
+      description = "Toggle file explorer - [nvim-tree/nvim-tree.lua]",
     },
     {
       "<F4>",
       ":NvimTreeFindFileToggle<CR>",
-      description = "Open current file in explorer",
+      description = "Open current file in explorer - [nvim-tree/nvim-tree.lua]",
     },
     {
       "gf",
@@ -328,7 +328,7 @@ legendary.setup({
           },
         })
       end,
-      description = "Grep folder(in nvim-tree)",
+      description = "Grep folder(in nvim-tree) - [nvim-tree/nvim-tree.lua + nvim-telescope/telescope.nvim]",
       filters = { ft = "NvimTree" },
     },
     -- searcher --
@@ -337,12 +337,12 @@ legendary.setup({
       function()
         require("usermod.telescopePickers").prettyFilesPicker({ picker = "find_files" })
       end,
-      description = "Find file name",
+      description = "Find file name - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fs",
       ":Telescope lsp_document_symbols<CR>",
-      description = "Find symbols in current file",
+      description = "Find symbols in current file - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fg",
@@ -354,48 +354,48 @@ legendary.setup({
           },
         })
       end,
-      description = "Find string (Ctrl-k:Case, Ctrl-l:Word, Ctrl-r:Regex)",
+      description = "Find string (Ctrl-k:Case, Ctrl-l:Word, Ctrl-r:Regex) - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fi",
       ":Telescope dir live_grep<CR>",
-      description = "Find string in special dir",
+      description = "Find string in special dir - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fr",
       function()
         require("telescope.builtin").resume()
       end,
-      description = "Resume previous find",
+      description = "Resume previous find - [nvim-telescope/telescope.nvim]",
     },
     {
       "<leader>fh",
       function()
         require("telescope.builtin").help_tags()
       end,
-      description = "Find string in help page",
+      description = "Find string in help page - [nvim-telescope/telescope.nvim]",
     },
     {
       '<leader>s',
       function()
         require('spectre').toggle();
       end,
-      description = 'Find and Replace text'
+      description = 'Find and Replace text - [nvim-pack/nvim-spectre]'
     },
     {
       "gc",
-      description = "Comment with line-comment",
+      description = "Comment with line-comment - [numToStr/Comment.nvim]",
     },
     {
       "gb",
-      description = "Comment with block-comment",
+      description = "Comment with block-comment - [numToStr/Comment.nvim]",
     },
     {
       "<leader>yp",
       function()
         vim.fn.setreg("+", require("jsonpath").get())
       end,
-      description = "Copy json path",
+      description = "Copy json path - [phelipetls/jsonpath.nvim]",
     },
     -- hidden --
     {
@@ -403,7 +403,7 @@ legendary.setup({
       function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
       end,
-      description = "Find char forward",
+      description = "Find char forward - [phaazon/hop.nvim]",
       hide = true,
     },
     {
@@ -411,7 +411,7 @@ legendary.setup({
       function()
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
       end,
-      description = "Find char forward",
+      description = "Find char forward - [phaazon/hop.nvim]",
       hide = true,
     },
     {
@@ -419,7 +419,7 @@ legendary.setup({
       function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
       end,
-      description = "Find char forward",
+      description = "Find char forward - [phaazon/hop.nvim]",
       hide = true,
     },
     {
@@ -427,7 +427,7 @@ legendary.setup({
       function()
         hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
       end,
-      description = "Find char forward",
+      description = "Find char forward - [phaazon/hop.nvim]",
       hide = true,
     },
     {
@@ -442,6 +442,7 @@ legendary.setup({
       function()
         ufo.openAllFolds()
       end,
+      description = "Open all folds - [kevinhwang91/nvim-ufo]",
       hide = true,
     },
     {
@@ -449,6 +450,7 @@ legendary.setup({
       function()
         ufo.closeAllFolds()
       end,
+      description = "Close all folds - [kevinhwang91/nvim-ufo]",
       hide = true,
     },
     {
@@ -456,14 +458,14 @@ legendary.setup({
       function()
         ufo.goPreviousClosedFold()
       end,
-      description = "Go to prev closed fold",
+      description = "Go to prev closed fold - [kevinhwang91/nvim-ufo]",
     },
     {
       "zj",
       function()
         ufo.goNextClosedFold()
       end,
-      description = "Go to next closed flod",
+      description = "Go to next closed flod - [kevinhwang91/nvim-ufo]",
     },
     {
       "<leader>ya",
@@ -487,11 +489,11 @@ legendary.setup({
   commands = {
     {
       ":MarkdownPreview",
-      description = "Open markdown preview",
+      description = "Open markdown preview - [iamcco/markdown-preview.nvim]",
     },
     {
       ":MarkdownPreviewStop",
-      description = "Close markdown preview",
+      description = "Close markdown preview - [iamcco/markdown-preview.nvim]",
     },
   },
   autocmds = {
@@ -502,7 +504,7 @@ legendary.setup({
           vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
         end
       end,
-      description = "Add JSON path in winbar",
+      description = "Add JSON path in winbar - [phelipetls/jsonpath.nvim]",
       opts = {
         pattern = { "*.json" },
       },

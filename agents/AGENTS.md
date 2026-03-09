@@ -15,16 +15,8 @@
 - 通知中**禁止**包含任何敏感信息（token/cookie/密钥/用户数据/raw logs/堆栈等）。
 
 ## 发送方式
-```bash
-# 在 `agents/skills/feishu-im-send/` 目录下执行
-node scripts/feishu-im-send.js "<TaskName> 已完成，可查看结果"
-```
-
-自检配置：
-```bash
-# 在 `agents/skills/feishu-im-send/` 目录下执行
-node scripts/feishu-im-send.js --show-config
-```
+- 使用 `feishu-im-send` 这个 skill 发送一条 **text** 消息。
+- 只发送 1 条，内容严格符合上面两种格式之一。
 
 ## 自检清单（发送最终回复前必须完成）
 1. 我是否已发送且只发送了 1 次飞书通知？（YES/NO）
@@ -42,7 +34,7 @@ node scripts/feishu-im-send.js --show-config
 
 ## 目录约定
 
-- `~/.agents/AGENT.md`
+- `~/.agents/AGENTS.md`
   - 你个人的“全局协作约定”（提问/改码、输出风格、默认偏好、允许的副作用等）
   - 作用范围：对所有项目生效
 
@@ -85,10 +77,10 @@ node scripts/feishu-im-send.js --show-config
 - Git 暂存（`git add`）默认**由你手动执行**：除非你明确要求（例如“请帮我 add/stage”），否则我不会自动 `git add`/`git commit`/`git push`；我只会提供 `git diff`、改动文件清单与建议，便于你 review 后自行暂存。
 - 若需求表达不明确：优先按“提问模式”处理，先澄清是否需要落地改动。
 
-## 全局 AGENT.md vs 项目 AGENT.md
+## 全局 AGENTS.md vs 项目 AGENTS.md
 
-- **全局 `~/.agents/AGENT.md`**：对所有项目都生效的通用协作规则与偏好（例如：提问时不落盘改动、输出格式偏好、默认交互方式）。当全局与项目规则冲突时，**以项目 AGENT.md 为准**。
-- **项目内 `agent.md` / `AGENT.md`**：仅对当前仓库生效的项目上下文与规范（架构说明、目录约定、测试命令、关键链路、改动建议等）。你在这个项目里的行为应优先遵循它。
+- **全局 `~/.agents/AGENTS.md`**：对所有项目都生效的通用协作规则与偏好（例如：提问时不落盘改动、输出格式偏好、默认交互方式）。当全局与项目规则冲突时，**以项目 AGENT.md 为准**。
+- **项目内 `agents.md` / `AGENTS.md`**：仅对当前仓库生效的项目上下文与规范（架构说明、目录约定、测试命令、关键链路、改动建议等）。你在这个项目里的行为应优先遵循它。
 - **你怎么提**：
-  - 说“全局 AGENT.md”：指 `~/.agents/AGENT.md`
-  - 说“项目 AGENT.md”：指仓库内的 `agent.md` 或 `AGENT.md`（以实际文件存在为准）
+  - 说“全局 AGENTS.md”：指 `~/.agents/AGENTS.md`
+  - 说“项目 AGENTS.md”：指仓库内的 `agents.md` 或 `AGENTS.md`（以实际文件存在为准）
