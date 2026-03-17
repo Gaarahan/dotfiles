@@ -83,4 +83,4 @@
 - **项目内 `agents.md` / `AGENTS.md`**：仅对当前仓库生效的项目上下文与规范（架构说明、目录约定、测试命令、关键链路、改动建议等）。你在这个项目里的行为应优先遵循它。
 - **你怎么提**：
   - 说“全局 AGENTS.md”：指 `~/.agents/AGENTS.md`
-  - 说“项目 AGENTS.md”：指仓库内的 `agents.md` 或 `AGENTS.md`（以实际文件存在为准）
+  - 说“项目 AGENTS.md” 或 “AGENTS.md”：指仓库内的 `agents.md` 或 `AGENTS.md`（以实际文件存在为准）

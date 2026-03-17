@@ -74,6 +74,31 @@ return {
       "neovim/nvim-lspconfig",
     },
     init = function()
+      -- Make nvim ESLint LSP honor VSCode workspace settings when available.
+      do
+        vim.lsp.config("eslint", {})
+
+        local base_before_init = vim.lsp.config.eslint and vim.lsp.config.eslint.before_init
+        local vscode = require("usermod.utils.vscode")
+
+        vim.lsp.config("eslint", {
+          before_init = function(params, config)
+            if base_before_init then
+              base_before_init(params, config)
+            end
+
+            local root_dir = config.root_dir
+            if type(root_dir) ~= "string" then
+              return
+            end
+
+            if vscode.apply_lsp_compat("eslint", config) then
+              return
+            end
+          end,
+        })
+      end
+
       require("mason").setup();
       require("mason-lspconfig").setup({
         automatic_enable = true,

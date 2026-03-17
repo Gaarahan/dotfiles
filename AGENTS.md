@@ -45,3 +45,10 @@
 - **路径引用**: 倾向于使用软链接 (`ln -s`) 而非直接复制，以保持仓库与系统配置同步。
 - **可移植性**: 配置文件中避免引用本机绝对路径（如 `/Users/xxx/...`）。优先通过 `PATH` 直接调用命令名，或使用 `$HOME` 等通用变量，确保换机器后无需改配置。
 - **环境适配**: 部分配置会检查操作系统类型（如 macOS 偏好设置脚本）。
+- **VSCode LSP 兼容层**: Neovim 的 LSP 若需要复用项目内的 `.vscode/settings.json`（例如 `eslint.nodePath`），统一在 `nvim/lua/usermod/utils/vscode.lua` 维护映射逻辑，并在对应 server 的 `before_init` 阶段合并到 `vim.lsp.config`。
+
+---
+
+## 6. 维护说明 (Maintenance)
+
+本文件应随你的协作方式、工具链与习惯变化而持续更新，避免约定与实际行为脱节。
