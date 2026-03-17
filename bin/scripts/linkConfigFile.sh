@@ -81,8 +81,8 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     check_rm "$LAZY_GIT_CONF.bak"
     mv "$LAZY_GIT_CONF" "$LAZY_GIT_CONF.bak"
   fi
-  if [ ! -d $LAZY_GIT_DIR ]; then
-    mkdir $LAZY_GIT_DIR
+  if [ ! -d "$LAZY_GIT_DIR" ]; then
+    mkdir -p "$LAZY_GIT_DIR"
   fi
   ln -s "$(getPath "../../lazygit/config.yml")" "$LAZY_GIT_CONF"
   ok "Config success"
@@ -123,8 +123,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
 
   running "link config file"
   ln -s "$(getPath "../../nvim")" "$HOME/.config"
-  running "install packer.nvim"
-  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  info "Neovim plugins are managed by lazy.nvim; open nvim to auto-install dependencies on first launch."
 
   ok "Config success"
 else

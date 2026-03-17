@@ -3,17 +3,16 @@
 本文件旨在为开发者和 AI Agent 提供关于 `dotfiles` 项目的架构概览、代码风格及开发规范，以便于理解和维护。
 
 ## 1. 项目概览 (Project Overview)
-本项目是作者的个人开发环境配置集（Dotfiles），主要针对 Linux (i3-wm) 和 macOS 环境。
+本项目是作者的个人开发环境配置集（Dotfiles），主要针对 macOS 环境。
 核心组件包括：
 - **Neovim**: 基于 Lua 的现代化配置，使用 `lazy.nvim` 管理插件。
-- **Window Manager**: i3-gaps 配合 polybar 状态栏。
 - **Shell**: zsh 配置，包含常用的 alias 和环境设置。
 - **Terminal Utils**: tmux, lazygit, ripgrep 等工具的深度配置。
 
 ### 核心目录结构
 - `/nvim`: Neovim 配置文件，采用模块化设计。
 - `/bin`: 包含安装脚本和实用工具。
-- `/zsh`, `/tmux`, `/i3`, `/polybar`: 各工具的特定配置文件。
+- `/zsh`, `/tmux`: 各工具的特定配置文件。
 
 ## 2. 构建与常用命令 (Build & Commands)
 ### 安装与部署

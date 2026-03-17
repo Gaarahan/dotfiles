@@ -109,7 +109,6 @@ elif command -v brew >/dev/null 2>&1; then
 fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
-export FZF_DEFAULT_COMMAND='ag .'
 export EDITOR='vim'
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
