@@ -31,9 +31,6 @@ path_prepend "${_dot_bin_path:A}"
 unset _path_file_dir _dot_bin_path
 
 # --- Package managers ---
-export PNPM_HOME="${PNPM_HOME:-$HOME/Library/pnpm}"
-path_prepend "$PNPM_HOME"
-
 path_prepend "$HOME/.yarn/bin"
 path_prepend "$HOME/.config/yarn/global/node_modules/.bin"
 
