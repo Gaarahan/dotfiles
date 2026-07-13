@@ -1,0 +1,23 @@
+nvim/lua/usermod/keymap.lua
+  s_25273f024992ed::t_4e72afa0bdab98 75
+zsh/zshrc
+  s_25273f024992ed::t_9ac649ffa3235b 122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a7ab915e2397f7a8227cce04c541ed4a1cbe7246",
+  "prompts": {},
+  "sessions": {
+    "s_25273f024992ed": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5a7e-d46d-7580-8e7b-00c234e3d2f8",
+        "model": "unknown"
+      },
+      "human_author": "hanzhaofeng <hanzhaofeng@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
