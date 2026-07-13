@@ -1,0 +1,25 @@
+bin/scripts/linkConfigFile.sh
+  s_00e307a3bf3d09::t_a4ddcc9eea14af 6-7,12,16-19,44
+zsh/zprofile
+  s_00e307a3bf3d09::t_8a44a3c10995f3 1-25
+zsh/zshrc
+  s_00e307a3bf3d09::t_bc6d67fab9ed68 99,136-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c2e5cf84c6ba684624429d680e2e7e39d1e5b3e9",
+  "prompts": {},
+  "sessions": {
+    "s_00e307a3bf3d09": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5ae3-8c29-7ab2-a79a-d7de791ab368",
+        "model": "unknown"
+      },
+      "human_author": "hanzhaofeng <hanzhaofeng@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
