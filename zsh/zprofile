@@ -1,0 +1,25 @@
+# Login-shell environment.
+# Keep this file lightweight; interactive setup belongs in zshrc.
+
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+
+# Make Node available for non-interactive login shells such as hooks and agents.
+# Interactive shells use lazy loading in zshrc.
+case "$-" in
+  *i*) ;;
+  *)
+    if [ -s "$NVM_DIR/nvm.sh" ]; then
+      . "$NVM_DIR/nvm.sh"
+    fi
+    ;;
+esac
+
+source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
+
+export PATH="$HOME/.local/bin:$PATH"

@@ -3,14 +3,19 @@
 # ###########################################################
 
 ZSHRC="$HOME/.zshrc"
-bot "Link './zsh/zshrc' to '~/.zshrc, this will backup the old file? (y/N)"
+ZPROFILE="$HOME/.zprofile"
+bot "Link './zsh/zshrc' and './zsh/zprofile' to '~/.zshrc' and '~/.zprofile', this will backup the old files? (y/N)"
 read -r
 
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config zsh"
-  if [ -e "$ZSHRC" ]; then
+  if [ -e "$ZSHRC" ] || [ -L "$ZSHRC" ]; then
     check_rm "$ZSHRC.bak"
     mv "$ZSHRC" "$ZSHRC.bak"
+  fi
+  if [ -e "$ZPROFILE" ] || [ -L "$ZPROFILE" ]; then
+    check_rm "$ZPROFILE.bak"
+    mv "$ZPROFILE" "$ZPROFILE.bak"
   fi
 
   running "ensuring bin/tools are executable"
@@ -36,6 +41,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   fi
 
   ln -s "$(getPath "../../zsh/zshrc")" "$ZSHRC"
+  ln -s "$(getPath "../../zsh/zprofile")" "$ZPROFILE"
   ok "Config success"
 
 else

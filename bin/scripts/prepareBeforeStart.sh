@@ -50,19 +50,6 @@ if [[ ${PIPESTATUS[0]} != 0 ]]; then
     brew_bin="/usr/local/bin/brew"
   fi
 
-  # Persist shellenv setup to ~/.zprofile (portable, no hardcoded username).
-  if ! grep -q "brew shellenv" "$HOME/.zprofile" 2>/dev/null; then
-    {
-      echo
-      echo '# Added by dotfiles installer (macOS only)'
-      echo 'if [ -x /opt/homebrew/bin/brew ]; then'
-      echo '  eval "$(/opt/homebrew/bin/brew shellenv)"'
-      echo 'elif [ -x /usr/local/bin/brew ]; then'
-      echo '  eval "$(/usr/local/bin/brew shellenv)"'
-      echo 'fi'
-    } >> "$HOME/.zprofile"
-  fi
-
   if [ -n "$brew_bin" ]; then
     eval "$("$brew_bin" shellenv)"
   elif command -v brew >/dev/null 2>&1; then
