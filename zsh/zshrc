@@ -87,18 +87,35 @@ export NVM_DIR="$HOME/.nvm"
 
 _lazy_load_nvm() {
   unset -f nvm node npm npx pnpm yarn corepack
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh" ] || return 127
+  . "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  return 0
 }
 
-for cmd in nvm node npm npx pnpm yarn corepack; do
-  eval "
-  $cmd() {
-    _lazy_load_nvm
-    $cmd \"\$@\"
-  }
-  "
-done
+_should_lazy_load_nvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] || return 1
+  [ -z "$CODEX_SANDBOX" ] || return 1
+}
+
+if _should_lazy_load_nvm; then
+  for cmd in nvm node npm npx pnpm yarn corepack; do
+    eval "
+    $cmd() {
+      _lazy_load_nvm || return \$?
+      if ! command -v $cmd >/dev/null 2>&1; then
+        print -u2 \"zsh: command not found: $cmd\"
+        return 127
+      fi
+      if [ \"$cmd\" = \"nvm\" ]; then
+        nvm \"\$@\"
+      else
+        command $cmd \"\$@\"
+      fi
+    }
+    "
+  done
+fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export EDITOR='vim'
@@ -118,3 +135,4 @@ eval "$(pyenv init - zsh)"
 # pyenv end
 
 export PATH="/Users/bytedance/.local/bin:$PATH"
+export PLAYWRIGHT_MCP_EXTENSION_TOKEN=VLoKmWcWjq__GnOQQHvU7oKEJVmhCP1555AdsGlTHDM
