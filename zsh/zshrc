@@ -119,6 +119,7 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export EDITOR='vim'
+export NVIM_AI_PANEL_COMMAND="codex"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -72,7 +72,7 @@ local function toggle_right_terminal_vsplit()
     vim.api.nvim_set_current_buf(terminal_state.buf)
   else
     -- 创建新的终端时，指定要自动执行的命令
-    local auto_command = "traecli"
+    local auto_command = assert(vim.env.NVIM_AI_PANEL_COMMAND, "NVIM_AI_PANEL_COMMAND is not configured")
     vim.cmd("terminal " .. auto_command)
     terminal_state.buf = vim.api.nvim_get_current_buf()
     vim.bo[terminal_state.buf].bufhidden = "hide"
