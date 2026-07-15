@@ -1,0 +1,6 @@
+interface:
+  display_name: "Requirement Delivery Harness"
+  short_description: "Stage-gated requirement delivery and process distillation"
+  default_prompt: "Use $requirement-delivery-harness to continue the staged requirement workflow, including clarification-comment collaboration and review-ready technical document writing."
+policy:
+  allow_implicit_invocation: true

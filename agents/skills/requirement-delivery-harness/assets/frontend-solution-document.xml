@@ -1,0 +1,34 @@
+<title>{{TITLE}} — 前端技术方案</title>
+<h1>1. 结论与范围</h1>
+<p>{{CONCLUSION}}</p>
+<h1>2. 需求与场景</h1>
+<p>{{REQUIREMENTS}}</p>
+<h2>2.1 角色与权限矩阵</h2>
+<p>{{ROLE_PERMISSION_MATRIX}}</p>
+<h2>2.2 核心交互与边界场景</h2>
+<p>{{SCENARIOS}}</p>
+<h1>3. 现状架构与代码定位</h1>
+<p>{{CURRENT_STATE}}</p>
+<h2>3.1 现状与目标差异矩阵</h2>
+<p>{{CURRENT_TARGET_DIFF}}</p>
+<h1>4. 方案设计</h1>
+<h2>4.1 总体架构与职责</h2>
+<p>{{ARCHITECTURE}}</p>
+<h2>4.2 权限模型与判定链路</h2>
+<p>{{PERMISSION_DESIGN}}</p>
+<h2>4.3 数据流与交互时序</h2>
+<p>{{DATA_FLOW}}</p>
+<h2>4.4 模块与接口改动</h2>
+<p>{{MODULE_CHANGES}}</p>
+<h1>5. 跨仓改动与依赖</h1>
+<p>{{CROSS_REPO_CHANGES}}</p>
+<h1>6. 兼容性、灰度与降级</h1>
+<p>{{COMPATIBILITY_AND_ROLLOUT}}</p>
+<h2>6.1 存量数据与默认权限</h2>
+<p>{{EXISTING_DATA_AND_DEFAULT_PERMISSION}}</p>
+<h2>6.2 权限缺失、加载失败与回滚</h2>
+<p>{{PERMISSION_FALLBACK_AND_ROLLBACK}}</p>
+<h1>7. 测试与验收</h1>
+<p>{{TEST_AND_ACCEPTANCE}}</p>
+<h1>8. 风险与未确认项</h1>
+<p>{{RISKS}}</p>
