@@ -35,6 +35,7 @@ Before deep investigation, classify every supplied source as one of: primary req
 2. Record the role of each source in the task-local stage summary.
 3. Verify that every external document and design artifact is accessible before relying on it.
 4. If an inaccessible artifact affects interaction states, visual details, or acceptance criteria, record it as an explicit clarification item. Do not reconstruct missing details from nearby references.
+5. When a user-provided webpage requires rendered UI, client-side state, screenshots, or interaction inspection, read `references/web-page-access.md` and use the official Playwright MCP in headless mode. Do not substitute the in-app browser or an ad hoc browser CLI.
 
 ## Work within a stage
 
