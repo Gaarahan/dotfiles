@@ -23,6 +23,19 @@ Use this protocol once the requirement-to-frontend-solution stage has enough con
 - Use diagrams only when they materially clarify architecture, branching, or temporal behavior.
 - Use the stable numbering and section order from `assets/frontend-solution-document.xml`.
 
+## Permission-solution review
+
+For permission-sensitive frontend solutions, complete these checks before publication:
+
+1. Separate new development from verification-only behavior and shared-module ownership. Do not count an existing compatible enforcement path as new implementation work.
+2. Normalize the permission contract into the smallest set of user-visible business states. If a shared entity layer removes inaccessible entities before business rendering, record that boundary instead of inventing an unreachable business state.
+3. When a new permission source feeds an existing UI state machine, document the current source, normalized state-machine inputs, unchanged transitions, and initialization signal. Treat the change as an input-adapter migration unless the transitions themselves change.
+4. Inspect business branches and observability consumers independently. Tracking categories may preserve finer distinctions, but tracking-only data must not drive authorization or UI state.
+5. Verify initialization, missing-data, and permission-change behavior from the real store and subscription path. Preserve an explicit resolved signal when an unresolved result differs from a confirmed denial.
+6. Separate frontend capability presentation from execution authorization. For a user-facing surface that dispatches several operation families, list each operation, its enforcement owner, and its server-side denial boundary.
+7. When a coarse permission gate is temporarily reused for a finer-grained requirement, state the invariant that makes them equivalent, the condition that invalidates that equivalence, and the follow-up enforcement work then required.
+8. Lock the permission hierarchy and compatibility assumptions with acceptance cases. In particular, prevent contradictory states and ensure an absent or unresolved new signal cannot widen access.
+
 ## Publication verification
 
 1. Create or update the Lark document using document XML.
