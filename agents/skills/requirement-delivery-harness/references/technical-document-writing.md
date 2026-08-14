@@ -13,6 +13,7 @@ Use this protocol once the requirement-to-frontend-solution stage has enough con
 ## Document construction
 
 - Start with the conclusion, scope, and central design decision.
+- For cross-team reviews, place a compact glossary before the numbered body when the design depends on product names, overloaded entity terms, generated artifacts, identifiers, or internal service abbreviations. Define the canonical meaning of ambiguous words, distinguish entity identity from generated content, and include only terms used later in the document.
 - Describe the final system state. Exclude negotiation history and editing traces.
 - Organize responsibilities by role or module; define internal concepts on first use.
 - Give permission-sensitive requirements an operation-by-role matrix.
