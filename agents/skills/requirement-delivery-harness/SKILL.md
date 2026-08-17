@@ -48,6 +48,13 @@ Before deep investigation, classify every supplied source as one of: primary req
 7. Set the stage to `waiting_for_user` only after the handoff receipt exists.
 8. Resume the same stage after answers arrive; do not restart completed investigation.
 
+## Enter an implementation stage
+
+1. Identify the repository's designated main development branch from repository instructions or its remote default branch. Before the first code change, create a dedicated semantic feature branch from that main-branch baseline, never from the current task branch. Default to `feat/<requirement-slug>` unless repository instructions require another pattern.
+2. Record the main-branch baseline, its commit, and the feature branch in task-local evidence before implementation proceeds.
+3. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
+4. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
+
 ## Run requirement-to-frontend-solution
 
 Treat clarification and technical-document writing as built-in parts of this stage. Do not require a separately installed collaboration or writing skill.
