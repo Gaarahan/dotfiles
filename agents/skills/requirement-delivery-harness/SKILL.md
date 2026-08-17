@@ -50,10 +50,12 @@ Before deep investigation, classify every supplied source as one of: primary req
 
 ## Enter an implementation stage
 
-1. Identify the repository's designated main development branch from repository instructions or its remote default branch. Before the first code change, create a dedicated semantic feature branch from that main-branch baseline, never from the current task branch. Default to `feat/<requirement-slug>` unless repository instructions require another pattern.
-2. Record the main-branch baseline, its commit, and the feature branch in task-local evidence before implementation proceeds.
-3. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
-4. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
+1. Identify the repository's designated main development branch from repository instructions or its remote default branch.
+2. Fetch the latest remote state and update the main-branch baseline before creating a feature branch. Create from the updated remote-tracking main branch or a verified fast-forwarded local main branch; never use a stale local main branch or the current task branch. Stop if the fetch or baseline update fails.
+3. Before the first code change, create a dedicated semantic feature branch from that verified baseline. Default to `feat/<requirement-slug>` unless repository instructions require another pattern.
+4. Record the remote, main branch, synchronized baseline commit, and feature branch in task-local evidence before implementation proceeds.
+5. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
+6. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
 
 ## Run requirement-to-frontend-solution
 
