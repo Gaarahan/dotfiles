@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -102,6 +103,48 @@ def command_check(args: argparse.Namespace) -> None:
     result = dict(state)
     result["task_dir"] = str(task_dir(state_path))
     print(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+def stage_archive_name(state: dict[str, Any]) -> str:
+    index = len(state["stages"])
+    stage = state["current_stage"]
+    slug = re.sub(r"[^a-zA-Z0-9._-]+", "-", stage).strip("-") or "stage"
+    return f"{index:02d}-{slug}"
+
+
+def command_start_stage(args: argparse.Namespace) -> None:
+    state, state_path = load_active(args.root.resolve())
+    if state["status"] != "closed":
+        raise SystemExit(f"Cannot start a new stage until the current stage is closed, got {state['status']}")
+    stage = args.stage.strip()
+    if not stage:
+        raise SystemExit("Stage name must not be empty.")
+    if any(item.get("name") == stage for item in state["stages"]):
+        raise SystemExit(f"Stage already exists: {stage}")
+
+    directory = task_dir(state_path)
+    archive_dir = directory / "stage-history" / stage_archive_name(state)
+    archive_dir.mkdir(parents=True, exist_ok=False)
+    for filename in ["stage-summary.md", "harness-observations.md", "harness-validation.json"]:
+        source = directory / filename
+        if source.exists():
+            source.replace(archive_dir / filename)
+
+    started_at = now()
+    state["current_stage"] = stage
+    state["status"] = "in_progress"
+    state["updated_at"] = started_at
+    state["stages"].append({"name": stage, "status": "in_progress", "started_at": started_at})
+    write_json(state_path, state)
+    (directory / "stage-summary.md").write_text(
+        f"# {stage}\n\n## Delivery\n\n## Open Questions\n\n## Next Stage\n",
+        encoding="utf-8",
+    )
+    (directory / "harness-observations.md").write_text(
+        f"# {stage}\n\n## Candidate\n\n## Promoted\n\n## Deferred\n",
+        encoding="utf-8",
+    )
+    print(json.dumps(state, ensure_ascii=False, indent=2))
 
 
 def command_set_status(args: argparse.Namespace) -> None:
@@ -249,6 +292,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     check = subparsers.add_parser("check", help="Show the active task and stage")
     check.set_defaults(func=command_check)
+
+    start_stage = subparsers.add_parser("start-stage", help="Archive a closed stage and start the next stage")
+    start_stage.add_argument("--stage", required=True)
+    start_stage.set_defaults(func=command_start_stage)
 
     status = subparsers.add_parser("set-status", help="Set current stage status")
     status.add_argument("--status", required=True, choices=sorted(STATUSES - {"closed"}))

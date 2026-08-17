@@ -13,6 +13,7 @@ Run requirement delivery and harness evolution as two synchronized tracks.
 2. If no task is active, initialize one with `python3 scripts/flow.py init --task-id <id> --title <title> --stage <stage>`.
 3. Read the active stage state and its `stage-summary.md` and `harness-observations.md` files.
 4. Do not start another stage while the current stage is not `closed`.
+5. When a closed stage advances, run `python3 scripts/flow.py start-stage --stage <next-stage>`. This archives the completed stage evidence and initializes fresh stage files.
 
 Store task-local evidence under `.workflow-memory/requirement-delivery/<task-id>/`. Keep product-specific facts out of this reusable skill.
 
@@ -53,10 +54,11 @@ Before deep investigation, classify every supplied source as one of: primary req
 1. List every implementation repository and identify each repository's designated main development branch from repository instructions or its remote default branch.
 2. Choose the semantic feature branch name once per requirement. Default to `feat/<requirement-slug>` unless repository instructions require another pattern. When multiple repositories are involved, use the exact same feature branch name in every repository; do not add repository-specific suffixes.
 3. In every repository, fetch the latest remote state and update the main-branch baseline before creating the feature branch. Create from the updated remote-tracking main branch or a verified fast-forwarded local main branch; never use a stale local main branch or the current task branch. Stop that repository if the fetch or baseline update fails.
-4. Before the first code change, create the shared feature branch name from each repository's verified main-branch baseline.
-5. Record a repository matrix containing each remote, main branch, synchronized baseline commit, and the shared feature branch name before implementation proceeds.
-6. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
-7. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
+4. Create one requirement-scoped worktree parent directory. For multi-repository work, place one worktree per repository directly under that common parent, using stable repository directory names.
+5. Before the first code change, create the shared feature branch name from each repository's verified main-branch baseline in its dedicated worktree. Do not switch or rewrite the developer's existing checkout.
+6. Record a repository matrix containing each remote, main branch, synchronized baseline commit, shared feature branch name, and worktree path before implementation proceeds.
+7. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
+8. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
 
 ## Run requirement-to-frontend-solution
 
@@ -115,6 +117,7 @@ Always give the user a closure receipt containing the delivery artifact, promote
 python3 scripts/flow.py --help
 python3 scripts/flow.py init --task-id TASK-ID --title "Title" --stage solution-design
 python3 scripts/flow.py check
+python3 scripts/flow.py start-stage --stage frontend-implementation
 python3 scripts/flow.py set-title --title "Correct requirement title"
 python3 scripts/flow.py set-status --status waiting_for_user
 python3 scripts/flow.py set-status --status delivery_ready
