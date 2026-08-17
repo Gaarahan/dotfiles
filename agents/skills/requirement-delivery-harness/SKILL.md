@@ -57,8 +57,11 @@ Before deep investigation, classify every supplied source as one of: primary req
 4. Create one requirement-scoped worktree parent directory. For multi-repository work, place one worktree per repository directly under that common parent, using stable repository directory names.
 5. Before the first code change, create the shared feature branch name from each repository's verified main-branch baseline in its dedicated worktree. Do not switch or rewrite the developer's existing checkout.
 6. Record a repository matrix containing each remote, main branch, synchronized baseline commit, shared feature branch name, and worktree path before implementation proceeds.
-7. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
-8. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
+7. Treat the approved technical solution as the implementation contract. Do not redesign approved entities, interfaces, states, or ownership boundaries merely because an upstream change is not yet present on the synchronized main branch.
+8. When an approved upstream contract is missing, preserve the approved names and call shape with the smallest localized mock or adapter. Mark it with a TODO that names the upstream dependency and exact removal condition; keep the mock behavior within the shipped access and compatibility boundary.
+9. Structure downstream code so the upstream contract can replace the mock without redesigning the consumer. Do not duplicate or permanently own another team's shared implementation.
+10. Classify backend dependencies by delivery phase. When the backend is still under development and integration has not started, record the contract dependency but do not block frontend implementation on live-interface verification.
+11. Defer live backend verification to the integration stage, and do not claim end-to-end acceptance before that verification succeeds.
 
 ## Run requirement-to-frontend-solution
 
