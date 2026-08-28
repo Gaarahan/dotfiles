@@ -1,0 +1,21 @@
+skills/gh-lark-comment-doc-editing/references/readability-principles.md
+  s_812aef25fa2f9c::t_0c61674e8c5cb5 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6439110e60e1b783ed87188e53f37c7a16ea829a",
+  "prompts": {},
+  "sessions": {
+    "s_812aef25fa2f9c": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a4cb4bf61ffa21e1c94f23b",
+        "model": "gpt-5.5__dev"
+      },
+      "human_author": "hanzhaofeng <hanzhaofeng@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
