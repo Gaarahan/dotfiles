@@ -12,6 +12,7 @@ brewCheckOrInstall nvm
 
 # Load nvm for this script session (do NOT write into user's shell rc here).
 export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+export NVM_SYMLINK_CURRENT=true
 if [ -s "$NVM_DIR/nvm.sh" ]; then
   \. "$NVM_DIR/nvm.sh"
 elif command -v brew >/dev/null 2>&1; then

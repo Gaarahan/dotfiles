@@ -133,6 +133,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Local editor logs
+.nvimlog
+
 # Agent runtime and installed skills
 agents/*
 !agents/AGENTS.md

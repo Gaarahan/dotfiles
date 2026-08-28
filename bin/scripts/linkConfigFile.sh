@@ -4,11 +4,16 @@
 
 ZSHRC="$HOME/.zshrc"
 ZPROFILE="$HOME/.zprofile"
-bot "Link './zsh/zshrc' and './zsh/zprofile' to '~/.zshrc' and '~/.zprofile', this will backup the old files? (y/N)"
+ZSHENV="$HOME/.zshenv"
+bot "Link './zsh/zshenv', './zsh/zprofile', and './zsh/zshrc' to your home directory, this will backup the old files? (y/N)"
 read -r
 
 if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
   info "Start config zsh"
+  if [ -e "$ZSHENV" ] || [ -L "$ZSHENV" ]; then
+    check_rm "$ZSHENV.bak"
+    mv "$ZSHENV" "$ZSHENV.bak"
+  fi
   if [ -e "$ZSHRC" ] || [ -L "$ZSHRC" ]; then
     check_rm "$ZSHRC.bak"
     mv "$ZSHRC" "$ZSHRC.bak"
@@ -40,6 +45,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     ok
   fi
 
+  ln -s "$(getPath "../../zsh/zshenv")" "$ZSHENV"
   ln -s "$(getPath "../../zsh/zshrc")" "$ZSHRC"
   ln -s "$(getPath "../../zsh/zprofile")" "$ZPROFILE"
   ok "Config success"

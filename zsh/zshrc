@@ -83,18 +83,32 @@ bindkey -s "^R" " _find_history\n"
 
 stty eof undef  # prevent C-d to close panel
 
-export NVM_DIR="$HOME/.nvm"
-
 _lazy_load_nvm() {
+  local nvm_script
+  nvm_script="$(_find_nvm_script)" || return 127
   unset -f nvm node npm npx pnpm yarn corepack
-  [ -s "$NVM_DIR/nvm.sh" ] || return 127
-  . "$NVM_DIR/nvm.sh"
+  . "$nvm_script"
   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
   return 0
 }
 
+_find_nvm_script() {
+  local candidate
+  for candidate in \
+    "$NVM_DIR/nvm.sh" \
+    /opt/homebrew/opt/nvm/nvm.sh \
+    /usr/local/opt/nvm/nvm.sh
+  do
+    if [ -s "$candidate" ]; then
+      print -r -- "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
 _should_lazy_load_nvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] || return 1
+  _find_nvm_script >/dev/null || return 1
   [ -z "$CODEX_SANDBOX" ] || return 1
   (( ! $+functions[nvm] )) || return 1
 }
@@ -138,5 +152,4 @@ if (( $+commands[pyenv] )) && (( ! $+functions[pyenv] )); then
 fi
 # pyenv end
 
-export PATH="/Users/bytedance/.local/bin:$PATH"
 export PLAYWRIGHT_MCP_EXTENSION_TOKEN=VLoKmWcWjq__GnOQQHvU7oKEJVmhCP1555AdsGlTHDM
