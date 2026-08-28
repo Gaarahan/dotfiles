@@ -141,6 +141,8 @@ fi
 # ###########################################################
 
 AGENTS_HOME="$HOME/.agents"
+agents_script_dir="${BASH_SOURCE[0]%/*}"
+dotfiles_root="$(cd "$agents_script_dir/../.." && pwd)"
 
 bot "Link './agents' to '~/.agents', this will backup the old directory? (y/N)"
 read -r
@@ -153,6 +155,7 @@ if [ "$REPLY" == 'y' ] || [ "$REPLY" == 'Y' ]; then
     mv "$AGENTS_HOME" "$AGENTS_HOME.bak"
   fi
   ln -s "$(getPath "../../agents")" "$AGENTS_HOME"
+  "$dotfiles_root/bin/tools/sync-document-skills"
   ok "Config success"
 else
   info "Skip config agents"

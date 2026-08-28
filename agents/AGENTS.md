@@ -39,17 +39,18 @@
 
 ## 自定义 skill 的源与同步（重要，避免放错仓库）
 
-自定义 `gh-` 前缀 skill 有「源仓库」和「安装副本」两处，务必分清，别改错地方：
+自定义 skill 按能力分为两个权威来源：
 
-- **源仓库（唯一可改处）**：`code.byted.org:hanzhaofeng/dotfile-skills`（本地 `~/Documents/dotfile-skills`），布局 `skills/<gh-name>/SKILL.md`，目录名与 `SKILL.md` 的 `name` 都带 `gh-` 前缀。新增/修改 skill **只在这里做**。
-- **安装副本（勿改）**：`~/.agents/skills/`（= `dotfiles/agents/skills/`）下的 `gh-*` 是 ai-skills 从源仓库装来的副本，被 dotfiles 的 `.gitignore` 忽略（只白名单放行 `requirement-delivery-harness`）。运行时全局副本另在 `~/.trae-cn/skills/`。在副本里改会丢失、且不入版本库。
-- **改后同步流程**：改源仓库 → 在 dotfile-skills 里 commit/push → 执行 `npm_config_registry="https://bnpm.byted.org" npx -y agentbuddy@latest skill add skills.bytedance.org/hzf/dot_skills --yes --global` 重装到全局副本，改动才在 Agent 运行时生效。
+- **文档协作 skill**：`gh-lark-tech-doc-writing` 与 `gh-lark-comment-doc-editing` 的唯一权威源位于本仓库 `skills/`。两者作为一个 collection 共同维护，并共享 `gh-lark-tech-doc-writing/references/readability-principles.md`。修改时只改本仓库中的源文件。
+- **其他 `gh-` skill**：唯一权威源仍是 `code.byted.org:hanzhaofeng/dotfile-skills`（本地 `~/Documents/dotfile-skills`），布局为 `skills/<gh-name>/SKILL.md`。新增或修改这些 skill 只在该源仓库进行。
+- **运行时入口**：`~/.agents/skills/`（= `dotfiles/agents/skills/`）与 `~/.trae-cn/skills/` 是运行时目录，不是文档协作 skill 的维护位置。运行 `bin/tools/sync-document-skills`，将两个运行时入口链接到本仓库的权威源。
+- **同步流程**：修改文档协作 skill 后，运行 `bin/tools/sync-document-skills` 并执行校验；修改其他 `gh-` skill 后，在 dotfile-skills 中 commit/push，再执行 `npm_config_registry="https://bnpm.byted.org" npx -y agentbuddy@latest skill add skills.bytedance.org/hzf/dot_skills --yes --global`。agentbuddy 可能替换文档协作 skill 的运行时链接，因此重装后必须再次运行 `bin/tools/sync-document-skills`。
 
 ## 完备性约束（重要）
 
 当修改任意 skill 相关内容时，必须保证“脚本、入口、文档”同步更新，避免出现：文档说 A、实际跑出来是 B 的情况。
 
-- **技能规格**：`agents/skills/<skill-name>/SKILL.md`
+- **技能规格**：以该 skill 的权威源为准；文档协作 skill 位于本仓库 `skills/<skill-name>/SKILL.md`，其他 `gh-` skill 位于 dotfile-skills 的 `skills/<skill-name>/SKILL.md`
 - **工具实现**：`agents/tools/<tool-name>/...`
 - **稳定入口（如有）**：`bin/tools/<cmd>`（通常只做转发/shim）
 - **校验方式**：至少运行一次 `--help` / `--show-config`（或该工具的等价自检命令），确保文档与输出一致
@@ -58,10 +59,11 @@
 
 - 当你向我 **提问**（例如：问原理、问哪里改、让解释代码、讨论方案）时：即使我已经知道如何修改，**也不要直接改代码/落盘变更**。允许执行用于定位问题的只读命令（例如：`git diff`/`git status`/`rg`/`ls`），但不应产生文件改动、提交、推送等副作用；若确需修改，再由你明确提出“要改代码”。
 - 当你明确提出 **要改代码**（例如："请修改/修复/实现/重构/提交"）时：我才进入实现流程（改代码、补测试、运行验证等）。
-- Git 暂存（`git add`）默认**由你手动执行**：除非你明确要求（例如“请帮我 add/stage”），否则我不会自动 `git add`/`git commit`/`git push`；我只会提供 `git diff`、改动文件清单与建议，便于你 review 后自行暂存。
+- 完成用户明确要求的代码修改并通过必要验证后，默认只暂存本次任务涉及的改动并创建 commit；不暂存用户的无关改动，不使用 `git add -A`。默认不执行 `git push`，推送需要用户明确授权。
 - Git 提交默认**不允许**使用 `--no-verify`：除非你明确指出可以绕过 hook，否则我只能按正常 `git commit` 提交；若 hook 失败，我应反馈失败原因，而不是自行跳过校验。
 - 当你明确让我**拉分支**时：我应根据本次要做的工作类型默认创建语义化分支名；功能开发优先使用 `feat-xxx`，缺陷修复优先使用 `fix-xxx`，并让分支名直接体现本次任务主题。
 - 当你**修正我的做事方式、默认偏好或协作习惯**时：若该修正显然是跨项目通用规则，我应主动更新 `~/.agents/AGENTS.md`，而不是只在当前对话里记住；若该修正明显依赖当前仓库上下文，则应写入项目 `AGENTS.md` 或仅在当前项目内遵循。
+- 当你要求我**“沉淀”某项经验**或再次**“强调”某个问题**时：默认表示需要修改对应的可复用协作约束以避免以后再犯。我必须在本轮定位规则的唯一权威文件，写入可执行约束并回读验证；仅修当前产物、口头确认或只写云记忆不算完成。
 - 当修正内容对应某个可复用 Skill 的执行流程时：优先修改该 Skill 的源仓库规格，并按同步流程更新运行时副本；全局记忆只能作为辅助提示，不作为主生效机制。不要为了覆盖不同客户端而逐个修改 Codex、TRAE、Cursor 等私有配置。
 - 若需求表达不明确：优先按“提问模式”处理，先澄清是否需要落地改动。
 - 当语义、状态、场景或关键输入**没有被明确确认**时：默认不要擅自兜底成看似合理的值；应优先发起澄清。若当前链路不适合澄清或已进入执行阶段，则显式报错或暴露缺失前提，而不是无脑回退到默认值。

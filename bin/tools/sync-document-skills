@@ -1,0 +1,85 @@
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: sync-document-skills [--dry-run]
+
+Link the document collaboration skills maintained in this dotfiles repository
+into the ~/.agents and ~/.trae-cn runtime skill directories.
+
+Options:
+  --dry-run  Print the planned changes without modifying runtime directories.
+  -h, --help Show this help text.
+EOF
+}
+
+dry_run=0
+case "${1:-}" in
+  "") ;;
+  --dry-run) dry_run=1 ;;
+  -h|--help)
+    usage
+    exit 0
+    ;;
+  *)
+    usage >&2
+    exit 2
+    ;;
+esac
+
+script_dir="${BASH_SOURCE[0]%/*}"
+dotfiles_root="$(cd "$script_dir/../.." && pwd)"
+source_root="$dotfiles_root/skills"
+runtime_roots=(
+  "$dotfiles_root/agents/skills"
+  "$HOME/.trae-cn/skills"
+)
+skill_names=(
+  gh-lark-tech-doc-writing
+  gh-lark-comment-doc-editing
+)
+
+for skill_name in "${skill_names[@]}"; do
+  source_path="$source_root/$skill_name"
+  if [ ! -f "$source_path/SKILL.md" ]; then
+    echo "Missing canonical skill source: $source_path/SKILL.md" >&2
+    exit 1
+  fi
+done
+
+for runtime_root in "${runtime_roots[@]}"; do
+  if [ "$runtime_root" = "$dotfiles_root/agents/skills" ]; then
+    backup_root="$dotfiles_root/agents/skill-backups"
+  else
+    backup_root="$HOME/.trae-cn/skill-backups"
+  fi
+
+  if [ "$dry_run" -eq 0 ]; then
+    mkdir -p "$runtime_root"
+    mkdir -p "$backup_root"
+  fi
+
+  for skill_name in "${skill_names[@]}"; do
+    source_path="$source_root/$skill_name"
+    target_path="$runtime_root/$skill_name"
+
+    if [ -L "$target_path" ] && [ "$(realpath "$target_path")" = "$source_path" ]; then
+      echo "Already linked: $target_path"
+      continue
+    fi
+
+    if [ -e "$target_path" ] || [ -L "$target_path" ]; then
+      backup_path="$backup_root/${skill_name}.backup.$(date +%Y%m%d%H%M%S).$$"
+      echo "Backup: $target_path -> $backup_path"
+      if [ "$dry_run" -eq 0 ]; then
+        mv "$target_path" "$backup_path"
+      fi
+    fi
+
+    echo "Link: $target_path -> $source_path"
+    if [ "$dry_run" -eq 0 ]; then
+      ln -s "$source_path" "$target_path"
+    fi
+  done
+done
