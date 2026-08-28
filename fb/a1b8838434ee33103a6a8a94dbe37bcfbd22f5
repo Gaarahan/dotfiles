@@ -1,0 +1,25 @@
+bin/scripts/linkConfigFile.sh
+  s_851bfdac046812::t_09eecb34c256d6 7-8,13-16,48
+zsh/zshenv
+  s_851bfdac046812::t_6ee35f59128cac 1-18
+bin/scripts/startFromScratch.sh
+  s_851bfdac046812::t_a2791cc6d6c662 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fba1b8838434ee33103a6a8a94dbe37bcfbd22f5",
+  "prompts": {},
+  "sessions": {
+    "s_851bfdac046812": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f8dd8-a810-77f0-ad3b-579cb295134c",
+        "model": "unknown"
+      },
+      "human_author": "hanzhaofeng <hanzhaofeng@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
