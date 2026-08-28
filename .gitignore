@@ -141,8 +141,6 @@ agents/*
 !agents/AGENTS.md
 !agents/skills/
 agents/skills/*
-!agents/skills/requirement-delivery-harness/
-!agents/skills/requirement-delivery-harness/**
 
 ### Example user template template
 ### Example user template

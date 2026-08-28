@@ -88,13 +88,6 @@
 - **绝对禁止**「结束回合后再主动回来汇报」——这条在物理上做不到，等同于任务失联。
 - 不要把这条只写进云记忆 / `user_profile.md`：云记忆只对单个 Agent 生效。此规则必须落在本文件，确保所有 Agent（Codex / TRAE / Cursor 等）都能读到并遵守。
 
-## Harness 阶段交接通知
-
-- 使用需求交付 Harness 时，阶段暂停等待用户介入或阶段完成后，必须通过飞书 CLI 向我发送一条总结消息，不能只在当前 Agent 对话中回复。
-- 消息应包含需求与阶段、当前状态、关键结论、产物链接、需要我执行的动作，以及恢复条件或下一阶段。
-- 发送成功后保存飞书 `message_id` 作为阶段交接回执；缺少回执时，不得进入 `waiting_for_user` 或关闭阶段。
-- 收件人默认为我本人，发送身份固定使用机器人。优先调用 Harness 封装的 `scripts/notify.py`，由命令解析本人 open_id、发送消息并保存回执。
-
 ## Browser 自动化默认会话（agent-browser）
 
 - 为了复用 SSO/ArcoSite/Aime 等站点登录态，后续所有 `agent-browser` 操作默认统一使用 `--session-name work-session`。
