@@ -99,6 +99,9 @@ bash <lark-doc>/scripts/lark-cli.sh docs +fetch \
 - **pattern 要包含 quote 的关键子串**，content 里**也保留该子串**，只在其后追加/改写。
 - 表格整行的**结构性删除**（删 `<tr>`）：`str_replace` 删不掉，改用 `block_replace`
   重建整张表 block。
+- 评论要求把原文移动到另一章节时，优先使用 `block_move_after` 移动原 block；多段连续原文按原顺序
+  一起移动。移动保留 block id，能同时保住单 block 评论和 `content_anchor_id=part-*` 的跨 block
+  划词锚点。不要复制内容后删除原块，也不要为“移动”重写正文。
 - 改完检查返回：revision 是否推进、`updated_blocks_count` 是否 > 0（=0 说明 pattern 没匹配上）。
 - **怎么改**——即「把哪里改成什么」的判断，全部走下面的
   「[可读性原则](#可读性原则改动怎么改的判据)」：评论说「太长」就拆密集长段、说「用流程图」
@@ -156,6 +159,7 @@ bash <lark-doc>/scripts/lark-cli.sh drive file.comment.replys create \
 | `updated_blocks_count: 0` | pattern 没匹配（HTML 实体转义、空白差异） | 回 fetch 看实际文本，注意 `<`→`&lt;`、`<code>` 标签 |
 | 删表格行 `str_replace` 失败 | str_replace 不能删结构性 `<tr>` | 用 `block_replace` 重建整张表 |
 | `block_insert_after` 返回 ok 但没插入 | 前一步 `block_replace` 已把该 block 的 id 换掉，锚点还用旧 id | 改后先 `+fetch` 拿**新 id**，再按新 id 插入 |
+| 跨段划词评论要求移动内容 | 复制或重写会替换原 block，导致 `part-*` 锚点失效 | 用 `block_move_after` 按原顺序移动全部相关 block，回 fetch 后再核对原 block id 与评论 quote |
 | 评论变孤儿 | quote 子串被删 | 改法里保留 quote 关键子串 |
 | 回复评论报 `invalid file path`（要求相对路径） | raw `drive` 子命令与 `docs` wrapper 的 `@` 约定相反 | `--data` 用**内联 JSON 字符串**，不要用 `@绝对路径` |
 | 回复时 `comment_id` 为空 | `docs +get-comments` 不一定回填 id | 改用 `drive file.comments list` 拿 `data.items[].comment_id` |
