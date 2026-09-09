@@ -148,6 +148,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # pyenv (PATH handled in zsh/path.zsh)
 if (( $+commands[pyenv] )) && (( ! $+functions[pyenv] )); then
-  eval "$(pyenv init - zsh)"
+  eval "$(pyenv init - zsh --no-rehash)"
 fi
 # pyenv end
