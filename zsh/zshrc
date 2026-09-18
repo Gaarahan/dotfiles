@@ -151,5 +151,3 @@ if (( $+commands[pyenv] )) && (( ! $+functions[pyenv] )); then
   eval "$(pyenv init - zsh)"
 fi
 # pyenv end
-
-export PLAYWRIGHT_MCP_EXTENSION_TOKEN=VLoKmWcWjq__GnOQQHvU7oKEJVmhCP1555AdsGlTHDM
