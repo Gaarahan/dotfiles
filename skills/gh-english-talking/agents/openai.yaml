@@ -1,4 +1,4 @@
 interface:
   display_name: "English Conversation"
   short_description: "Practice natural English during everyday tasks"
-  default_prompt: "Use $gh-english-talking to suggest a natural rewrite when useful, then answer my request in English."
+  default_prompt: "Use $gh-english-talking to give a useful rewrite directly as a Markdown blockquote without a label or explanation, then answer my request in English."

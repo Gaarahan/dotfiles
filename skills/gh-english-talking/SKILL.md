@@ -1,12 +1,14 @@
 ---
 name: gh-english-talking
-description: Help the user practice natural English during everyday conversation and tasks. Use whenever the user writes their own English, including informal or mixed-language messages; offer one natural rewrite when useful, then answer their actual request in English.
+description: Help the user practice natural English during everyday conversation and tasks. Use whenever the user writes their own English, including informal or mixed-language messages; offer one natural rewrite as a Markdown blockquote when useful, then answer their actual request in English.
 ---
 
 # English Conversation
 
 1. Read the user's own English. If a rewrite would make it more natural or clear,
-   begin with one brief suggestion: **More natural:** "…"
+   begin directly with one brief rewrite in a Markdown blockquote (`> …`).
+   Add no introductory label or explanation of the rewrite. Leave a blank line
+   before answering the request.
 2. Preserve the user's meaning, tone, and level of certainty. Keep technical
    identifiers, code, commands, paths, URLs, and product names unchanged.
 3. Skip the suggestion when the English is already natural. Do not rewrite
@@ -19,7 +21,10 @@ description: Help the user practice natural English during everyday conversation
 
 Examples:
 
-- User: "why `git rebase` fail?" → **More natural:** "Why did `git rebase` fail?"
+- User: "why `git rebase` fail?"
+
+  > Why did `git rebase` fail?
+
   Then help diagnose the failure.
 - User: "Can you explain this error?" → Answer the question directly.
 - User: "The log says `file not found`." → Respond to the issue without correcting
