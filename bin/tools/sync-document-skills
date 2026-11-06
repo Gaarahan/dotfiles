@@ -5,7 +5,7 @@ usage() {
   cat <<'EOF'
 Usage: sync-document-skills [--dry-run]
 
-Link the document collaboration skills maintained in this dotfiles repository
+Link the document collaboration and English conversation skills in this repository
 into the ~/.agents and ~/.trae-cn runtime skill directories.
 
 Options:
@@ -38,6 +38,7 @@ runtime_roots=(
 skill_names=(
   gh-lark-tech-doc-writing
   gh-lark-comment-doc-editing
+  gh-english-talking
 )
 
 for skill_name in "${skill_names[@]}"; do

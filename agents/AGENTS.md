@@ -42,15 +42,16 @@
 自定义 skill 按能力分为两个权威来源：
 
 - **文档协作 skill**：`gh-lark-tech-doc-writing` 与 `gh-lark-comment-doc-editing` 的唯一权威源位于本仓库 `skills/`。两者作为一个 collection 共同维护，并共享 `gh-lark-tech-doc-writing/references/readability-principles.md`。修改时只改本仓库中的源文件。
-- **其他 `gh-` skill**：唯一权威源仍是 `code.byted.org:hanzhaofeng/dotfile-skills`（本地 `~/Documents/dotfile-skills`），布局为 `skills/<gh-name>/SKILL.md`。新增或修改这些 skill 只在该源仓库进行。
-- **运行时入口**：`~/.agents/skills/`（= `dotfiles/agents/skills/`）与 `~/.trae-cn/skills/` 是运行时目录，不是文档协作 skill 的维护位置。运行 `bin/tools/sync-document-skills`，将两个运行时入口链接到本仓库的权威源。
-- **同步流程**：修改文档协作 skill 后，运行 `bin/tools/sync-document-skills` 并执行校验；修改其他 `gh-` skill 后，在 dotfile-skills 中 commit/push，再执行 `npm_config_registry="https://bnpm.byted.org" npx -y agentbuddy@latest skill add skills.bytedance.org/hzf/dot_skills --yes --global`。agentbuddy 可能替换文档协作 skill 的运行时链接，因此重装后必须再次运行 `bin/tools/sync-document-skills`。
+- **英语对话 skill**：`gh-english-talking` 的唯一权威源位于本仓库 `skills/gh-english-talking/`。用户用英语表达时，按需给出一句自然改写，再用英语处理实际请求；运行 `bin/tools/sync-document-skills` 同步运行时入口。
+- **其他 `gh-` skill**（上述文档协作与英语对话 skill 除外）：唯一权威源仍是 `code.byted.org:hanzhaofeng/dotfile-skills`（本地 `~/Documents/dotfile-skills`），布局为 `skills/<gh-name>/SKILL.md`。新增或修改这些 skill 只在该源仓库进行。
+- **运行时入口**：`~/.agents/skills/`（= `dotfiles/agents/skills/`）与 `~/.trae-cn/skills/` 是运行时目录，不是文档协作与英语对话 skill 的维护位置。运行 `bin/tools/sync-document-skills`，将两个运行时入口链接到本仓库的权威源。
+- **同步流程**：修改文档协作或英语对话 skill 后，运行 `bin/tools/sync-document-skills` 并执行校验；修改其他 `gh-` skill 后，在 dotfile-skills 中 commit/push，再执行 `npm_config_registry="https://bnpm.byted.org" npx -y agentbuddy@latest skill add skills.bytedance.org/hzf/dot_skills --yes --global`。agentbuddy 可能替换文档协作与英语对话 skill 的运行时链接，因此重装后必须再次运行 `bin/tools/sync-document-skills`。
 
 ## 完备性约束（重要）
 
 当修改任意 skill 相关内容时，必须保证“脚本、入口、文档”同步更新，避免出现：文档说 A、实际跑出来是 B 的情况。
 
-- **技能规格**：以该 skill 的权威源为准；文档协作 skill 位于本仓库 `skills/<skill-name>/SKILL.md`，其他 `gh-` skill 位于 dotfile-skills 的 `skills/<skill-name>/SKILL.md`
+- **技能规格**：以该 skill 的权威源为准；文档协作与英语对话 skill 位于本仓库 `skills/<skill-name>/SKILL.md`，其他 `gh-` skill 位于 dotfile-skills 的 `skills/<skill-name>/SKILL.md`
 - **工具实现**：`agents/tools/<tool-name>/...`
 - **稳定入口（如有）**：`bin/tools/<cmd>`（通常只做转发/shim）
 - **校验方式**：至少运行一次 `--help` / `--show-config`（或该工具的等价自检命令），确保文档与输出一致
